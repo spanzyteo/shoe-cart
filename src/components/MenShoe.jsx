@@ -47,7 +47,7 @@ const MenShoe = () => {
       <Stack
         direction={{ xs: 'column', lg: 'row' }}
         justifyContent="center"
-        gap={{ lg: '5rem' }}
+        gap={{ lg: '3rem' }}
       >
         <Stack direction="column">
           <Stack className="slider">
