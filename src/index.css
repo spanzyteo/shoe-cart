@@ -1,3 +1,84 @@
 body {
   font-family: 'Kumbh Sans';
 }
+
+.sidebar {
+  width: 200px;
+  height: 100vh;
+  background-color: #f2f2f2;
+  color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  transition: transform 0.3s ease-in-out;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar.close {
+  transform: translateX(-100%);
+}
+
+.shoe-image {
+  height: 350px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: left 0.5s ease;
+}
+
+.shoe-thumbnail {
+  height: 50px;
+  width: 50px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.active-shoe-thumbnail {
+  height: 50px;
+  width: 50px;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.6;
+  border: 2px solid hsl(26, 100%, 55%);
+}
+
+.slider {
+  position: relative;
+}
+.previous-icon,
+.next-icon {
+  height: 16px;
+  width: 16px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border-radius: 50%;
+  padding: 8px 8px;
+  margin: 0px 10px 0px 10px;
+  cursor: pointer;
+}
+.previous-icon {
+  background-color: white;
+  left: 0;
+}
+.next-icon {
+  background-color: white;
+  right: 0;
+}
+
+@media (min-width: 992px) {
+  .shoe-image {
+    width: 320px;
+  }
+}
+
+@media (max-width: 992px) {
+  .shoe-image {
+    height: 420px;
+    object-fit: cover;
+    border-radius: 0px;
+  }
+}

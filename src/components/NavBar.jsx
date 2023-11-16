@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Stack, Typography, Box } from '@mui/material'
 import menuIcon from '../images/icon-menu.svg'
 import cartIcon from '../images/icon-cart.svg'
 import avatar from '../images/image-avatar.png'
 
-const NavBar = () => {
+const NavBar = ({ toggleSideBar }) => {
   return (
     <Box
       flexDirection="row"
@@ -33,9 +33,11 @@ const NavBar = () => {
                 width: '20px',
                 marginTop: '10px',
                 marginRight: '14px',
+                cursor: 'pointer',
               }}
               src={menuIcon}
               alt="menu icon"
+              onClick={toggleSideBar}
             />
           </Stack>
           <Typography variant="h3" fontWeight={700}>
