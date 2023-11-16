@@ -50,13 +50,13 @@ const MenShoe = () => {
             <img
               className="previous-icon"
               src={previousIcon}
-              alt=""
+              alt="previous-icon"
               onClick={goToPrevImage}
             />
             <img
               className="next-icon"
               src={nextIcon}
-              alt=""
+              alt="next-icon"
               onClick={goToNextImage}
             />
           </Stack>

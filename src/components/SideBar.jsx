@@ -1,50 +1,46 @@
 import React, { useState } from 'react'
 import { Stack, Typography, Box } from '@mui/material'
 
-import NavBar from './NavBar'
 import closeIcon from '../images/icon-close.svg'
 
-const SideBar = () => {
-  const [isSideBarOpen, setIsSideBarOpen] = useState(false)
-
-  const toggleSideBar = () => {
-    setIsSideBarOpen((prevIsOPen) => !prevIsOPen)
-  }
+const SideBar = ({ isSideBarOpen, toggleSideBar }) => {
   return (
     <Stack
       className={`sidebar ${isSideBarOpen ? 'open' : 'close'}`}
       direction="column"
-      gap={2}
+      display={{ lg: 'none', sm: 'flex', xs: 'flex' }}
     >
-      <img
-        style={{
-          height: '20px',
-          width: '20px',
-          marginTop: '10px',
-          marginRight: '14px',
-          cursor: 'pointer',
-        }}
-        src={closeIcon}
-        alt="delete-icon"
-        onClick={toggleSideBar}
-      />
-      {/* <NavBar toggleSideBar={toggleSideBar} /> */}
+      <Stack sx={{ ml: '10px' }} gap={3} p={3}>
+        <img
+          style={{
+            height: '15px',
+            width: '15px',
+            marginTop: '10px',
+            marginRight: '14px',
+            cursor: 'pointer',
+            marginBottom: '28px',
+          }}
+          src={closeIcon}
+          alt="delete-icon"
+          onClick={toggleSideBar}
+        />
 
-      <Typography fontWeight={400} fontSize={16}>
-        Collections
-      </Typography>
-      <Typography fontWeight={400} fontSize={16}>
-        Men
-      </Typography>
-      <Typography fontWeight={400} fontSize={16}>
-        Women
-      </Typography>
-      <Typography fontWeight={400} fontSize={16}>
-        About
-      </Typography>
-      <Typography fontWeight={400} fontSize={16}>
-        Contact
-      </Typography>
+        <Typography fontWeight={700} fontSize={16}>
+          Collections
+        </Typography>
+        <Typography fontWeight={700} fontSize={16}>
+          Men
+        </Typography>
+        <Typography fontWeight={700} fontSize={16}>
+          Women
+        </Typography>
+        <Typography fontWeight={700} fontSize={16}>
+          About
+        </Typography>
+        <Typography fontWeight={700} fontSize={16}>
+          Contact
+        </Typography>
+      </Stack>
     </Stack>
   )
 }
