@@ -50,19 +50,19 @@ const NavBar = ({ toggleSideBar }) => {
             gap="36px"
             sx={{ ml: '15px' }}
           >
-            <Typography fontSize="16px" color="#0c1321">
+            <Typography fontSize="16px" color="hsl(219, 9%, 45%)">
               Collection
             </Typography>
-            <Typography fontSize="16px" color="#0c1321">
+            <Typography fontSize="16px" color="hsl(219, 9%, 45%)">
               Men
             </Typography>
-            <Typography fontSize="16px" color="#0c1321">
+            <Typography fontSize="16px" color="hsl(219, 9%, 45%)">
               Women
             </Typography>
-            <Typography fontSize="16px" color="#0c1321">
+            <Typography fontSize="16px" color="hsl(219, 9%, 45%)">
               About
             </Typography>
-            <Typography fontSize="16px" color="#0c1321">
+            <Typography fontSize="16px" color="hsl(219, 9%, 45%)">
               Contact
             </Typography>
           </Stack>

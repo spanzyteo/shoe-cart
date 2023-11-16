@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Stack, Box, Typography } from '@mui/material'
-// import ImageCart from './ImageCart'
+import MenShoeDetails from './MenShoeDetails'
 
 import nextIcon from '../images/icon-next.svg'
 import previousIcon from '../images/icon-previous.svg'
@@ -37,50 +37,62 @@ const MenShoe = () => {
   return (
     <Box
       flexDirection={{ xs: 'column', lg: 'row' }}
-      sx={{ mt: { xs: '0px', lg: '50px' }, mx: { xs: '-10px', lg: '30px' } }}
+      alignItems="center"
+      justifyContent="space-between"
+      sx={{
+        mt: { xs: '0px', lg: '50px' },
+        mx: { xs: '-0.625rem', lg: '2rem' },
+      }}
     >
-      <Stack direction="column">
-        <Stack className="slider">
-          <img
-            className="shoe-image"
-            src={images[currentImageIndex]}
-            alt="image-1"
-          />
-          <Stack direction="row" display={{ xs: 'flex', lg: 'none' }}>
+      <Stack
+        direction={{ xs: 'column', lg: 'row' }}
+        justifyContent="center"
+        gap={{ lg: '5rem' }}
+      >
+        <Stack direction="column">
+          <Stack className="slider">
             <img
-              className="previous-icon"
-              src={previousIcon}
-              alt="previous-icon"
-              onClick={goToPrevImage}
+              className="shoe-image"
+              src={images[currentImageIndex]}
+              alt="image-1"
             />
-            <img
-              className="next-icon"
-              src={nextIcon}
-              alt="next-icon"
-              onClick={goToNextImage}
-            />
+            <Stack direction="row" display={{ xs: 'flex', lg: 'none' }}>
+              <img
+                className="previous-icon"
+                src={previousIcon}
+                alt="previous-icon"
+                onClick={goToPrevImage}
+              />
+              <img
+                className="next-icon"
+                src={nextIcon}
+                alt="next-icon"
+                onClick={goToNextImage}
+              />
+            </Stack>
+          </Stack>
+          <Stack
+            direction="row"
+            display={{ xs: 'none', lg: 'flex' }}
+            sx={{ mt: '25px' }}
+            gap={5}
+          >
+            {imageThumbnails.map((image, index) => (
+              <img
+                src={image}
+                key={index}
+                alt="image-1b"
+                onClick={() => handleClickThumbnail(index)}
+                className={
+                  index === currentImageIndex
+                    ? 'active-shoe-thumbnail'
+                    : 'shoe-thumbnail'
+                }
+              />
+            ))}
           </Stack>
         </Stack>
-        <Stack
-          direction="row"
-          display={{ xs: 'none', lg: 'flex' }}
-          sx={{ mt: '25px' }}
-          gap={5}
-        >
-          {imageThumbnails.map((image, index) => (
-            <img
-              src={image}
-              key={index}
-              alt="image-1b"
-              onClick={() => handleClickThumbnail(index)}
-              className={
-                index === currentImageIndex
-                  ? 'active-shoe-thumbnail'
-                  : 'shoe-thumbnail'
-              }
-            />
-          ))}
-        </Stack>
+        <MenShoeDetails />
       </Stack>
     </Box>
   )

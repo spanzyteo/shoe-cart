@@ -27,7 +27,7 @@ body {
   width: 100%;
   object-fit: cover;
   border-radius: 12px;
-  transition: left 0.5s ease;
+  transition: transform 0.3s ease-in-out;
 }
 
 .shoe-thumbnail {
@@ -68,6 +68,9 @@ body {
 .next-icon {
   background-color: white;
   right: 0;
+}
+.cancel {
+  text-decoration: line-through;
 }
 
 @media (min-width: 992px) {
