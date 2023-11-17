@@ -1,10 +1,27 @@
 import React from 'react'
-import { Stack, Typography, Box } from '@mui/material'
+import { Stack, Typography, Button } from '@mui/material'
+
+import plusIcon from '../images/icon-plus.svg'
+import minusIcon from '../images/icon-minus.svg'
+import cartIcon from '../images/icon-cart.svg'
 
 const MenShoeDetails = () => {
+  const imageStyle = {
+    filter: 'brightness(0) invert(1) grayscale(100%)',
+  }
   return (
-    <Stack direction="column" sx={{ ml: { lg: '10rem', xs: '2rem' } }}>
-      <Stack sx={{ mt: { lg: '2rem', xs: '1.8rem' } }}>
+    <Stack
+      direction="column"
+      sx={{ ml: { lg: '10rem', xs: '1rem' } }}
+      justifyContent="center"
+      alignItems="center"
+    >
+      <Stack
+        direction="column"
+        justifyContent="center"
+        alignItems="start"
+        sx={{ mt: { lg: '2rem', xs: '1.8rem' } }}
+      >
         <Typography fontSize="1rem" color="hsl(26, 100%, 55%)" fontWeight={700}>
           SNEAKER COMPANY
         </Typography>
@@ -36,13 +53,14 @@ const MenShoeDetails = () => {
             borderRadius="0.3rem"
             bgcolor="hsl(25, 100%, 94%)"
             sx={{ ml: '1rem' }}
+            p="0.3rem"
           >
             50%
           </Typography>
           <Typography
             className="cancel"
             color="hsl(219, 9%, 45%)"
-            sx={{ ml: '7.8rem' }}
+            sx={{ ml: '7rem' }}
             display={{ lg: 'none', xs: 'block' }}
           >
             $250.00
@@ -56,6 +74,47 @@ const MenShoeDetails = () => {
         >
           $250.00
         </Typography>
+        <Stack
+          direction={{ lg: 'row', xs: 'column' }}
+          alignItems="center"
+          justifyContent="center"
+        >
+          <Stack
+            direction="row"
+            alignItems="center"
+            gap={{ lg: '2rem', xs: '8rem' }}
+            sx={{
+              mt: { lg: '1rem', xs: '2rem' },
+              py: { xs: '0.8rem' },
+              px: { xs: '0.8rem' },
+            }}
+            bgcolor="hsl(223, 64%, 98%)"
+            borderRadius="0.6rem"
+          >
+            <img src={minusIcon} alt="minus-icon" />
+            <Typography fontWeight={700}>0</Typography>
+            <img src={plusIcon} alt="plus-icon" />
+          </Stack>
+          <Button
+            style={{ textTransform: 'none' }}
+            sx={{
+              backgroundColor: 'hsl(26, 100%, 55%)',
+              py: { xs: '0.8rem', lg: '0.7rem' },
+              px: { xs: '6rem', lg: '4rem' },
+              borderRadius: '0.6rem',
+              ml: { lg: '3rem' },
+              mt: { lg: '0.7rem', xs: '2rem' },
+              ':hover': { backgroundColor: 'primary.light' },
+            }}
+          >
+            <Stack direction="row" gap="1rem">
+              <img style={imageStyle} src={cartIcon} alt="cart-icon" />
+              <Typography fontWeight={700} color="white">
+                Add to cart
+              </Typography>
+            </Stack>
+          </Button>
+        </Stack>
       </Stack>
     </Stack>
   )

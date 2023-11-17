@@ -1,5 +1,7 @@
 body {
   font-family: 'Kumbh Sans';
+  margin: 0;
+  padding: 0;
 }
 
 .sidebar {

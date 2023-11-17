@@ -9,7 +9,13 @@ const NavBar = ({ toggleSideBar }) => {
     <Box
       flexDirection="row"
       alignItems="center"
+      justifyContent="center"
       borderBottom="1px solid #E8E8E8"
+      position="sticky"
+      top="0"
+      width={{ xs: '100%' }}
+      zIndex={100}
+      bgcolor="white"
     >
       <Stack
         direction="row"
@@ -18,8 +24,8 @@ const NavBar = ({ toggleSideBar }) => {
         sx={{
           gap: { xs: '10px', lg: '15px' },
           my: { sm: '17px', lg: '26px' },
+          px: { xs: '10px', lg: '0px' },
         }}
-        px="10px"
       >
         <Stack
           direction="row"
