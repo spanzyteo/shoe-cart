@@ -1,7 +1,7 @@
 body {
   font-family: 'Kumbh Sans';
-  margin: 0;
-  padding: 0;
+  margin: 0rem;
+  padding: 0rem;
 }
 
 .sidebar {
@@ -37,6 +37,10 @@ body {
   width: 50px;
   border-radius: 8px;
   cursor: pointer;
+}
+
+.shoe-thumbnail:hover {
+  opacity: 0.6;
 }
 
 .active-shoe-thumbnail {

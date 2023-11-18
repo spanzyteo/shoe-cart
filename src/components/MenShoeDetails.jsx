@@ -96,6 +96,8 @@ const MenShoeDetails = () => {
             <img src={plusIcon} alt="plus-icon" />
           </Stack>
           <Button
+            variant="contained"
+            color="error"
             style={{ textTransform: 'none' }}
             sx={{
               backgroundColor: 'hsl(26, 100%, 55%)',
@@ -104,7 +106,7 @@ const MenShoeDetails = () => {
               borderRadius: '0.6rem',
               ml: { lg: '3rem' },
               mt: { lg: '0.7rem', xs: '2rem' },
-              ':hover': { backgroundColor: 'primary.light' },
+              ':hover': { opacity: 0.4 },
             }}
           >
             <Stack direction="row" gap="1rem">

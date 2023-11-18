@@ -41,7 +41,7 @@ const MenShoe = () => {
       justifyContent="space-between"
       sx={{
         mt: { xs: '0px', lg: '50px' },
-        mx: { xs: '-0.625rem', lg: '2rem' },
+        mx: { xs: '0rem', lg: '2rem' },
       }}
     >
       <Stack
