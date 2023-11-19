@@ -78,6 +78,20 @@ body {
 .cancel {
   text-decoration: line-through;
 }
+.cart-menu {
+  z-index: 0;
+}
+.toggle-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 15rem;
+  height: 11rem;
+  background-color: black;
+  margin-top: 0rem;
+  margin-right: 0rem;
+  z-index: 1;
+}
 
 @media (min-width: 992px) {
   .shoe-image {
@@ -90,5 +104,12 @@ body {
     height: 420px;
     object-fit: cover;
     border-radius: 0px;
+    z-index: 0;
+  }
+  .toggle-bar {
+    position: fixed;
+    width: calc(100% - 20px);
+    margin: 0 auto;
+    z-index: 1;
   }
 }
