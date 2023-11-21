@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { Stack, Box, Typography } from '@mui/material'
 import MenShoeDetails from './MenShoeDetails'
-import ShoeCart from './ShoeCart'
 
 import nextIcon from '../images/icon-next.svg'
 import previousIcon from '../images/icon-previous.svg'
@@ -36,8 +35,7 @@ const MenShoe = () => {
     setCurrentImageIndex(index)
   }
   return (
-    <Box position="relative">
-      <ShoeCart />
+    <Box>
       <Box
         flexDirection={{ xs: 'column', lg: 'row' }}
         alignItems="center"
