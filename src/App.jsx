@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { createContext, useState } from 'react'
 import { Box } from '@mui/material'
+export const Context = createContext()
 
 import NavBar from './components/NavBar'
 import MenShoe from './components/MenShoe'
@@ -11,6 +12,7 @@ const App = () => {
   const toggleSideBar = () => {
     setIsSideBarOpen((prevIsOPen) => !prevIsOPen)
   }
+
   return (
     <Box width="400px" sx={{ width: { xl: '1488px' } }} m="auto">
       <Box sx={{ px: { sm: '120px', xs: '0px' } }}>

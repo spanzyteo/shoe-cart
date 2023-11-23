@@ -1,11 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Stack, Typography, Button } from '@mui/material'
+import { useCart } from '../Context'
 
 import plusIcon from '../images/icon-plus.svg'
 import minusIcon from '../images/icon-minus.svg'
 import cartIcon from '../images/icon-cart.svg'
 
 const MenShoeDetails = () => {
+  const { state, dispatch } = useCart()
+
+  const increaseCount = () => {
+    dispatch({ type: 'INCREMENT' })
+  }
+
+  const decreaseCount = () => {
+    dispatch({ type: 'DECREMENT' })
+  }
+
+  const showValue = () => {
+    dispatch({ type: 'SHOW_CART_VALUE' })
+  }
+
   const imageStyle = {
     filter: 'brightness(0) invert(1) grayscale(100%)',
   }
@@ -74,6 +89,7 @@ const MenShoeDetails = () => {
         >
           $250.00
         </Typography>
+
         <Stack
           direction={{ lg: 'row', xs: 'column' }}
           alignItems="center"
@@ -91,11 +107,22 @@ const MenShoeDetails = () => {
             bgcolor="hsl(223, 64%, 98%)"
             borderRadius="0.6rem"
           >
-            <img src={minusIcon} alt="minus-icon" />
-            <Typography fontWeight={700}>0</Typography>
-            <img src={plusIcon} alt="plus-icon" />
+            <img
+              onClick={decreaseCount}
+              style={{ cursor: 'pointer' }}
+              src={minusIcon}
+              alt="minus-icon"
+            />
+            <Typography fontWeight={700}>{state.cartValue}</Typography>
+            <img
+              onClick={increaseCount}
+              style={{ cursor: 'pointer' }}
+              src={plusIcon}
+              alt="plus-icon"
+            />
           </Stack>
           <Button
+            onClick={showValue}
             variant="contained"
             color="error"
             style={{ textTransform: 'none' }}

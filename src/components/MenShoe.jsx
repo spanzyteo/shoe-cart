@@ -13,7 +13,13 @@ import image2b from '../images/image-product-2-thumbnail.jpg'
 import image3b from '../images/image-product-3-thumbnail.jpg'
 import image4b from '../images/image-product-4-thumbnail.jpg'
 
-const MenShoe = () => {
+const MenShoe = ({
+  itemInCart,
+  setItemInCart,
+  addToCart,
+  cartCount,
+  setCartCount,
+}) => {
   const images = [image1, image2, image3, image4]
   const imageThumbnails = [image1b, image2b, image3b, image4b]
 
@@ -94,7 +100,13 @@ const MenShoe = () => {
               ))}
             </Stack>
           </Stack>
-          <MenShoeDetails />
+          <MenShoeDetails
+            itemInCart={itemInCart}
+            setItemInCart={setItemInCart}
+            addToCart={addToCart}
+            cartCount={cartCount}
+            setCartCount={setCartCount}
+          />
         </Stack>
       </Box>
     </Box>
