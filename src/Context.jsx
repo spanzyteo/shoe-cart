@@ -24,6 +24,7 @@ const initialState = {
 const CartContext = createContext()
 
 const cartReducer = (state, action) => {
+  console.log(state.data)
   switch (action.type) {
     case 'SET_SELECTED_IMAGE':
       return { ...state, selectedImage: action.payload }

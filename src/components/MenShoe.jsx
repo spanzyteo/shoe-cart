@@ -98,12 +98,12 @@ const MenShoe = () => {
               sx={{ mt: '25px' }}
               gap={5}
             >
-              {state.data.map((item, index) => (
+              {state.data.map((item) => (
                 <img
                   key={item.id}
                   src={item.image}
                   alt="image-1b"
-                  onClick={handleImageClick(index)}
+                  onClick={() => handleImageClick(item.id)}
                   className={
                     item.id === state.selectedImage
                       ? 'active-shoe-thumbnail'
