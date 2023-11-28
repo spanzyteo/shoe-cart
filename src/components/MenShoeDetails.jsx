@@ -1,31 +1,36 @@
-import React, { useState } from 'react'
-import { Stack, Typography, Button } from '@mui/material'
-import { useCart } from '../Context'
+import React, { useState } from 'react';
+import { Stack, Typography, Button } from '@mui/material';
+import { useCart } from '../Context';
 
-import plusIcon from '../images/icon-plus.svg'
-import minusIcon from '../images/icon-minus.svg'
-import cartIcon from '../images/icon-cart.svg'
+import plusIcon from '../images/icon-plus.svg';
+import minusIcon from '../images/icon-minus.svg';
+import cartIcon from '../images/icon-cart.svg';
 
 const MenShoeDetails = () => {
-  const { state, dispatch } = useCart()
+  const { state, dispatch } = useCart();
 
-  // const currentThumbnail = state.data.find((item) => item.id === id)
+  const currentThumbnail = state.data.find(
+    (item) => item.id === state.selectedImage
+  );
 
-  const increaseCount = (id) => {
-    dispatch({ type: 'INCREMENT', id })
-  }
+  const increaseCount = () => {
+    dispatch({ type: 'INCREMENT' });
+  };
 
-  const decreaseCount = (id) => {
-    dispatch({ type: 'DECREMENT', id })
-  }
+  const decreaseCount = () => {
+    dispatch({ type: 'DECREMENT' });
+  };
 
   const showValue = () => {
-    dispatch({ type: 'SHOW_CART_VALUE' })
-  }
+    dispatch({ type: 'SHOW_CART_VALUE' });
+  };
+  const updateCartValue = () => {
+    dispatch({ type: 'SUM_CART_VALUE' });
+  };
 
   const imageStyle = {
     filter: 'brightness(0) invert(1) grayscale(100%)',
-  }
+  };
   return (
     <Stack
       direction="column"
@@ -113,12 +118,21 @@ const MenShoeDetails = () => {
               style={{ cursor: 'pointer' }}
               src={minusIcon}
               alt="minus-icon"
+              onClick={() => decreaseCount()}
             />
-            <Typography fontWeight={700}>0</Typography>
-            <img style={{ cursor: 'pointer' }} src={plusIcon} alt="plus-icon" />
+            <Typography fontWeight={700}>{currentThumbnail.count}</Typography>
+            <img
+              style={{ cursor: 'pointer' }}
+              src={plusIcon}
+              alt="plus-icon"
+              onClick={() => increaseCount()}
+            />
           </Stack>
           <Button
-            onClick={showValue}
+            onClick={() => {
+              showValue();
+              updateCartValue();
+            }}
             variant="contained"
             color="error"
             style={{ textTransform: 'none' }}
@@ -142,7 +156,7 @@ const MenShoeDetails = () => {
         </Stack>
       </Stack>
     </Stack>
-  )
-}
+  );
+};
 
-export default MenShoeDetails
+export default MenShoeDetails;
