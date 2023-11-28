@@ -8,7 +8,11 @@ import cartIcon from '../images/icon-cart.svg'
 import avatar from '../images/image-avatar.png'
 
 const NavBar = ({ toggleSideBar, itemInCart }) => {
-  const { state } = useCart()
+  const { state, dispatch } = useCart()
+
+  const showCartItems = () => {
+    dispatch({ type: 'SHOW_CART_ITEMS' })
+  }
   return (
     <Box position="relative">
       <ShoeCart />
@@ -111,7 +115,8 @@ const NavBar = ({ toggleSideBar, itemInCart }) => {
                 </Stack>
               )}
               <img
-                style={{ height: '30px', width: '30px' }}
+                onClick={showCartItems}
+                style={{ height: '30px', width: '30px', cursor: 'pointer' }}
                 src={cartIcon}
                 alt="cart icon"
               />

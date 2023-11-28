@@ -9,12 +9,14 @@ import cartIcon from '../images/icon-cart.svg'
 const MenShoeDetails = () => {
   const { state, dispatch } = useCart()
 
-  const increaseCount = () => {
-    dispatch({ type: 'INCREMENT' })
+  // const currentThumbnail = state.data.find((item) => item.id === id)
+
+  const increaseCount = (id) => {
+    dispatch({ type: 'INCREMENT', id })
   }
 
-  const decreaseCount = () => {
-    dispatch({ type: 'DECREMENT' })
+  const decreaseCount = (id) => {
+    dispatch({ type: 'DECREMENT', id })
   }
 
   const showValue = () => {
@@ -108,18 +110,12 @@ const MenShoeDetails = () => {
             borderRadius="0.6rem"
           >
             <img
-              onClick={decreaseCount}
               style={{ cursor: 'pointer' }}
               src={minusIcon}
               alt="minus-icon"
             />
-            <Typography fontWeight={700}>{state.cartValue}</Typography>
-            <img
-              onClick={increaseCount}
-              style={{ cursor: 'pointer' }}
-              src={plusIcon}
-              alt="plus-icon"
-            />
+            <Typography fontWeight={700}>0</Typography>
+            <img style={{ cursor: 'pointer' }} src={plusIcon} alt="plus-icon" />
           </Stack>
           <Button
             onClick={showValue}

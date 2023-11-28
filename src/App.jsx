@@ -5,8 +5,10 @@ export const Context = createContext()
 import NavBar from './components/NavBar'
 import MenShoe from './components/MenShoe'
 import SideBar from './components/SideBar'
+import { useCart } from './Context'
 
 const App = () => {
+  const { state } = useCart()
   const [isSideBarOpen, setIsSideBarOpen] = useState(false)
 
   const toggleSideBar = () => {
@@ -18,7 +20,9 @@ const App = () => {
       <Box sx={{ px: { sm: '120px', xs: '0px' } }}>
         <NavBar toggleSideBar={toggleSideBar} />
         <SideBar isSideBarOpen={isSideBarOpen} toggleSideBar={toggleSideBar} />
-        <MenShoe />
+        <Box>
+          <MenShoe />
+        </Box>
       </Box>
     </Box>
   )
