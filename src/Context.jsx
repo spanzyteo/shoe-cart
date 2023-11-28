@@ -26,7 +26,7 @@ const CartContext = createContext()
 const cartReducer = (state, action) => {
   switch (action.type) {
     case 'SET_SELECTED_IMAGE':
-      return { ...state, imageIndex: action.payload }
+      return { ...state, selectedImage: action.payload }
     case 'INCREMENT': {
       return {
         ...state,

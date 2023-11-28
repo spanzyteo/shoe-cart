@@ -30,9 +30,9 @@ const MenShoe = () => {
     dispatch({ type: 'PREVIOUS_IMAGE' })
   }
 
-  const selectImage = () => {
-    dispatch({ type: 'SET_SELECTED_IMAGE' })
-  }
+  // const selectImage = () => {
+  //   dispatch({ type: 'SET_SELECTED_IMAGE' })
+  // }
 
   // const goToNextImage = () => {
   //   setCurrentImageIndex((prevIndex) =>
@@ -47,7 +47,7 @@ const MenShoe = () => {
   // }
 
   const handleClickThumbnail = (index) => {
-    setCurrentImageIndex(index)
+    state.selectedImage(index)
   }
 
   const handleImageClick = (id) => {
@@ -98,12 +98,12 @@ const MenShoe = () => {
               sx={{ mt: '25px' }}
               gap={5}
             >
-              {state.data.map((item, id) => (
+              {state.data.map((item, index) => (
                 <img
                   key={item.id}
                   src={item.image}
                   alt="image-1b"
-                  onClick={handleImageClick(id)}
+                  onClick={handleImageClick(index)}
                   className={
                     item.id === state.selectedImage
                       ? 'active-shoe-thumbnail'
