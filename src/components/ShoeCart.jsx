@@ -1,12 +1,12 @@
-import React from 'react'
-import { Box, Stack, Typography, Button } from '@mui/material'
-import { useCart } from '../Context'
+import React from 'react';
+import { Box, Stack, Typography, Button } from '@mui/material';
+import { useCart } from '../Context';
 
-import imageThumbnail from '../images/image-product-1-thumbnail.jpg'
-import deleteIcon from '../images/icon-delete.svg'
+import imageThumbnail from '../images/image-product-1-thumbnail.jpg';
+import deleteIcon from '../images/icon-delete.svg';
 
 const ShoeCart = () => {
-  const { state } = useCart()
+  const { state } = useCart();
   return (
     <Box
       sx={{
@@ -60,6 +60,7 @@ const ShoeCart = () => {
                     {' '}
                     ${(state.cartValue * 125.0).toFixed(2)}
                   </span>
+                  {/* Comment */}
                 </Typography>
                 <img src={deleteIcon} alt="" />
               </Stack>
@@ -90,7 +91,7 @@ const ShoeCart = () => {
         </Stack>
       )}
     </Box>
-  )
-}
+  );
+};
 
-export default ShoeCart
+export default ShoeCart;
