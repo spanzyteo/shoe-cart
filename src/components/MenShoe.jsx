@@ -1,34 +1,34 @@
-import React, { useState } from 'react'
-import { Stack, Box, Typography } from '@mui/material'
-import MenShoeDetails from './MenShoeDetails'
+import React, { useState } from 'react';
+import { Stack, Box, Typography } from '@mui/material';
+import MenShoeDetails from './MenShoeDetails';
 
-import nextIcon from '../images/icon-next.svg'
-import previousIcon from '../images/icon-previous.svg'
-import image1 from '../images/image-product-1.jpg'
-import image2 from '../images/image-product-2.jpg'
-import image3 from '../images/image-product-3.jpg'
-import image4 from '../images/image-product-4.jpg'
-import image1b from '../images/image-product-1-thumbnail.jpg'
-import image2b from '../images/image-product-2-thumbnail.jpg'
-import image3b from '../images/image-product-3-thumbnail.jpg'
-import image4b from '../images/image-product-4-thumbnail.jpg'
-import { useCart } from '../Context'
+import nextIcon from '../images/icon-next.svg';
+import previousIcon from '../images/icon-previous.svg';
+import image1 from '../images/image-product-1.jpg';
+import image2 from '../images/image-product-2.jpg';
+import image3 from '../images/image-product-3.jpg';
+import image4 from '../images/image-product-4.jpg';
+import image1b from '../images/image-product-1-thumbnail.jpg';
+import image2b from '../images/image-product-2-thumbnail.jpg';
+import image3b from '../images/image-product-3-thumbnail.jpg';
+import image4b from '../images/image-product-4-thumbnail.jpg';
+import { useCart } from '../Context';
 
 const MenShoe = () => {
-  const { state, dispatch } = useCart()
+  const { state, dispatch } = useCart();
 
-  const images = [image1, image2, image3, image4]
-  const imageThumbnails = [image1b, image2b, image3b, image4b]
+  const images = [image1, image2, image3, image4];
+  const imageThumbnails = [image1b, image2b, image3b, image4b];
 
   // const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   const nextImage = () => {
-    dispatch({ type: 'NEXT_IMAGE' })
-  }
+    dispatch({ type: 'NEXT_IMAGE' });
+  };
 
   const previousImage = () => {
-    dispatch({ type: 'PREVIOUS_IMAGE' })
-  }
+    dispatch({ type: 'PREVIOUS_IMAGE' });
+  };
 
   // const selectImage = () => {
   //   dispatch({ type: 'SET_SELECTED_IMAGE' })
@@ -47,12 +47,12 @@ const MenShoe = () => {
   // }
 
   const handleClickThumbnail = (index) => {
-    state.selectedImage(index)
-  }
+    state.selectedImage(index);
+  };
 
   const handleImageClick = (id) => {
-    dispatch({ type: 'SET_SELECTED_IMAGE', payload: id })
-  }
+    dispatch({ type: 'SET_SELECTED_IMAGE', payload: id });
+  };
   return (
     <Box>
       <Box
@@ -118,7 +118,7 @@ const MenShoe = () => {
         </Stack>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default MenShoe
+export default MenShoe;
