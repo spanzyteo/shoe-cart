@@ -1,12 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box, Stack, Typography, Button } from '@mui/material';
 import { useCart } from '../Context';
 
 import imageThumbnail from '../images/image-product-1-thumbnail.jpg';
 import deleteIcon from '../images/icon-delete.svg';
+import { StarRateTwoTone } from '@mui/icons-material';
 
 const ShoeCart = () => {
-  const { state } = useCart();
+  const { state, dispatch } = useCart();
+  const filteredCart = state.cartData.filter((item) => item.count > 0);
+  useEffect(() => {}, [state.cartData]);
   return (
     <Box
       sx={{
@@ -46,24 +49,58 @@ const ShoeCart = () => {
               alignItems="center"
               justifyContent="start"
             >
-              <Stack direction="row" gap={2} alignItems="center">
-                <img
-                  style={{ width: '40px', height: '40px', borderRadius: '6px' }}
-                  src={imageThumbnail}
-                  alt=""
-                />
+              {filteredCart.length > 0 ? (
+                filteredCart.map((item) => (
+                  <Stack
+                    direction="row"
+                    gap={2}
+                    alignItems="center"
+                    key={item.id}
+                  >
+                    <img
+                      style={{
+                        width: '40px',
+                        height: '40px',
+                        borderRadius: '6px',
+                      }}
+                      src={item.image}
+                      alt=""
+                    />
 
-                <Typography color="hsl(219, 9%, 45%)">
-                  Fall Limited Edition Sneakers <br /> $125.00 x {''}
-                  {state.cartValue}
-                  <span style={{ fontWeight: '700', color: 'hsl(0, 0%, 0%)' }}>
-                    {' '}
-                    ${(state.cartValue * 125.0).toFixed(2)}
-                  </span>
-                  {/* Comment */}
-                </Typography>
-                <img src={deleteIcon} alt="" />
-              </Stack>
+                    <Typography color="hsl(219, 9%, 45%)">
+                      Fall Limited Edition Sneakers <br /> $125.00 x {''}
+                      {item.count}
+                      <span
+                        style={{ fontWeight: '700', color: 'hsl(0, 0%, 0%)' }}
+                      >
+                        {' '}
+                        ${(item.count * 125.0).toFixed(2)}
+                      </span>
+                      {/* Comment */}
+                    </Typography>
+                    <img
+                      src={deleteIcon}
+                      alt=""
+                      onClick={() => {
+                        dispatch({
+                          type: 'DELETE_CART_ITEM',
+                          payload: item.id,
+                        });
+                        dispatch({ type: 'SUM_CART_VALUE' });
+                      }}
+                    />
+                  </Stack>
+                ))
+              ) : (
+                <Stack
+                  gap={1}
+                  sx={{ p: { lg: '4rem', xs: '6rem' }, m: 'auto' }}
+                >
+                  <Typography fontWeight={700} color="hsl(219, 9%, 45%)">
+                    Your cart is empty
+                  </Typography>
+                </Stack>
+              )}
               <Button
                 variant="contained"
                 color="error"

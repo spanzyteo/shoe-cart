@@ -132,6 +132,7 @@ const MenShoeDetails = () => {
             onClick={() => {
               showValue();
               updateCartValue();
+              dispatch({ type: 'ADD_TO_CART' });
             }}
             variant="contained"
             color="error"
