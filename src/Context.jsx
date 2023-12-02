@@ -109,7 +109,7 @@ const cartReducer = (state, action) => {
         total += item.count;
         return total;
       }, 0);
-      console.log('cart Value:', updatedCartValue);
+
       return {
         ...state,
         cartValue: updatedCartValue,
