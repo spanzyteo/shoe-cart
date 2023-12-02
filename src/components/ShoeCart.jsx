@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import { Box, Stack, Typography, Button } from '@mui/material';
 import { useCart } from '../Context';
@@ -10,6 +11,7 @@ const ShoeCart = () => {
   const { state, dispatch } = useCart();
   const filteredCart = state.cartData.filter((item) => item.count > 0);
   useEffect(() => {}, [state.cartData]);
+
   return (
     <Box
       sx={{
@@ -49,6 +51,7 @@ const ShoeCart = () => {
               alignItems="center"
               justifyContent="start"
             >
+
               {filteredCart.length > 0 ? (
                 filteredCart.map((item) => (
                   <Stack
@@ -101,6 +104,7 @@ const ShoeCart = () => {
                   </Typography>
                 </Stack>
               )}
+
               <Button
                 variant="contained"
                 color="error"
@@ -128,7 +132,7 @@ const ShoeCart = () => {
         </Stack>
       )}
     </Box>
-  );
-};
+  )
+}
 
-export default ShoeCart;
+export default ShoeCart

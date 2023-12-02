@@ -1,36 +1,44 @@
-import React, { useState } from 'react';
-import { Stack, Typography, Button } from '@mui/material';
-import { useCart } from '../Context';
+import React, { useState } from 'react'
+import { Stack, Typography, Button } from '@mui/material'
+import { useCart } from '../Context'
 
-import plusIcon from '../images/icon-plus.svg';
-import minusIcon from '../images/icon-minus.svg';
-import cartIcon from '../images/icon-cart.svg';
+import plusIcon from '../images/icon-plus.svg'
+import minusIcon from '../images/icon-minus.svg'
+import cartIcon from '../images/icon-cart.svg'
 
 const MenShoeDetails = () => {
-  const { state, dispatch } = useCart();
+  const { state, dispatch } = useCart()
+
+  const handleAddToCart = (id) => {
+    dispatch({ type: 'ADD_ITEMS', payload: id })
+  }
+
+  const handleRemoveFromCart = (id) => {
+    dispatch({ type: 'DELETE_ITEMS', payload: id })
+  }
 
   const currentThumbnail = state.data.find(
     (item) => item.id === state.selectedImage
-  );
+  )
 
   const increaseCount = () => {
-    dispatch({ type: 'INCREMENT' });
-  };
+    dispatch({ type: 'INCREMENT' })
+  }
 
   const decreaseCount = () => {
-    dispatch({ type: 'DECREMENT' });
-  };
+    dispatch({ type: 'DECREMENT' })
+  }
 
   const showValue = () => {
-    dispatch({ type: 'SHOW_CART_VALUE' });
-  };
+    dispatch({ type: 'SHOW_CART_VALUE' })
+  }
   const updateCartValue = () => {
-    dispatch({ type: 'SUM_CART_VALUE' });
-  };
+    dispatch({ type: 'SUM_CART_VALUE' })
+  }
 
   const imageStyle = {
     filter: 'brightness(0) invert(1) grayscale(100%)',
-  };
+  }
   return (
     <Stack
       direction="column"
@@ -128,6 +136,7 @@ const MenShoeDetails = () => {
               onClick={() => increaseCount()}
             />
           </Stack>
+
           <Button
             onClick={() => {
               showValue();
@@ -154,10 +163,40 @@ const MenShoeDetails = () => {
               </Typography>
             </Stack>
           </Button>
+
+          {state.data.map((item) => (
+            <Button
+              key={item.id}
+              onClick={() => {
+                showValue()
+                updateCartValue()
+              }}
+              variant="contained"
+              color="error"
+              style={{ textTransform: 'none' }}
+              sx={{
+                backgroundColor: 'hsl(26, 100%, 55%)',
+                py: { xs: '0.8rem', lg: '0.7rem' },
+                px: { xs: '6rem', lg: '4rem' },
+                borderRadius: '0.6rem',
+                ml: { lg: '3rem' },
+                mt: { lg: '0.7rem', xs: '2rem' },
+                ':hover': { opacity: 0.4 },
+              }}
+            >
+              <Stack direction="row" gap="1rem">
+                <img style={imageStyle} src={cartIcon} alt="cart-icon" />
+                <Typography fontWeight={700} color="white">
+                  Add to cart
+                </Typography>
+              </Stack>
+            </Button>
+          ))}
+
         </Stack>
       </Stack>
     </Stack>
-  );
-};
+  )
+}
 
-export default MenShoeDetails;
+export default MenShoeDetails

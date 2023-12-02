@@ -115,7 +115,9 @@ const NavBar = ({ toggleSideBar, itemInCart }) => {
                 </Stack>
               )}
               <img
-                onClick={showCartItems}
+                onClick={() => {
+                  showCartItems()
+                }}
                 style={{ height: '30px', width: '30px', cursor: 'pointer' }}
                 src={cartIcon}
                 alt="cart icon"
