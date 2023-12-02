@@ -10,10 +10,18 @@ const data = [
   { image: imageThumbnail2, count: 0, id: 1 },
   { image: imageThumbnail3, count: 0, id: 2 },
   { image: imageThumbnail4, count: 0, id: 3 },
-]
+
+];
+const cartData = [
+  { image: imageThumbnail1, count: 0, id: 0 },
+  { image: imageThumbnail2, count: 0, id: 1 },
+  { image: imageThumbnail3, count: 0, id: 2 },
+  { image: imageThumbnail4, count: 0, id: 3 },
+];
 
 const initialState = {
   data,
+  cartData,
   cartValue: 0,
   showCartValue: false,
   showCartItems: false,
@@ -50,6 +58,36 @@ const cartReducer = (state, action) => {
         ),
       }
     }
+    case 'ADD_TO_CART': {
+      return {
+        ...state,
+        cartData: state.cartData.map((item) => {
+          if (item.id === state.selectedImage) {
+            return {
+              ...item,
+              count: (item.count += state.data[state.selectedImage].count),
+            };
+          }
+          return item;
+        }),
+      };
+    }
+
+    case 'DELETE_CART_ITEM': {
+      console.log('Delete');
+      return {
+        ...state,
+        cartData: state.cartData.map((item) => {
+          if (item.id === action.payload) {
+            return {
+              ...item,
+              count: 0,
+            };
+          }
+          return item;
+        }),
+      };
+    }
     case 'NEXT_IMAGE': {
       return {
         ...state,
@@ -70,10 +108,13 @@ const cartReducer = (state, action) => {
       }
     }
     case 'SUM_CART_VALUE': {
-      let updatedCartValue = state.data.reduce((total, item) => {
-        total += item.count
-        return total
-      }, 0)
+
+      let updatedCartValue = state.cartData.reduce((total, item) => {
+        total += item.count;
+        return total;
+      }, 0);
+
+
       return {
         ...state,
         cartValue: updatedCartValue,
@@ -90,6 +131,7 @@ const cartReducer = (state, action) => {
         ),
       }
     }
+
     case 'SHOW_CART_VALUE':
       return { ...state, showCartValue: true }
     case 'SHOW_CART_ITEMS':
