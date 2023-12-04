@@ -136,6 +136,34 @@ const MenShoeDetails = () => {
               onClick={() => increaseCount()}
             />
           </Stack>
+
+          <Button
+            onClick={() => {
+              showValue();
+              updateCartValue();
+              dispatch({ type: 'ADD_TO_CART' });
+            }}
+            variant="contained"
+            color="error"
+            style={{ textTransform: 'none' }}
+            sx={{
+              backgroundColor: 'hsl(26, 100%, 55%)',
+              py: { xs: '0.8rem', lg: '0.7rem' },
+              px: { xs: '6rem', lg: '4rem' },
+              borderRadius: '0.6rem',
+              ml: { lg: '3rem' },
+              mt: { lg: '0.7rem', xs: '2rem' },
+              ':hover': { opacity: 0.4 },
+            }}
+          >
+            <Stack direction="row" gap="1rem">
+              <img style={imageStyle} src={cartIcon} alt="cart-icon" />
+              <Typography fontWeight={700} color="white">
+                Add to cart
+              </Typography>
+            </Stack>
+          </Button>
+
           {state.data.map((item) => (
             <Button
               key={item.id}
@@ -164,6 +192,7 @@ const MenShoeDetails = () => {
               </Stack>
             </Button>
           ))}
+
         </Stack>
       </Stack>
     </Stack>
