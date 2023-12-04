@@ -12,8 +12,16 @@ const data = [
   { image: imageThumbnail4, count: 0, id: 3 },
 ]
 
+const cartData = [
+  { image: imageThumbnail1, count: 0, id: 0 },
+  { image: imageThumbnail2, count: 0, id: 1 },
+  { image: imageThumbnail3, count: 0, id: 2 },
+  { image: imageThumbnail4, count: 0, id: 3 },
+]
+
 const initialState = {
   data,
+  cartData,
   cartValue: 0,
   showCartValue: false,
   showCartItems: false,

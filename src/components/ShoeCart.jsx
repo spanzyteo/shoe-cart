@@ -79,7 +79,7 @@ const ShoeCart = () => {
                       </Typography>
                       <img
                         onClick={() =>
-                          dispatch({ type: 'DELETE_ITEMS', payload: item.id })
+                          dispatch({ type: 'DELETE_ITEMS', payload: id })
                         }
                         src={deleteIcon}
                         alt=""
