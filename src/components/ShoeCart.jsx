@@ -1,12 +1,16 @@
-import React from 'react'
-import { Box, Stack, Typography, Button } from '@mui/material'
-import { useCart } from '../Context'
 
-import imageThumbnail from '../images/image-product-1-thumbnail.jpg'
-import deleteIcon from '../images/icon-delete.svg'
+import React, { useEffect } from 'react';
+import { Box, Stack, Typography, Button } from '@mui/material';
+import { useCart } from '../Context';
+
+import imageThumbnail from '../images/image-product-1-thumbnail.jpg';
+import deleteIcon from '../images/icon-delete.svg';
+import { StarRateTwoTone } from '@mui/icons-material';
 
 const ShoeCart = () => {
-  const { state, dispatch } = useCart()
+  const { state, dispatch } = useCart();
+  const filteredCart = state.cartData.filter((item) => item.count > 0);
+  useEffect(() => {}, [state.cartData]);
 
   return (
     <Box
@@ -47,24 +51,24 @@ const ShoeCart = () => {
               alignItems="center"
               justifyContent="start"
             >
-              {state.data.map((item) => (
-                <Stack
-                  key={item.id}
-                  direction="row"
-                  gap={2}
-                  alignItems="center"
-                >
-                  {item.count > 0 && (
-                    <>
-                      <img
-                        style={{
-                          width: '40px',
-                          height: '40px',
-                          borderRadius: '6px',
-                        }}
-                        src={item.image}
-                        alt=""
-                      />
+
+              {filteredCart.length > 0 ? (
+                filteredCart.map((item) => (
+                  <Stack
+                    direction="row"
+                    gap={2}
+                    alignItems="center"
+                    key={item.id}
+                  >
+                    <img
+                      style={{
+                        width: '40px',
+                        height: '40px',
+                        borderRadius: '6px',
+                      }}
+                      src={item.image}
+                      alt=""
+                    />
 
                       <Typography color="hsl(219, 9%, 45%)">
                         Fall Limited Edition Sneakers <br /> $125.00 x {''}
@@ -79,7 +83,7 @@ const ShoeCart = () => {
                       </Typography>
                       <img
                         onClick={() =>
-                          dispatch({ type: 'DELETE_ITEMS', payload: id })
+                          dispatch({ type: 'DELETE_ITEMS', payload: item.id })
                         }
                         src={deleteIcon}
                         alt=""
@@ -87,7 +91,8 @@ const ShoeCart = () => {
                     </>
                   )}
                 </Stack>
-              ))}
+              )}
+
               <Button
                 variant="contained"
                 color="error"
