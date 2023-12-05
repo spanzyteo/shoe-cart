@@ -11,6 +11,7 @@ const ShoeCart = () => {
   const filteredCart = state.cartData.filter((item) => item.count > 0)
   useEffect(() => {}, [state.cartData])
 
+  // changes
   return (
     <Box
       sx={{
