@@ -139,9 +139,9 @@ const MenShoeDetails = () => {
 
           <Button
             onClick={() => {
-              showValue();
-              updateCartValue();
-              dispatch({ type: 'ADD_TO_CART' });
+              showValue()
+              updateCartValue()
+              dispatch({ type: 'ADD_TO_CART' })
             }}
             variant="contained"
             color="error"
@@ -164,7 +164,7 @@ const MenShoeDetails = () => {
             </Stack>
           </Button>
 
-          {state.data.map((item) => (
+          {/* {state.data.map((item) => (
             <Button
               key={item.id}
               onClick={() => {
@@ -191,8 +191,7 @@ const MenShoeDetails = () => {
                 </Typography>
               </Stack>
             </Button>
-          ))}
-
+          ))} */}
         </Stack>
       </Stack>
     </Stack>
