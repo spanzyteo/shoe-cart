@@ -18,13 +18,6 @@ const cartData = [
   { image: imageThumbnail4, count: 0, id: 3 },
 ]
 
-const cartData = [
-  { image: imageThumbnail1, count: 0, id: 0 },
-  { image: imageThumbnail2, count: 0, id: 1 },
-  { image: imageThumbnail3, count: 0, id: 2 },
-  { image: imageThumbnail4, count: 0, id: 3 },
-]
-
 const initialState = {
   data,
   cartData,
@@ -39,6 +32,7 @@ const initialState = {
 const CartContext = createContext()
 
 const cartReducer = (state, action) => {
+  console.log(state.cartData)
   console.log(state.data)
   switch (action.type) {
     case 'SET_SELECTED_IMAGE':
@@ -46,22 +40,25 @@ const cartReducer = (state, action) => {
     case 'INCREMENT': {
       return {
         ...state,
-        data: state.data.map((item) =>
-          item.id === state.selectedImage
+        data: state.data.map((item) => {
+          // if (item.id === state.selectedImage) {
+          // console.log(item.count + 1)
+          // }
+          return item.id === state.selectedImage
             ? { ...item, count: item.count + 1 }
             : item
-        ),
+        }),
       }
     }
     case 'DECREMENT': {
       // if (state.cartValue > 0)
       return {
         ...state,
-        data: state.data.map((item) =>
-          item.id === state.selectedImage
+        data: state.data.map((item) => {
+          return item.id === state.selectedImage
             ? { ...item, count: item.count >= 1 ? item.count - 1 : 0 }
             : item
-        ),
+        }),
       }
     }
     case 'ADD_TO_CART': {
@@ -69,12 +66,14 @@ const cartReducer = (state, action) => {
         ...state,
         cartData: state.cartData.map((item) => {
           if (item.id === state.selectedImage) {
+            console.log(state.data[state.selectedImage].count)
             return {
               ...item,
-              count: (item.count += state.data[state.selectedImage].count),
+              count: state.data[state.selectedImage].count,
             }
+          } else {
+            return item
           }
-          return item
         }),
       }
     }

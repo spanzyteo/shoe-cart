@@ -126,22 +126,22 @@ const MenShoeDetails = () => {
               style={{ cursor: 'pointer' }}
               src={minusIcon}
               alt="minus-icon"
-              onClick={() => decreaseCount()}
+              onClick={decreaseCount}
             />
             <Typography fontWeight={700}>{currentThumbnail.count}</Typography>
             <img
               style={{ cursor: 'pointer' }}
               src={plusIcon}
               alt="plus-icon"
-              onClick={() => increaseCount()}
+              onClick={increaseCount}
             />
           </Stack>
 
           <Button
             onClick={() => {
               showValue()
-              updateCartValue()
               dispatch({ type: 'ADD_TO_CART' })
+              updateCartValue()
             }}
             variant="contained"
             color="error"

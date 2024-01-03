@@ -52,47 +52,71 @@ const ShoeCart = () => {
               justifyContent="start"
             >
               {filteredCart.length > 0 ? (
-                filteredCart.map((item) => (
-                  <Stack
-                    direction="row"
-                    gap={2}
-                    alignItems="center"
-                    key={item.id}
-                  >
-                    <img
-                      style={{
-                        width: '40px',
-                        height: '40px',
-                        borderRadius: '6px',
-                      }}
-                      src={item.image}
-                      alt=""
-                    />
+                <>
+                  {filteredCart.map((item) => (
+                    <Stack
+                      direction="row"
+                      gap={2}
+                      alignItems="center"
+                      key={item.id}
+                    >
+                      <img
+                        style={{
+                          width: '40px',
+                          height: '40px',
+                          borderRadius: '6px',
+                        }}
+                        src={item.image}
+                        alt=""
+                      />
 
-                    <Typography color="hsl(219, 9%, 45%)">
-                      Fall Limited Edition Sneakers <br /> $125.00 x {''}
-                      {item.count}
-                      <span
-                        style={{ fontWeight: '700', color: 'hsl(0, 0%, 0%)' }}
-                      >
-                        {' '}
-                        ${(item.count * 125.0).toFixed(2)}
-                      </span>
-                      {/* Comment */}
-                    </Typography>
-                    <img
-                      src={deleteIcon}
-                      alt=""
-                      onClick={() => {
-                        dispatch({
-                          type: 'DELETE_CART_ITEM',
-                          payload: item.id,
-                        })
-                        dispatch({ type: 'SUM_CART_VALUE' })
+                      <Typography color="hsl(219, 9%, 45%)">
+                        Fall Limited Edition Sneakers <br /> $125.00 x {''}
+                        {item.count}
+                        <span
+                          style={{
+                            fontWeight: '700',
+                            color: 'hsl(0, 0%, 0%)',
+                          }}
+                        >
+                          {' '}
+                          ${(item.count * 125.0).toFixed(2)}
+                        </span>
+                        {/* Comment */}
+                      </Typography>
+                      <img
+                        src={deleteIcon}
+                        alt=""
+                        onClick={() => {
+                          dispatch({
+                            type: 'DELETE_CART_ITEM',
+                            payload: item.id,
+                          })
+                          dispatch({ type: 'SUM_CART_VALUE' })
+                        }}
+                        style={{ cursor: 'pointer' }}
+                      />
+                    </Stack>
+                  ))}
+                  <Stack>
+                    <Button
+                      variant="contained"
+                      color="error"
+                      sx={{
+                        bgcolor: 'hsl(26, 100%, 55%)',
+                        width: '18rem',
+                        height: '3rem',
+                        borderRadius: '0.6rem',
+                        fontWeight: '700',
+                        fontSize: '16px',
+                        ':hover': { opacity: 0.4 },
+                        mb: '1rem',
                       }}
-                    />
+                    >
+                      Checkout
+                    </Button>
                   </Stack>
-                ))
+                </>
               ) : (
                 <Stack
                   gap={1}
@@ -104,7 +128,7 @@ const ShoeCart = () => {
                 </Stack>
               )}
 
-              <Button
+              {/* <Button
                 variant="contained"
                 color="error"
                 sx={{
@@ -119,7 +143,7 @@ const ShoeCart = () => {
                 }}
               >
                 Checkout
-              </Button>
+              </Button> */}
             </Stack>
           ) : (
             <Stack gap={1} sx={{ p: { lg: '4rem', xs: '6rem' }, m: 'auto' }}>
