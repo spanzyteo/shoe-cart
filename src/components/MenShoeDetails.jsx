@@ -9,14 +9,6 @@ import cartIcon from '../images/icon-cart.svg'
 const MenShoeDetails = () => {
   const { state, dispatch } = useCart()
 
-  const handleAddToCart = (id) => {
-    dispatch({ type: 'ADD_ITEMS', payload: id })
-  }
-
-  const handleRemoveFromCart = (id) => {
-    dispatch({ type: 'DELETE_ITEMS', payload: id })
-  }
-
   const currentThumbnail = state.data.find(
     (item) => item.id === state.selectedImage
   )

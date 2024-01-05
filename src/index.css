@@ -33,6 +33,7 @@ body {
   width: 100%;
   object-fit: cover;
   border-radius: 12px;
+  cursor: pointer;
   transition: transform 0.3s ease-in-out;
 }
 
@@ -61,15 +62,18 @@ body {
 }
 .previous-icon,
 .next-icon {
-  height: 16px;
-  width: 16px;
+  height: 35px;
+  width: 35px;
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-100%);
   border-radius: 50%;
-  padding: 8px 8px;
+  padding: 12px 12px;
   margin: 0px 10px 0px 10px;
   cursor: pointer;
+}
+.close-icon {
+  transition: 0.3s ease;
 }
 .previous-icon {
   background-color: white;
@@ -88,7 +92,7 @@ body {
 
 @media (min-width: 992px) {
   .shoe-image {
-    width: 320px;
+    width: 350px;
   }
 }
 

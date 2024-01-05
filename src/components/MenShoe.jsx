@@ -9,6 +9,7 @@ import image2 from '../images/image-product-2.jpg'
 import image3 from '../images/image-product-3.jpg'
 import image4 from '../images/image-product-4.jpg'
 import { useCart } from '../Context'
+import ShoeModal from './shoeModal'
 
 const MenShoe = () => {
   const { state, dispatch } = useCart()
@@ -23,12 +24,12 @@ const MenShoe = () => {
     dispatch({ type: 'PREVIOUS_IMAGE' })
   }
 
-  const handleClickThumbnail = (index) => {
-    state.selectedImage(index)
-  }
-
   const handleImageClick = (id) => {
     dispatch({ type: 'SET_SELECTED_IMAGE', payload: id })
+  }
+
+  const openModal = () => {
+    dispatch({ type: 'OPEN_MODAL' })
   }
   return (
     <Box>
@@ -52,7 +53,10 @@ const MenShoe = () => {
               <img
                 className="shoe-image"
                 src={images[state.selectedImage]}
-                alt="image-1"
+                alt="images"
+                onClick={() => {
+                  openModal()
+                }}
               />
               <Stack direction="row" display={{ xs: 'flex', lg: 'none' }}>
                 <img
@@ -73,7 +77,7 @@ const MenShoe = () => {
               direction="row"
               display={{ xs: 'none', lg: 'flex' }}
               sx={{ mt: '25px' }}
-              gap={5}
+              gap={6}
             >
               {state.data.map((item) => (
                 <img

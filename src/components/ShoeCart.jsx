@@ -4,7 +4,6 @@ import { useCart } from '../Context'
 
 import imageThumbnail from '../images/image-product-1-thumbnail.jpg'
 import deleteIcon from '../images/icon-delete.svg'
-import { StarRateTwoTone } from '@mui/icons-material'
 
 const ShoeCart = () => {
   const { state, dispatch } = useCart()

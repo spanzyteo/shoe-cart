@@ -27,13 +27,12 @@ const initialState = {
   selectedImage: 0,
   imageIndex: null,
   cartItems: [],
+  isOpen: false,
 }
 
 const CartContext = createContext()
 
 const cartReducer = (state, action) => {
-  console.log(state.cartData)
-  console.log(state.data)
   switch (action.type) {
     case 'SET_SELECTED_IMAGE':
       return { ...state, selectedImage: action.payload }
@@ -139,6 +138,10 @@ const cartReducer = (state, action) => {
       return { ...state, showCartValue: true }
     case 'SHOW_CART_ITEMS':
       return { ...state, showCartItems: !state.showCartItems }
+    case 'OPEN_MODAL':
+      return { ...state, isOpen: true }
+    case 'CLOSE_MODAL':
+      return { ...state, isOpen: false }
     default:
       return state
   }
