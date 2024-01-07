@@ -20,6 +20,12 @@ body {
   z-index: 100;
 }
 
+.write-up {
+  color: white;
+  text-shadow: -0.5px -0.5px 0.5px black, 0.5px -0.5px 0.5px black,
+    -0.5px 0.5px 0.5px black, 0.5px 0.5px 0.5px black;
+}
+
 .sidebar.open {
   transform: translateX(0);
 }
@@ -35,6 +41,18 @@ body {
   border-radius: 12px;
   cursor: pointer;
   transition: transform 0.3s ease-in-out;
+}
+
+.shoe-banner {
+  height: 400px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+.trending-shoe {
+  height: 400px;
+  object-fit: cover;
+  border-radius: 15px;
 }
 
 .shoe-thumbnail {
@@ -102,5 +120,15 @@ body {
     object-fit: cover;
     border-radius: 0px;
     z-index: 0;
+  }
+  .shoe-banner {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    object-fit: cover;
+    object-position: right;
+    border-radius: 0px;
+    /* margin: auto; */
   }
 }
