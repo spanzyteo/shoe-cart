@@ -1,6 +1,7 @@
 import { Typography, Box, Stack } from '@mui/material'
 import banner from '../images/banner-2.jpg'
 import TrendingItems from '../components/TrendingItems'
+import SneakersCollection from '../components/SneakersCollection'
 
 const Home = () => {
   return (
@@ -137,6 +138,7 @@ const Home = () => {
           <Typography fontWeight={700}>SHOP NOW</Typography>
         </Stack>
         <TrendingItems />
+        <SneakersCollection />
       </Box>
     </Box>
   )
