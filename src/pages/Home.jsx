@@ -2,6 +2,8 @@ import { Typography, Box, Stack } from '@mui/material'
 import banner from '../images/banner-2.jpg'
 import TrendingItems from '../components/TrendingItems'
 import SneakersCollection from '../components/SneakersCollection'
+import Marquee from '../components/Marquee'
+import GiftCard from '../components/GiftCard'
 
 const Home = () => {
   return (
@@ -139,6 +141,8 @@ const Home = () => {
         </Stack>
         <TrendingItems />
         <SneakersCollection />
+        <Marquee />
+        <GiftCard />
       </Box>
     </Box>
   )

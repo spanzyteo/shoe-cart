@@ -10,7 +10,7 @@ const SneakersCollection = () => {
           SNEAKERS COLLECTION
         </Typography>
       </Stack>
-      <Box
+      <Stack
         display="flex"
         flexDirection={{ sm: 'column', lg: 'row', xs: 'column' }}
         gap={1}
@@ -82,7 +82,7 @@ const SneakersCollection = () => {
             </Stack>
           </>
         ))}
-      </Box>
+      </Stack>
     </Box>
   )
 }
