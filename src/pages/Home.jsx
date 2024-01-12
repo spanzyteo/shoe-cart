@@ -4,6 +4,8 @@ import TrendingItems from '../components/TrendingItems'
 import SneakersCollection from '../components/SneakersCollection'
 import Marquee from '../components/Marquee'
 import GiftCard from '../components/GiftCard'
+import ReviewMarque from '../components/ReviewMarque'
+import Review from '../components/Review'
 
 const Home = () => {
   return (
@@ -143,6 +145,8 @@ const Home = () => {
         <SneakersCollection />
         <Marquee />
         <GiftCard />
+        <ReviewMarque />
+        <Review />
       </Box>
     </Box>
   )

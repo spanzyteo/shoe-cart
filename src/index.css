@@ -128,7 +128,16 @@ body {
 }
 
 .scrolling-text2 span {
-  animation-delay: 0.5s;
+  animation-delay: 1s;
+}
+
+.gift-card {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.scroll::-webkit-scrollbar {
+  display: none;
 }
 
 @keyframes scroll {
@@ -165,5 +174,10 @@ body {
   }
   .trending-shoe {
     border-radius: 0px;
+  }
+  .gift-card {
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 0px;
   }
 }

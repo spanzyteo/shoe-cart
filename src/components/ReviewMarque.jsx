@@ -1,6 +1,6 @@
 import { Stack, Box, Typography } from '@mui/material'
 
-const Marquee = () => {
+const ReviewMarque = () => {
   return (
     <Box>
       <Stack
@@ -19,7 +19,7 @@ const Marquee = () => {
           fontWeight={900}
           fontFamily="Montserrat"
         >
-          <span>IN STORE FOR HOLIDAYS WITH DISCOUNT PRICES😍😍</span>
+          <span>WHAT PEOPLE SAY ABOUT THE NEW MERCH 🗣</span>
         </Typography>
         <Typography
           className="scrolling-text scrolling-text2"
@@ -27,11 +27,11 @@ const Marquee = () => {
           fontWeight={900}
           fontFamily="Montserrat"
         >
-          <span>IN STORE FOR HOLIDAYS WITH DISCOUNT PRICES😍😍</span>
+          <span>WHAT PEOPLE SAY ABOUT THE NEW MERCH 🗣</span>
         </Typography>
       </Stack>
     </Box>
   )
 }
 
-export default Marquee
+export default ReviewMarque
