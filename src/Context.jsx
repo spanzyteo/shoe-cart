@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useReducer } from 'react'
+import { reviews } from './utils/trendingItems'
 
 import imageThumbnail1 from './images/image-product-1-thumbnail.jpg'
 import imageThumbnail2 from './images/image-product-2-thumbnail.jpg'
@@ -19,6 +20,7 @@ const cartData = [
 ]
 
 const initialState = {
+  reviews,
   data,
   cartData,
   cartValue: 0,
@@ -92,6 +94,7 @@ const cartReducer = (state, action) => {
         }),
       }
     }
+
     case 'NEXT_IMAGE': {
       return {
         ...state,
@@ -99,6 +102,26 @@ const cartReducer = (state, action) => {
           state.selectedImage === state.data.length - 1
             ? 0
             : state.selectedImage + 1,
+      }
+    }
+
+    case 'NEXT_CARD': {
+      return {
+        ...state,
+        selectedImage:
+          state.selectedImage === state.reviews.length - 1
+            ? 0
+            : state.selectedImage + 1,
+      }
+    }
+
+    case 'PREVIOUS_CARD': {
+      return {
+        ...state,
+        selectedImage:
+          state.selectedImage === 0
+            ? state.reviews.length - 1
+            : state.selectedImage - 1,
       }
     }
 

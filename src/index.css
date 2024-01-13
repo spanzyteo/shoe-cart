@@ -140,6 +140,30 @@ body {
   display: none;
 }
 
+.scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
+.left-arrow,
+.right-arrow {
+  cursor: pointer;
+}
+
+.scroll-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  overflow: auto;
+  align-items: center;
+  gap: 24px;
+  height: 300px;
+  flex-shrink: 0;
+  margin-right: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
+  scroll-behavior: smooth;
+}
+
 @keyframes scroll {
   0% {
     transform: translate(0, 0);
