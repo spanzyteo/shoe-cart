@@ -149,6 +149,11 @@ body {
   cursor: pointer;
 }
 
+.text-decoration {
+  text-decoration: none;
+  color: black;
+}
+
 .scroll-container {
   display: flex;
   flex-direction: row;

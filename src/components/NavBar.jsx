@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Stack, Typography, Box } from '@mui/material'
 import ShoeCart from './ShoeCart'
 import { useCart } from '../Context'
+import { Link, useLocation } from 'react-router-dom'
 
 import menuIcon from '../images/icon-menu.svg'
 import cartIcon from '../images/icon-cart.svg'
@@ -9,6 +10,18 @@ import avatar from '../images/image-avatar.png'
 
 const NavBar = ({ toggleSideBar, itemInCart }) => {
   const { state, dispatch } = useCart()
+  const location = useLocation()
+
+  const isActive = (path) => {
+    return location.pathname === path
+  }
+
+  const activeStyle = {
+    backgroundColor: 'black',
+    color: '#fff',
+    padding: '3px',
+    borderRadius: '3px',
+  }
 
   const showCartItems = () => {
     dispatch({ type: 'SHOW_CART_ITEMS' })
@@ -42,7 +55,7 @@ const NavBar = ({ toggleSideBar, itemInCart }) => {
             alignItems="center"
             gap={{ xs: '10px', lg: '25px' }}
           >
-            <Stack display={{ xs: 'block', lg: 'none' }}>
+            <Stack display={{ xs: 'flex', lg: 'none' }}>
               <img
                 style={{
                   height: '20px',
@@ -56,31 +69,73 @@ const NavBar = ({ toggleSideBar, itemInCart }) => {
                 onClick={toggleSideBar}
               />
             </Stack>
-            <Typography variant="h3" fontWeight={700}>
-              sneakers
-            </Typography>
+            <Link to="/" className="text-decoration">
+              <Typography variant="h3" fontWeight={700}>
+                sneakers
+              </Typography>
+            </Link>
             <Stack
               direction="row"
               alignItems="center"
               display={{ xs: 'none', lg: 'flex' }}
               gap="36px"
-              sx={{ ml: '15px' }}
+              sx={{ ml: '1rem', mt: '1rem' }}
             >
-              <Typography fontSize="16px" color="hsl(219, 9%, 45%)">
-                Collection
-              </Typography>
-              <Typography fontSize="16px" color="hsl(219, 9%, 45%)">
-                Men
-              </Typography>
-              <Typography fontSize="16px" color="hsl(219, 9%, 45%)">
-                Women
-              </Typography>
-              <Typography fontSize="16px" color="hsl(219, 9%, 45%)">
-                About
-              </Typography>
-              <Typography fontSize="16px" color="hsl(219, 9%, 45%)">
-                Contact
-              </Typography>
+              <Link
+                to="/collection"
+                className="text-decoration"
+                style={
+                  isActive('/collection')
+                    ? activeStyle
+                    : { color: 'hsl(219, 9%, 45%)' }
+                }
+              >
+                COLLECTION
+              </Link>
+              <Link
+                to="/male"
+                className="text-decoration"
+                style={
+                  isActive('/male')
+                    ? activeStyle
+                    : { color: 'hsl(219, 9%, 45%)' }
+                }
+              >
+                MEN
+              </Link>
+              <Link
+                to="/female"
+                className="text-decoration"
+                style={
+                  isActive('/female')
+                    ? activeStyle
+                    : { color: 'hsl(219, 9%, 45%)' }
+                }
+              >
+                WOMEN
+              </Link>
+              <Link
+                to="/about"
+                className="text-decoration"
+                style={
+                  isActive('/about')
+                    ? activeStyle
+                    : { color: 'hsl(219, 9%, 45%)' }
+                }
+              >
+                ABOUT
+              </Link>
+              <Link
+                to="/contact"
+                className="text-decoration"
+                style={
+                  isActive('/contact')
+                    ? activeStyle
+                    : { color: 'hsl(219, 9%, 45%)' }
+                }
+              >
+                CONTACT
+              </Link>
             </Stack>
           </Stack>
           <Stack

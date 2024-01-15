@@ -14,9 +14,9 @@ export const trendingItems = [
 ]
 
 export const fallCollections = [
-  { image: male1, id: 1, name: 'MALE' },
-  { image: female1, id: 2, name: 'FEMALE' },
-  { image: kids1, id: 3, name: 'KIDS' },
+  { image: male1, id: 1, name: 'MALE', link: '/male' },
+  { image: female1, id: 2, name: 'FEMALE', link: '/female' },
+  { image: kids1, id: 3, name: 'KIDS', link: '/kids' },
 ]
 
 export const reviews = [

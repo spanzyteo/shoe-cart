@@ -6,6 +6,7 @@ import Marquee from '../components/Marquee'
 import GiftCard from '../components/GiftCard'
 import ReviewMarque from '../components/ReviewMarque'
 import Review from '../components/Review'
+import ContactMarquee from '../components/ContactMarquee'
 
 const Home = () => {
   return (
@@ -147,6 +148,7 @@ const Home = () => {
         <GiftCard />
         <ReviewMarque />
         <Review />
+        <ContactMarquee />
       </Box>
     </Box>
   )

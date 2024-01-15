@@ -55,29 +55,31 @@ const SneakersCollection = () => {
                 >
                   {item.name}
                 </Typography>
-                <Typography
-                  fontFamily="Montserrat"
-                  fontSize="0.7rem"
-                  bgcolor="#FFFFFF90"
-                  sx={{
-                    p: '1rem',
-                    borderRadius: '25px',
-                    border: '2px solid black',
-                    cursor: 'pointer',
-                    ':hover': {
-                      border: 'none',
-                      bgcolor: 'black',
-                      color: 'white',
-                      transition: '0.3s ease-in-out',
-                    },
-                    ':active': {
-                      bgcolor: '#00000080',
-                      transition: '0.3s ease-in-out',
-                    },
-                  }}
-                >
-                  EXPLORE NOW
-                </Typography>
+                <a href={item.link} className="text-decoration">
+                  <Typography
+                    fontFamily="Montserrat"
+                    fontSize="0.7rem"
+                    bgcolor="#FFFFFF90"
+                    sx={{
+                      p: '1rem',
+                      borderRadius: '25px',
+                      border: '2px solid black',
+                      cursor: 'pointer',
+                      ':hover': {
+                        border: 'none',
+                        bgcolor: 'black',
+                        color: 'white',
+                        transition: '0.3s ease-in-out',
+                      },
+                      ':active': {
+                        bgcolor: '#00000080',
+                        transition: '0.3s ease-in-out',
+                      },
+                    }}
+                  >
+                    EXPLORE NOW
+                  </Typography>
+                </a>
               </Stack>
             </Stack>
           </>

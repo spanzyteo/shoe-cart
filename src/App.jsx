@@ -9,6 +9,11 @@ import SideBar from './components/SideBar'
 import { useCart } from './Context'
 import ShoeModal from './components/shoeModal'
 import Home from './pages/Home'
+import WomenShoe from './pages/WomenShoe'
+import KidsShoe from './pages/KidsShoe'
+import Collection from './pages/Collection'
+import About from './pages/About'
+import Contact from './pages/Contact'
 
 const App = () => {
   const { state } = useCart()
@@ -36,7 +41,12 @@ const App = () => {
           />
           <Routes>
             <Route path="/" element={<Home />} />
-            {/* <Route path="/men" element={<MenShoe />} /> */}
+            <Route path="/male" element={<MenShoe />} />
+            <Route path="/female" element={<WomenShoe />} />
+            <Route path="/kids" element={<KidsShoe />} />
+            <Route path="/collection" element={<Collection />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/contact" element={<Contact />} />
           </Routes>
         </Box>
       </Box>
