@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
 import { Box, Stack, Typography, Button } from '@mui/material'
 import { useCart } from '../Context'
+import { useLocation } from 'react-router-dom'
 
-import imageThumbnail from '../images/image-product-1-thumbnail.jpg'
 import deleteIcon from '../images/icon-delete.svg'
 
 const ShoeCart = () => {
+  const location = useLocation()
   const { state, dispatch } = useCart()
   const filteredCart = state.cartData.filter((item) => item.count > 0)
   useEffect(() => {}, [state.cartData])
@@ -65,7 +66,11 @@ const ShoeCart = () => {
                           height: '40px',
                           borderRadius: '6px',
                         }}
-                        src={item.image}
+                        src={
+                          location.pathname === '/male'
+                            ? item.image
+                            : item.image2
+                        }
                         alt=""
                       />
 

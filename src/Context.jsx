@@ -6,17 +6,22 @@ import imageThumbnail2 from './images/image-product-2-thumbnail.jpg'
 import imageThumbnail3 from './images/image-product-3-thumbnail.jpg'
 import imageThumbnail4 from './images/image-product-4-thumbnail.jpg'
 
+import femaleImage1 from './images/female-1.avif'
+import femaleImage2 from './images/female-2.jpg'
+import femaleImage3 from './images/female-3.jpg'
+import femaleImage4 from './images/female-4.jpg'
+
 const data = [
-  { image: imageThumbnail1, count: 0, id: 0 },
-  { image: imageThumbnail2, count: 0, id: 1 },
-  { image: imageThumbnail3, count: 0, id: 2 },
-  { image: imageThumbnail4, count: 0, id: 3 },
+  { image: imageThumbnail1, image2: femaleImage1, count: 0, id: 0 },
+  { image: imageThumbnail2, image2: femaleImage2, count: 0, id: 1 },
+  { image: imageThumbnail3, image2: femaleImage3, count: 0, id: 2 },
+  { image: imageThumbnail4, image2: femaleImage4, count: 0, id: 3 },
 ]
 const cartData = [
-  { image: imageThumbnail1, count: 0, id: 0 },
-  { image: imageThumbnail2, count: 0, id: 1 },
-  { image: imageThumbnail3, count: 0, id: 2 },
-  { image: imageThumbnail4, count: 0, id: 3 },
+  { image: imageThumbnail1, image2: femaleImage1, count: 0, id: 0 },
+  { image: imageThumbnail2, image2: femaleImage2, count: 0, id: 1 },
+  { image: imageThumbnail3, image2: femaleImage3, count: 0, id: 2 },
+  { image: imageThumbnail4, image2: femaleImage4, count: 0, id: 3 },
 ]
 
 const initialState = {
@@ -67,7 +72,6 @@ const cartReducer = (state, action) => {
         ...state,
         cartData: state.cartData.map((item) => {
           if (item.id === state.selectedImage) {
-            console.log(state.data[state.selectedImage].count)
             return {
               ...item,
               count: state.data[state.selectedImage].count,
@@ -102,26 +106,6 @@ const cartReducer = (state, action) => {
           state.selectedImage === state.data.length - 1
             ? 0
             : state.selectedImage + 1,
-      }
-    }
-
-    case 'NEXT_CARD': {
-      return {
-        ...state,
-        selectedImage:
-          state.selectedImage === state.reviews.length - 1
-            ? 0
-            : state.selectedImage + 1,
-      }
-    }
-
-    case 'PREVIOUS_CARD': {
-      return {
-        ...state,
-        selectedImage:
-          state.selectedImage === 0
-            ? state.reviews.length - 1
-            : state.selectedImage - 1,
       }
     }
 

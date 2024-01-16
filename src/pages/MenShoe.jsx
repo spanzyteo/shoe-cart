@@ -9,7 +9,6 @@ import image2 from '../images/image-product-2.jpg'
 import image3 from '../images/image-product-3.jpg'
 import image4 from '../images/image-product-4.jpg'
 import { useCart } from '../Context'
-import ShoeModal from '../components/shoeModal'
 
 const MenShoe = () => {
   const { state, dispatch } = useCart()
