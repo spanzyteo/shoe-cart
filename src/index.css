@@ -169,6 +169,13 @@ body {
   scroll-behavior: smooth;
 }
 
+.input-contact:hover {
+  border: 2px solid black;
+}
+
+.form-field {
+}
+
 @keyframes scroll {
   0% {
     transform: translate(0, 0);
