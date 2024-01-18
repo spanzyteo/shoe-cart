@@ -1,5 +1,6 @@
 import { Stack, Box, Typography } from '@mui/material'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const Contact = () => {
   const [email, setEmail] = useState('')
@@ -12,7 +13,7 @@ const Contact = () => {
       display="flex"
       flexDirection={{ lg: 'row' }}
       width={{ lg: '100%', sm: '100%', xs: '100%' }}
-      height={{ lg: '350px', sm: '600px', xs: '600px' }}
+      height={{ lg: '350px', sm: '900px', xs: '900px' }}
     >
       <Stack
         width="100%"
@@ -29,7 +30,7 @@ const Contact = () => {
           width={{ lg: '50%' }}
           height={{ sm: '40%', xs: '40%', lg: '100%' }}
           borderRight={{ lg: '1px solid black' }}
-          borderBottom={{ sm: '1px solid black', xs: '1px solid black' }}
+          // borderBottom={{ sm: '1px solid black', xs: '1px solid black' }}
         >
           <Stack
             display="flex"
@@ -58,33 +59,33 @@ const Contact = () => {
             <Stack
               mt="2rem"
               display="flex"
+              width="20rem"
               alignItems={{ lg: 'start', sm: 'center', xs: 'center' }}
               position="relative"
             >
-              <form className="form-field">
-                <input
-                  className="input-contact"
-                  placeholder="Email"
-                  type="email"
-                  value={email}
-                  onChange={handleChange}
-                  style={{
-                    height: '3.2rem',
-                    width: '23.9rem',
-                    border: '1px solid black',
-                    paddingLeft: '1.2rem',
-                    fontSize: '1.2rem',
-                    transition: 'border 0.3s',
-                  }}
-                />
-              </form>
+              <input
+                className="input-contact"
+                placeholder="Email"
+                type="email"
+                value={email}
+                onChange={handleChange}
+                style={{
+                  height: '3.2rem',
+                  width: '20rem',
+                  border: '1px solid black',
+                  paddingLeft: '1.2rem',
+                  fontSize: '1.2rem',
+                  transition: 'border 0.3s',
+                }}
+              />
               <Stack
                 position="absolute"
-                right="27%"
+                right="1%"
                 bgcolor="#e74683"
                 width="50px"
                 height="50px"
                 mt="1px"
+                mr="-0.15rem"
                 sx={{ cursor: 'pointer', ':active': { opacity: '0.7' } }}
               >
                 <Stack
@@ -110,6 +111,299 @@ const Contact = () => {
                 </Stack>
               </Stack>
             </Stack>
+          </Stack>
+        </Stack>
+        <Stack
+          display="flex"
+          flexDirection="column"
+          width={{ lg: '25%' }}
+          borderRight={{ lg: '1px solid black' }}
+        >
+          <Stack
+            display="flex"
+            flexDirection="row"
+            height="2rem"
+            borderBottom="1px solid black"
+            alignItems="center"
+            justifyContent="flex-start"
+          >
+            <Typography
+              fontSize="0.8rem"
+              fontWeight={600}
+              ml="1rem"
+              fontFamily="Montserrat"
+            >
+              QUICK LINKS
+            </Typography>
+          </Stack>
+          <Stack
+            display="flex"
+            flexDirection="row"
+            height="3.5rem"
+            borderBottom="1px solid black"
+            alignItems="center"
+            justifyContent="flex-start"
+            sx={{
+              ':hover': {
+                textDecoration: 'underline',
+                color: 'grey',
+              },
+            }}
+          >
+            <Link
+              style={{
+                textDecoration: 'none',
+                color: 'grey',
+                fontSize: '0.7rem',
+                marginLeft: '1rem',
+              }}
+            >
+              FAQS
+            </Link>
+          </Stack>
+          <Stack
+            display="flex"
+            flexDirection="row"
+            height="3.5rem"
+            borderBottom="1px solid black"
+            alignItems="center"
+            justifyContent="flex-start"
+            sx={{
+              ':hover': {
+                textDecoration: 'underline',
+                color: 'grey',
+              },
+            }}
+          >
+            <Link
+              style={{
+                textDecoration: 'none',
+                color: 'grey',
+                fontSize: '0.7rem',
+                marginLeft: '1rem',
+              }}
+            >
+              SEARCH
+            </Link>
+          </Stack>
+          <Stack
+            display="flex"
+            flexDirection="row"
+            height="3.5rem"
+            borderBottom="1px solid black"
+            alignItems="center"
+            justifyContent="flex-start"
+            sx={{
+              ':hover': {
+                textDecoration: 'underline',
+                color: 'grey',
+              },
+            }}
+          >
+            <Link
+              style={{
+                textDecoration: 'none',
+                color: 'grey',
+                fontSize: '0.7rem',
+                marginLeft: '1rem',
+              }}
+            >
+              CONTACT US
+            </Link>
+          </Stack>
+          <Stack
+            display="flex"
+            flexDirection="row"
+            height="3.5rem"
+            borderBottom="1px solid black"
+            alignItems="center"
+            justifyContent="flex-start"
+            sx={{
+              ':hover': {
+                textDecoration: 'underline',
+                color: 'grey',
+              },
+            }}
+          >
+            <Link
+              style={{
+                textDecoration: 'none',
+                color: 'grey',
+                fontSize: '0.7rem',
+                marginLeft: '1rem',
+              }}
+            >
+              ACCOUNT LOGIN
+            </Link>
+          </Stack>
+          <Stack
+            display="flex"
+            flexDirection="row"
+            height="3.5rem"
+            alignItems="center"
+            justifyContent="flex-start"
+            sx={{
+              ':hover': {
+                textDecoration: 'underline',
+                color: 'grey',
+              },
+            }}
+          >
+            <Link
+              style={{
+                textDecoration: 'none',
+                color: 'grey',
+                fontSize: '0.7rem',
+                marginLeft: '1rem',
+              }}
+            >
+              SIZE DETAILS
+            </Link>
+          </Stack>
+        </Stack>
+        <Stack display="flex" flexDirection="column" width={{ lg: '25%' }}>
+          <Stack
+            display="flex"
+            flexDirection="row"
+            height="1.95rem"
+            borderBottom="1px solid black"
+            alignItems="center"
+            justifyContent="flex-start"
+            mt={{ sm: '1rem', xs: '1rem', lg: '0rem' }}
+          >
+            <Typography
+              fontSize="0.8rem"
+              fontWeight={600}
+              ml="1rem"
+              fontFamily="Montserrat"
+            >
+              CLIENT SERVICES
+            </Typography>
+          </Stack>
+          <Stack
+            display="flex"
+            flexDirection="row"
+            height="3.35rem"
+            borderBottom="1px solid black"
+            alignItems="center"
+            justifyContent="flex-start"
+            sx={{
+              ':hover': {
+                textDecoration: 'underline',
+                color: 'grey',
+              },
+            }}
+          >
+            <Link
+              style={{
+                textDecoration: 'none',
+                color: 'grey',
+                fontSize: '0.7rem',
+                marginLeft: '1rem',
+              }}
+            >
+              SHIPPING & RETURNS
+            </Link>
+          </Stack>
+          <Stack
+            display="flex"
+            flexDirection="row"
+            height="3.35rem"
+            borderBottom="1px solid black"
+            alignItems="center"
+            justifyContent="flex-start"
+            sx={{
+              ':hover': {
+                textDecoration: 'underline',
+                color: 'grey',
+              },
+            }}
+          >
+            <Link
+              style={{
+                textDecoration: 'none',
+                color: 'grey',
+                fontSize: '0.7rem',
+                marginLeft: '1rem',
+              }}
+            >
+              START A RETURN
+            </Link>
+          </Stack>
+          <Stack
+            display="flex"
+            flexDirection="row"
+            height="3.35rem"
+            borderBottom="1px solid black"
+            alignItems="center"
+            justifyContent="flex-start"
+            sx={{
+              ':hover': {
+                textDecoration: 'underline',
+                color: 'grey',
+              },
+            }}
+          >
+            <Link
+              style={{
+                textDecoration: 'none',
+                color: 'grey',
+                fontSize: '0.7rem',
+                marginLeft: '1rem',
+              }}
+            >
+              TERMS AND CONDITIONS
+            </Link>
+          </Stack>
+          <Stack
+            display="flex"
+            flexDirection="row"
+            height="3.35rem"
+            borderBottom="1px solid black"
+            alignItems="center"
+            justifyContent="flex-start"
+            sx={{
+              ':hover': {
+                textDecoration: 'underline',
+                color: 'grey',
+              },
+            }}
+          >
+            <Link
+              style={{
+                textDecoration: 'none',
+                color: 'grey',
+                fontSize: '0.7rem',
+                marginLeft: '1rem',
+              }}
+            >
+              ACCESSIBILITY STATEMENT
+            </Link>
+          </Stack>
+          <Stack
+            display="flex"
+            flexDirection="row"
+            height="3.35rem"
+            // borderBottom="1px solid black"
+            alignItems="center"
+            justifyContent="flex-start"
+            sx={{
+              ':hover': {
+                textDecoration: 'underline',
+                color: 'grey',
+              },
+            }}
+          >
+            <Link
+              style={{
+                textDecoration: 'none',
+                color: 'grey',
+                fontSize: '0.7rem',
+                marginLeft: '1rem',
+              }}
+            >
+              RESELLER POLICY
+            </Link>
           </Stack>
         </Stack>
       </Stack>
