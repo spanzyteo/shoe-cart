@@ -20,7 +20,7 @@ const Bottom = () => {
     textDecoration: 'none',
   }
   return (
-    <Box mt="3rem" display="flex" flexDirection="column">
+    <Box mt="3rem" display="flex" flexDirection="column" pb="2rem">
       <Stack
         display="flex"
         flexDirection={{ lg: 'row', sm: 'column', xs: 'column' }}
@@ -158,6 +158,7 @@ const Bottom = () => {
               REFUND POLICY
             </Typography>
           </Link>
+          <Typography ml="0.5rem">·</Typography>
           <Link to="/policies/privacy-policy" style={linkStyle}>
             <Typography
               sx={{
@@ -169,6 +170,81 @@ const Bottom = () => {
               ml="0.5rem"
             >
               PRIVACY POLICY
+            </Typography>
+          </Link>
+          <Typography ml="0.5rem">·</Typography>
+          <Link to="/policies/terms-of-service" style={linkStyle}>
+            <Typography
+              sx={{
+                textDecoration: 'none',
+                ':hover': { textDecoration: 'underline' },
+              }}
+              fontSize="0.7rem"
+              color="rgba(18, 18, 18, 0.75)"
+              ml="0.5rem"
+            >
+              TERMS OF SERVICE
+            </Typography>
+          </Link>
+        </Stack>
+        <Stack display="flex" flexDirection="row" alignItems="center">
+          <Typography
+            ml="0.5rem"
+            display={{ lg: 'block', sm: 'none', xs: 'none' }}
+          >
+            ·
+          </Typography>
+          <Link to="/policies/shipping-policy" style={linkStyle}>
+            <Typography
+              sx={{
+                textDecoration: 'none',
+                ':hover': { textDecoration: 'underline' },
+              }}
+              fontSize="0.7rem"
+              color="rgba(18, 18, 18, 0.75)"
+              ml="0.5rem"
+            >
+              SHIPPING POLICY
+            </Typography>
+          </Link>
+          <Typography
+            ml="0.5rem"
+            display={{ lg: 'block', sm: 'none', xs: 'none' }}
+          >
+            ·
+          </Typography>
+          <Link to="/policies/contact-information" style={linkStyle}>
+            <Typography
+              sx={{
+                textDecoration: 'none',
+                ':hover': { textDecoration: 'underline' },
+              }}
+              fontSize="0.7rem"
+              color="rgba(18, 18, 18, 0.75)"
+              ml="0.5rem"
+            >
+              CONTACT INFORMATION
+            </Typography>
+          </Link>
+        </Stack>
+        <Stack display="flex" flexDirection="row" alignItems="center">
+          <Typography
+            ml="0.5rem"
+            display={{ lg: 'block', sm: 'none', xs: 'none' }}
+          >
+            ·
+          </Typography>
+          <Link to="/policies/subscription-policy" style={linkStyle}>
+            <Typography
+              sx={{
+                textDecoration: 'none',
+                ':hover': { textDecoration: 'underline' },
+              }}
+              fontSize="0.7rem"
+              color="rgba(18, 18, 18, 0.75)"
+              ml="0.5rem"
+            >
+              SUBSCRIPTION POLICY
             </Typography>
           </Link>
         </Stack>
