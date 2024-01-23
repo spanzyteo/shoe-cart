@@ -7,9 +7,6 @@ import GiftCard from '../components/GiftCard'
 import ReviewMarque from '../components/ReviewMarque'
 import Review from '../components/Review'
 import ContactMarquee from '../components/ContactMarquee'
-import Contact from './Contact'
-import Media from '../components/Media'
-import Bottom from '../components/Bottom'
 
 const Home = () => {
   return (
@@ -151,10 +148,7 @@ const Home = () => {
         <GiftCard />
         <ReviewMarque />
         <Review />
-        <ContactMarquee />
-        <Contact />
-        <Media />
-        <Bottom />
+        {/* <ContactMarquee /> */}
       </Box>
     </Box>
   )

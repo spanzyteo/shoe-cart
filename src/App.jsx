@@ -14,6 +14,9 @@ import KidsShoe from './pages/KidsShoe'
 import Collection from './pages/Collection'
 import About from './pages/About'
 import Contact from './pages/Contact'
+import Footer from './components/Footer'
+import RefundPolicy from './components/policies/RefundPolicy'
+import PrivacyPolicy from './components/policies/PrivacyPolicy'
 
 const App = () => {
   const { state } = useCart()
@@ -46,8 +49,14 @@ const App = () => {
             <Route path="/kids" element={<KidsShoe />} />
             <Route path="/collection" element={<Collection />} />
             <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
+            <Route path="/contacts" element={<Contact />} />
+            <Route path="/policies/refund-policy" element={<RefundPolicy />} />
+            <Route
+              path="/policies/privacy-policy"
+              element={<PrivacyPolicy />}
+            />
           </Routes>
+          <Footer />
         </Box>
       </Box>
     </Box>
