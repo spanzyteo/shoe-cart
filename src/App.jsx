@@ -17,6 +17,7 @@ import Contact from './pages/Contact'
 import Footer from './components/Footer'
 import RefundPolicy from './components/policies/RefundPolicy'
 import PrivacyPolicy from './components/policies/PrivacyPolicy'
+import TermsOfService from './components/policies/TermsOfService'
 
 const App = () => {
   const { state } = useCart()
@@ -54,6 +55,10 @@ const App = () => {
             <Route
               path="/policies/privacy-policy"
               element={<PrivacyPolicy />}
+            />
+            <Route
+              path="/policies/terms-of-service"
+              element={<TermsOfService />}
             />
           </Routes>
           <Footer />
