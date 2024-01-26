@@ -18,6 +18,9 @@ import Footer from './components/Footer'
 import RefundPolicy from './components/policies/RefundPolicy'
 import PrivacyPolicy from './components/policies/PrivacyPolicy'
 import TermsOfService from './components/policies/TermsOfService'
+import ShippingPolicy from './components/policies/ShippingPolicy'
+import ContactInformation from './components/policies/ContactInformation'
+import SubscriptionPolicy from './components/policies/SubscriptionPolicy'
 
 const App = () => {
   const { state } = useCart()
@@ -59,6 +62,18 @@ const App = () => {
             <Route
               path="/policies/terms-of-service"
               element={<TermsOfService />}
+            />
+            <Route
+              path="/policies/shipping-policy"
+              element={<ShippingPolicy />}
+            />
+            <Route
+              path="/policies/contact-information"
+              element={<ContactInformation />}
+            />
+            <Route
+              path="/policies/subscription-policy"
+              element={<SubscriptionPolicy />}
             />
           </Routes>
           <Footer />

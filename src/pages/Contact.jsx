@@ -151,6 +151,7 @@ const Contact = () => {
             }}
           >
             <Link
+              to="/pages/faqs"
               style={{
                 textDecoration: 'none',
                 color: 'grey',
@@ -176,6 +177,7 @@ const Contact = () => {
             }}
           >
             <Link
+              to="/search"
               style={{
                 textDecoration: 'none',
                 color: 'grey',
@@ -201,6 +203,7 @@ const Contact = () => {
             }}
           >
             <Link
+              to="/pages/contact-us"
               style={{
                 textDecoration: 'none',
                 color: 'grey',
@@ -226,6 +229,7 @@ const Contact = () => {
             }}
           >
             <Link
+              to="/account/login"
               style={{
                 textDecoration: 'none',
                 color: 'grey',
@@ -250,6 +254,7 @@ const Contact = () => {
             }}
           >
             <Link
+              to="/pages/size-details"
               style={{
                 textDecoration: 'none',
                 color: 'grey',
@@ -295,6 +300,7 @@ const Contact = () => {
             }}
           >
             <Link
+              to="/pages/faqs"
               style={{
                 textDecoration: 'none',
                 color: 'grey',
@@ -320,6 +326,7 @@ const Contact = () => {
             }}
           >
             <Link
+              to="/apps/redo/returns-portal"
               style={{
                 textDecoration: 'none',
                 color: 'grey',
@@ -345,6 +352,7 @@ const Contact = () => {
             }}
           >
             <Link
+              to="/policies/terms-of-service"
               style={{
                 textDecoration: 'none',
                 color: 'grey',
@@ -370,6 +378,7 @@ const Contact = () => {
             }}
           >
             <Link
+              to="/pages/accessibility-policy"
               style={{
                 textDecoration: 'none',
                 color: 'grey',
@@ -395,6 +404,7 @@ const Contact = () => {
             }}
           >
             <Link
+              to="/pages/reseller-policy"
               style={{
                 textDecoration: 'none',
                 color: 'grey',
