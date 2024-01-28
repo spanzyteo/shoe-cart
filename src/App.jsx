@@ -21,6 +21,7 @@ import TermsOfService from './components/policies/TermsOfService'
 import ShippingPolicy from './components/policies/ShippingPolicy'
 import ContactInformation from './components/policies/ContactInformation'
 import SubscriptionPolicy from './components/policies/SubscriptionPolicy'
+import Faq from './components/pages/Faq'
 
 const App = () => {
   const { state } = useCart()
@@ -75,6 +76,7 @@ const App = () => {
               path="/policies/subscription-policy"
               element={<SubscriptionPolicy />}
             />
+            <Route path="/pages/faqs" element={<Faq />} />
           </Routes>
           <Footer />
         </Box>
