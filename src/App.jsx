@@ -1,7 +1,7 @@
 import React, { createContext, useState } from 'react'
 import { Box } from '@mui/material'
-export const Context = createContext()
 import { Route, Routes } from 'react-router-dom'
+export const Context = createContext()
 
 import NavBar from './components/NavBar'
 import MenShoe from './pages/MenShoe'
@@ -22,6 +22,8 @@ import ShippingPolicy from './components/policies/ShippingPolicy'
 import ContactInformation from './components/policies/ContactInformation'
 import SubscriptionPolicy from './components/policies/SubscriptionPolicy'
 import Faq from './components/pages/Faq'
+import ResellerPolicy from './components/pages/ResellerPolicy'
+import SizeDetails from './components/pages/SizeDetails'
 
 const App = () => {
   const { state } = useCart()
@@ -77,6 +79,8 @@ const App = () => {
               element={<SubscriptionPolicy />}
             />
             <Route path="/pages/faqs" element={<Faq />} />
+            <Route path="/pages/reseller-policy" element={<ResellerPolicy />} />
+            <Route path="/pages/size-details" element={<SizeDetails />} />
           </Routes>
           <Footer />
         </Box>
