@@ -173,6 +173,12 @@ body {
   border: 2px solid black;
 }
 
+.body-size {
+  width: 600px;
+  height: 600px;
+  margin-top: 1rem;
+}
+
 @keyframes scroll {
   0% {
     transform: translate(0, 0);
@@ -212,5 +218,9 @@ body {
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 0px;
+  }
+  .body-size {
+    width: 400px;
+    height: 400px;
   }
 }
