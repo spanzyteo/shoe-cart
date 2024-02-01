@@ -223,4 +223,14 @@ body {
     width: 400px;
     height: 400px;
   }
+  .gift-card-1 {
+    height: 550px;
+    width: 380px;
+    margin-left: 1rem;
+  }
+  .gift-card-2 {
+    height: 400px;
+    width: 400px;
+    margin-right: 1rem;
+  }
 }

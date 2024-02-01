@@ -1,5 +1,6 @@
 import { Stack, Typography, Box } from '@mui/material'
-import giftImage from '../images/Gift-Card.webp'
+import { Link } from 'react-router-dom'
+import giftImage from '../../images/Gift-Card.webp'
 
 const GiftCard = () => {
   return (
@@ -42,23 +43,35 @@ const GiftCard = () => {
         >
           SURPRISE YOUR LOVED ONE WITH A GIFT CARD
         </Typography>
-        <Typography
-          sx={{
-            mt: '2rem',
-            cursor: 'pointer',
-            ':hover': { opacity: 0.8, transition: 'opacity 0.3s ease-in-out' },
-            ':active': { opacity: 0.4, transition: 'opacity 0.3s ease-in-out' },
-          }}
-          bgcolor="#e74683"
-          color="white"
-          fontSize="0.8rem"
-          px="2rem"
-          py="1rem"
-          borderRadius="3rem"
-          fontWeight={500}
+        <Link
+          to="/products/sneakers-digital-gift-card"
+          style={{ textDecoration: 'none' }}
         >
-          GIVE NOW
-        </Typography>
+          <Typography
+            sx={{
+              mt: '2rem',
+              cursor: 'pointer',
+              ':hover': {
+                opacity: 0.8,
+                transition: 'opacity 0.3s ease-in-out',
+              },
+              ':active': {
+                opacity: 0.4,
+                transition: 'opacity 0.3s ease-in-out',
+              },
+            }}
+            bgcolor="#e74683"
+            color="white"
+            fontSize="0.8rem"
+            px={{ lg: '2rem', sm: '1rem', xs: '1rem' }}
+            py={{ lg: '1rem', sm: '0.6rem', xs: '0.6rem' }}
+            borderRadius={{ lg: '3rem', sm: '1rem', xs: '1rem' }}
+            fontWeight={500}
+            width={{ xs: '6rem', sm: '6rem', lg: '8rem' }}
+          >
+            GIVE NOW
+          </Typography>
+        </Link>
         <Typography
           fontSize="2.5rem"
           mt="1rem"

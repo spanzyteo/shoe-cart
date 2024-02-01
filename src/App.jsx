@@ -24,6 +24,7 @@ import SubscriptionPolicy from './components/policies/SubscriptionPolicy'
 import Faq from './components/pages/Faq'
 import ResellerPolicy from './components/pages/ResellerPolicy'
 import SizeDetails from './components/pages/SizeDetails'
+import DigitalGiftCard from './components/gift-card/DigitalGiftCard'
 
 const App = () => {
   const { state } = useCart()
@@ -81,6 +82,10 @@ const App = () => {
             <Route path="/pages/faqs" element={<Faq />} />
             <Route path="/pages/reseller-policy" element={<ResellerPolicy />} />
             <Route path="/pages/size-details" element={<SizeDetails />} />
+            <Route
+              path="/products/sneakers-digital-gift-card"
+              element={<DigitalGiftCard />}
+            />
           </Routes>
           <Footer />
         </Box>
