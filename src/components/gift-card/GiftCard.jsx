@@ -63,11 +63,11 @@ const GiftCard = () => {
             bgcolor="#e74683"
             color="white"
             fontSize="0.8rem"
-            px={{ lg: '2rem', sm: '1rem', xs: '1rem' }}
-            py={{ lg: '1rem', sm: '0.6rem', xs: '0.6rem' }}
+            px={{ lg: '1rem', sm: '1rem', xs: '1rem' }}
+            py={{ lg: '0.7rem', sm: '0.6rem', xs: '0.6rem' }}
             borderRadius={{ lg: '3rem', sm: '1rem', xs: '1rem' }}
             fontWeight={500}
-            width={{ xs: '6rem', sm: '6rem', lg: '8rem' }}
+            width={{ xs: '6rem', sm: '6rem', lg: '6.5rem' }}
           >
             GIVE NOW
           </Typography>
