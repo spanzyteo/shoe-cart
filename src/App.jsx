@@ -86,6 +86,10 @@ const App = () => {
               path="/products/sneakers-digital-gift-card"
               element={<DigitalGiftCard />}
             />
+            <Route
+              path="/products/sneakers-digital-gift-card?variant=id"
+              element={<DigitalGiftCard />}
+            />
           </Routes>
           <Footer />
         </Box>

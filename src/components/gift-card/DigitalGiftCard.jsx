@@ -1,7 +1,8 @@
-import { Box, Stack, Typography } from '@mui/material'
+import { Box, Stack, Typography, Grid, Paper } from '@mui/material'
 import giftCard1 from '../../images/cropcopy.webp'
 import giftCard2 from '../../images/cropcopy-2.webp'
 import { Link } from 'react-router-dom'
+import { denomination } from '../../utils/trendingItems'
 
 const DigitalGiftCard = () => {
   return (
@@ -44,7 +45,7 @@ const DigitalGiftCard = () => {
 
       <Stack
         className="scroll-part-2"
-        width={{ lg: '350px', sm: '520px', xs: '520px' }}
+        width={{ lg: '400px', sm: '520px', xs: '520px' }}
         display="flex"
         flexDirection="column"
         ml={{ lg: '5rem', sm: '2rem', xs: '2rem' }}
@@ -113,6 +114,25 @@ const DigitalGiftCard = () => {
           <Typography mt="1rem" color="rgba(0, 0, 0, 0.75)" fontSize="0.65rem">
             DENOMINATIONS
           </Typography>
+          <Stack
+            width="90%"
+            height={{ lg: '100px', sm: '170px', xs: '170px' }}
+            // bgcolor="black"
+            ml="1rem"
+            mt="0.6rem"
+            display="flex"
+            flexDirection="row"
+          >
+            <Grid container spacing={1}>
+              {denomination.map((item) => (
+                <Grid item lg={3} sm={3} xs={3} key={item.id}>
+                  <Typography fontSize="0.5rem" whiteSpace="nowrap">
+                    {item.name}
+                  </Typography>
+                </Grid>
+              ))}
+            </Grid>
+          </Stack>
         </Stack>
       </Stack>
     </Box>
