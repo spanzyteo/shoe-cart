@@ -8,7 +8,7 @@ import menuIcon from '../images/icon-menu.svg'
 import cartIcon from '../images/icon-cart.svg'
 import avatar from '../images/image-avatar.png'
 
-const NavBar = ({ toggleSideBar, itemInCart }) => {
+const NavBar = ({ toggleSideBar }) => {
   const { state, dispatch } = useCart()
   const location = useLocation()
 

@@ -154,6 +154,13 @@ body {
   color: black;
 }
 
+.text-decoration1 {
+  text-decoration: none;
+  color: black;
+  font-size: 0.55rem;
+  white-space: nowrap;
+}
+
 .scroll-container {
   display: flex;
   flex-direction: row;

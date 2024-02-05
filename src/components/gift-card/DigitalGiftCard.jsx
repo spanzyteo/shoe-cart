@@ -1,10 +1,28 @@
 import { Box, Stack, Typography, Grid, Paper } from '@mui/material'
 import giftCard1 from '../../images/cropcopy.webp'
 import giftCard2 from '../../images/cropcopy-2.webp'
-import { Link } from 'react-router-dom'
-import { denomination } from '../../utils/trendingItems'
+import { Link, useLocation } from 'react-router-dom'
+import { useEffect } from 'react'
+import { denomination1 } from '../../utils/trendingItems'
+import { denomination2 } from '../../utils/trendingItems'
+import { denomination3 } from '../../utils/trendingItems'
 
 const DigitalGiftCard = () => {
+  const location = useLocation()
+  const isActive = (path) => {
+    return location.pathname + location.search === path
+  }
+
+  const activeStyle = {
+    backgroundColor: 'black',
+    color: '#fff',
+    padding: '7px',
+  }
+
+  useEffect(() => {
+    console.log('Location:', location.pathname + location.search)
+  }, [location])
+
   return (
     <Box
       mt="2rem"
@@ -121,17 +139,128 @@ const DigitalGiftCard = () => {
             ml="1rem"
             mt="0.6rem"
             display="flex"
-            flexDirection="row"
+            flexDirection="column"
+            justifyContent="space-around"
           >
-            <Grid container spacing={1}>
-              {denomination.map((item) => (
-                <Grid item lg={3} sm={3} xs={3} key={item.id}>
-                  <Typography fontSize="0.5rem" whiteSpace="nowrap">
-                    {item.name}
-                  </Typography>
-                </Grid>
-              ))}
-            </Grid>
+            <Stack
+              display="flex"
+              flexDirection="row"
+              gap={4}
+              alignItems="center"
+            >
+              <Link
+                to={{
+                  pathname: '/products/sneakers-digital-gift-card',
+                  search: '?variant=1',
+                }}
+                className="text-decoration1"
+                style={
+                  isActive(`/products/sneakers-digital-gift-card?variant=${1}`)
+                    ? activeStyle
+                    : { color: 'black' }
+                }
+              >
+                Digital Gift Card $25.00
+              </Link>
+              <Link
+                to={{
+                  pathname: '/products/sneakers-digital-gift-card',
+                  search: '?variant=2',
+                }}
+                className="text-decoration1"
+                style={
+                  isActive(`/products/sneakers-digital-gift-card?variant=${2}`)
+                    ? activeStyle
+                    : { color: 'black' }
+                }
+              >
+                Digital Gift Card $50.00
+              </Link>
+              <Link
+                to={{
+                  pathname: '/products/sneakers-digital-gift-card',
+                  search: '?variant=3',
+                }}
+                className="text-decoration1"
+                style={
+                  isActive(`/products/sneakers-digital-gift-card?variant=${3}`)
+                    ? activeStyle
+                    : { color: 'black' }
+                }
+              >
+                Digital Gift Card $60.00
+              </Link>
+            </Stack>
+            <Stack
+              display="flex"
+              flexDirection="row"
+              gap={4}
+              alignItems="center"
+            >
+              <Link
+                to={{
+                  pathname: '/products/sneakers-digital-gift-card',
+                  search: '?variant=4',
+                }}
+                className="text-decoration1"
+                style={
+                  isActive(`/products/sneakers-digital-gift-card?variant=${4}`)
+                    ? activeStyle
+                    : { color: 'black' }
+                }
+              >
+                Digital Gift Card $75.00
+              </Link>
+              <Link
+                to={{
+                  pathname: '/products/sneakers-digital-gift-card',
+                  search: '?variant=5',
+                }}
+                className="text-decoration1"
+                style={
+                  isActive(`/products/sneakers-digital-gift-card?variant=${5}`)
+                    ? activeStyle
+                    : { color: 'black' }
+                }
+              >
+                Digital Gift Card $100.00
+              </Link>
+              <Link
+                to={{
+                  pathname: '/products/sneakers-digital-gift-card',
+                  search: '?variant=6',
+                }}
+                className="text-decoration1"
+                style={
+                  isActive(`/products/sneakers-digital-gift-card?variant=${6}`)
+                    ? activeStyle
+                    : { color: 'black' }
+                }
+              >
+                Digital Gift Card $150.00
+              </Link>
+            </Stack>
+            <Stack
+              display="flex"
+              flexDirection="row"
+              gap={4}
+              alignItems="center"
+            >
+              <Link
+                to={{
+                  pathname: '/products/sneakers-digital-gift-card',
+                  search: '?variant=7',
+                }}
+                className="text-decoration1"
+                style={
+                  isActive(`/products/sneakers-digital-gift-card?variant=${7}`)
+                    ? activeStyle
+                    : { color: 'black' }
+                }
+              >
+                Digital Gift Card $200.00
+              </Link>
+            </Stack>
           </Stack>
         </Stack>
       </Stack>

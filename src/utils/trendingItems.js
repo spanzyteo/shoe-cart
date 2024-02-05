@@ -97,12 +97,16 @@ export const reviews = [
   },
 ]
 
-export const denomination = [
+export const denomination1 = [
   { id: 1, name: 'Digital Gift Card $25.00' },
   { id: 2, name: 'Digital Gift Card $50.00' },
   { id: 3, name: 'Digital Gift Card $60.00' },
+]
+
+export const denomination2 = [
   { id: 4, name: 'Digital Gift Card $75.00' },
   { id: 5, name: 'Digital Gift Card $100.00' },
   { id: 6, name: 'Digital Gift Card $150.00' },
-  { id: 7, name: 'Digital Gift Card $200.00' },
 ]
+
+export const denomination3 = [{ id: 7, name: 'Digital Gift Card $200.00' }]
