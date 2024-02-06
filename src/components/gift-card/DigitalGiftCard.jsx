@@ -311,12 +311,82 @@ const DigitalGiftCard = () => {
                   <TextField
                     label="MESSAGE (OPTIONAL)"
                     margin="normal"
-                    name=""
+                    name="description"
+                    multiline
+                    rows={3}
+                    inputProps={{ maxLength: 200 }}
+                    fullWidth
+                  />
+                  <Typography color="grey" fontSize="0.6rem" mt="-0.4rem">
+                    200 characters max
+                  </Typography>
+                  <TextField
+                    label="SEND ON (OPTIONAL)"
+                    margin="normal"
+                    type="date"
+                    fullWidth
+                    InputLabelProps={{ shrink: true }}
                   />
                 </form>
               </>
             )}
           </Stack>
+          <Typography
+            bgcolor="#e74683"
+            width="100%"
+            p="0.8rem"
+            color="white"
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            fontSize="0.6rem"
+            sx={{
+              cursor: 'pointer',
+              ':hover': { opacity: 0.7 },
+              ':active': { opacity: 0.4 },
+            }}
+            mt="1rem"
+          >
+            ADD TO CART
+          </Typography>
+          <Typography color="grey" fontSize="0.6rem" mt="1rem" fontWeight={600}>
+            GET 20% OFF ANY CARD FOR A LIMITED TIME ONLY.
+          </Typography>
+          <Typography color="grey" fontSize="0.6rem" mt="0.3rem">
+            Discount is only applied when added to your cart.
+          </Typography>
+          <Typography color="grey" fontSize="0.6rem" mt="1rem">
+            <span style={{ fontWeight: 'bold' }}>
+              {' '}
+              NOTE: "It's never too late for gifting"
+            </span>{' '}
+            discount will apply at cart.
+          </Typography>
+          <Typography
+            color="rgba(0, 0, 0, 0.75)"
+            fontSize="0.6rem"
+            mt="0.7rem"
+            fontWeight={600}
+          >
+            NOTE: THIS IS NOT A PHYSICAL ITEM
+          </Typography>
+          <Typography color="rgba(0, 0, 0, 0.75)" fontSize="0.6rem" mt="0.7rem">
+            • Digital gift card purchases are delivered via email and contain
+            instructions on how the code can be redeemed at checkout.
+          </Typography>
+          <Typography color="rgba(0, 0, 0, 0.75)" fontSize="0.6rem" mt="0.9rem">
+            • The redeemable code will be sent via email and can also be printed
+            at home and given to the recipient in person. No physical item will
+            be sent with a digital gift card purchase.
+          </Typography>
+          <Typography color="rgba(0, 0, 0, 0.75)" fontSize="0.6rem" mt="0.9rem">
+            • Good for anything in the storefront, including all physical and
+            digital products. Codes will apply to this storefront only.
+          </Typography>
+          <Typography color="rgba(0, 0, 0, 0.75)" fontSize="0.6rem" mt="0.9rem">
+            • Digital gift cards can be used multiple times until the card
+            balance hits zero.
+          </Typography>
         </Stack>
       </Stack>
     </Box>
