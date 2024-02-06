@@ -1,13 +1,18 @@
-import { Box, Stack, Typography, Grid, Paper } from '@mui/material'
+import { Box, Stack, Typography, Grid, Paper, TextField } from '@mui/material'
 import giftCard1 from '../../images/cropcopy.webp'
 import giftCard2 from '../../images/cropcopy-2.webp'
 import { Link, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
-import { denomination1 } from '../../utils/trendingItems'
-import { denomination2 } from '../../utils/trendingItems'
-import { denomination3 } from '../../utils/trendingItems'
+import { useEffect, useState } from 'react'
+import Checkbox from '@mui/material/Checkbox'
+import { FormControlLabel } from '@mui/material'
 
 const DigitalGiftCard = () => {
+  const [showForm, setShowForm] = useState(false)
+
+  const handleChange = () => {
+    setShowForm((prevShowForm) => !prevShowForm)
+  }
+
   const location = useLocation()
   const isActive = (path) => {
     return location.pathname + location.search === path
@@ -261,6 +266,56 @@ const DigitalGiftCard = () => {
                 Digital Gift Card $200.00
               </Link>
             </Stack>
+          </Stack>
+          <Stack
+            mt="1rem"
+            width="100%"
+            // height="0rem"
+            border="1px solid #E8E8E8"
+          ></Stack>
+          <Stack display="flex" flexDirection="row" alignItems="center">
+            <FormControlLabel
+              control={<Checkbox checked={showForm} onChange={handleChange} />}
+              // label="Show Form"
+            />
+            <Typography
+              fontSize="0.9rem"
+              color="rgba(0, 0, 0, 0.75)"
+              ml="-1rem"
+            >
+              I want to send this as a gift
+            </Typography>
+          </Stack>
+          <Stack display="flex" flexDirection="column">
+            {showForm && (
+              <>
+                <Stack
+                  mt="1rem"
+                  width="100%"
+                  // height="0rem"
+                  border="1px solid #E8E8E8"
+                ></Stack>
+                <form>
+                  <TextField
+                    label="Recipient email"
+                    margin="normal"
+                    name="email"
+                    fullWidth
+                  />
+                  <TextField
+                    label="Recipient name (optional)"
+                    margin="normal"
+                    name="name"
+                    fullWidth
+                  />
+                  <TextField
+                    label="MESSAGE (OPTIONAL)"
+                    margin="normal"
+                    name=""
+                  />
+                </form>
+              </>
+            )}
           </Stack>
         </Stack>
       </Stack>
