@@ -5,8 +5,9 @@ import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import Checkbox from '@mui/material/Checkbox'
 import { FormControlLabel } from '@mui/material'
+import Share from '../../images/share.png'
 
-const DigitalGiftCard = () => {
+const DigitalGiftCard = ({ title, url }) => {
   const [showForm, setShowForm] = useState(false)
 
   const handleChange = () => {
@@ -24,9 +25,20 @@ const DigitalGiftCard = () => {
     padding: '7px',
   }
 
-  useEffect(() => {
-    console.log('Location:', location.pathname + location.search)
-  }, [location])
+  const handleShareClick = async () => {
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: 'SNEAKERS DIGITAL GIFT CARD - Sneakers.store',
+          url: '/products/sneakers-digital-gift-card',
+        })
+      } else {
+        alert('Web Share API not supported in this browser.')
+      }
+    } catch (error) {
+      console.error('Error sharing:', error)
+    }
+  }
 
   return (
     <Box
@@ -387,6 +399,33 @@ const DigitalGiftCard = () => {
             • Digital gift cards can be used multiple times until the card
             balance hits zero.
           </Typography>
+          <Stack
+            display="flex"
+            flexDirection="row"
+            mt="3rem"
+            alignItems="center"
+            gap={1.2}
+          >
+            <img
+              style={{ height: '12px', width: '12px', cursor: 'pointer' }}
+              src={Share}
+              alt="share-button"
+              onClick={handleShareClick}
+            />
+            <button
+              className="hover"
+              style={{
+                border: 'none',
+                backgroundColor: 'transparent',
+                fontSize: '0.7rem',
+                color: 'rgba(0, 0, 0, 0.75)',
+                cursor: 'pointer',
+              }}
+              onClick={handleShareClick}
+            >
+              Share
+            </button>
+          </Stack>
         </Stack>
       </Stack>
     </Box>

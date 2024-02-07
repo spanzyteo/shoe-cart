@@ -186,6 +186,10 @@ body {
   margin-top: 1rem;
 }
 
+.hover:hover {
+  text-decoration: underline;
+}
+
 @keyframes scroll {
   0% {
     transform: translate(0, 0);
