@@ -1,14 +1,23 @@
 import { Box, Stack, Typography, Grid, Paper, TextField } from '@mui/material'
-import giftCard1 from '../../images/cropcopy.webp'
-import giftCard2 from '../../images/cropcopy-2.webp'
 import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import Checkbox from '@mui/material/Checkbox'
 import { FormControlLabel } from '@mui/material'
+
+import giftCard2 from '../../images/cropcopy-2.webp'
+import giftCard1 from '../../images/cropcopy.webp'
 import Share from '../../images/share.png'
+import vanIcon from '../../images/van-icon.png'
+import upArrow from '../../images/up-arrow-icon.png'
+import downArrow from '../../images/down-arrow-icon.png'
 
 const DigitalGiftCard = ({ title, url }) => {
   const [showForm, setShowForm] = useState(false)
+  const [visibleContent, setVisibleContent] = useState(false)
+
+  const toggleContent = () => {
+    setVisibleContent(!visibleContent)
+  }
 
   const handleChange = () => {
     setShowForm((prevShowForm) => !prevShowForm)
@@ -425,6 +434,44 @@ const DigitalGiftCard = ({ title, url }) => {
             >
               Share
             </button>
+          </Stack>
+          <Stack mt="2rem" width="100%" border="1px solid #E8E8E8"></Stack>
+          <Stack
+            display="flex"
+            flexDirection="row"
+            mt="1rem"
+            alignItems="center"
+            justifyContent="space-between"
+          >
+            <Stack display="flex" flexDirection="row" alignItems="center">
+              <img
+                style={{ height: '20px', width: '20px' }}
+                src={vanIcon}
+                alt="van-icon"
+              />
+              <Typography
+                fontSize="0.7rem"
+                ml="1rem"
+                color="rgba(0, 0, 0, 0.75)"
+              >
+                SHIPPING
+              </Typography>
+            </Stack>
+            {visibleContent ? (
+              <img
+                style={{ width: '10px', height: '10px', cursor: 'pointer' }}
+                src={upArrow}
+                alt="down-arrow"
+                onClick={toggleContent}
+              />
+            ) : (
+              <img
+                style={{ width: '10px', height: '10px', cursor: 'pointer' }}
+                src={downArrow}
+                alt="up-arrow"
+                onClick={toggleContent}
+              />
+            )}
           </Stack>
         </Stack>
       </Stack>
