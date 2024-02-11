@@ -58,7 +58,6 @@ const DigitalGiftCard = ({ title, url }) => {
       // overflow="hidden"
     >
       <Stack
-        className="scroll-part-1"
         display="flex"
         flexDirection={{ lg: 'column', sm: 'row', xs: 'row' }}
         width="50%"
@@ -88,7 +87,6 @@ const DigitalGiftCard = ({ title, url }) => {
       </Stack>
 
       <Stack
-        className="scroll-part-2"
         width={{ lg: '400px', sm: '520px', xs: '520px' }}
         display="flex"
         flexDirection="column"
@@ -442,37 +440,81 @@ const DigitalGiftCard = ({ title, url }) => {
             mt="1rem"
             alignItems="center"
             justifyContent="space-between"
+            sx={{ cursor: 'pointer' }}
           >
-            <Stack display="flex" flexDirection="row" alignItems="center">
-              <img
-                style={{ height: '20px', width: '20px' }}
-                src={vanIcon}
-                alt="van-icon"
-              />
+            <div onClick={toggleContent}>
+              <Stack display="flex" flexDirection="row" alignItems="center">
+                <img
+                  style={{ height: '20px', width: '20px' }}
+                  src={vanIcon}
+                  alt="van-icon"
+                />
+                <Typography
+                  fontSize="0.7rem"
+                  ml="1rem"
+                  color="rgba(0, 0, 0, 0.75)"
+                >
+                  SHIPPING
+                </Typography>
+              </Stack>
+            </div>
+            <div onClick={toggleContent}>
+              {visibleContent ? (
+                <img
+                  style={{ width: '10px', height: '10px', cursor: 'pointer' }}
+                  src={upArrow}
+                  alt="down-arrow"
+                  onClick={toggleContent}
+                />
+              ) : (
+                <img
+                  style={{ width: '10px', height: '10px', cursor: 'pointer' }}
+                  src={downArrow}
+                  alt="up-arrow"
+                  onClick={toggleContent}
+                />
+              )}
+            </div>
+          </Stack>
+          {visibleContent && (
+            <Stack
+              display="flex"
+              flexDirection="column"
+              ml="1rem"
+              mt="1rem"
+              gap={0.6}
+            >
               <Typography
-                fontSize="0.7rem"
-                ml="1rem"
+                fontSize="0.9rem"
+                fontWeight={600}
                 color="rgba(0, 0, 0, 0.75)"
               >
-                SHIPPING
+                USA Orders:
               </Typography>
+              <Typography fontSize="0.9rem" color="rgba(0, 0, 0, 0.75)">
+                1-3 business days
+              </Typography>
+              <Typography
+                fontSize="0.9rem"
+                fontWeight={600}
+                color="rgba(0, 0, 0, 0.75)"
+              >
+                Other countries:
+              </Typography>
+              <Typography fontSize="0.9rem" color="rgba(0, 0, 0, 0.75)">
+                Canada and Europe: 4-15 business days
+              </Typography>
+              <Typography fontSize="0.9rem" color="rgba(0, 0, 0, 0.75)">
+                Rest of world: 8-15 business days
+              </Typography>
+              <Link to="/pages/faqs">
+                <Typography mt="1rem" color="rgba(0, 0, 0, 0.75)">
+                  More information
+                </Typography>
+              </Link>
             </Stack>
-            {visibleContent ? (
-              <img
-                style={{ width: '10px', height: '10px', cursor: 'pointer' }}
-                src={upArrow}
-                alt="down-arrow"
-                onClick={toggleContent}
-              />
-            ) : (
-              <img
-                style={{ width: '10px', height: '10px', cursor: 'pointer' }}
-                src={downArrow}
-                alt="up-arrow"
-                onClick={toggleContent}
-              />
-            )}
-          </Stack>
+          )}
+          <Stack mt="1rem" width="100%" border="1px solid #E8E8E8"></Stack>
         </Stack>
       </Stack>
     </Box>
