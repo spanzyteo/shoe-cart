@@ -68,6 +68,12 @@ const cartReducer = (state, action) => {
       }
     }
     case 'ADD_TO_CART': {
+      const selectedItem = state.cartData.find(
+        (item) => item.id === state.selectedImage
+      )
+      if (!selectedItem) {
+        return state
+      }
       return {
         ...state,
         cartData: state.cartData.map((item) => {
@@ -80,6 +86,7 @@ const cartReducer = (state, action) => {
             return item
           }
         }),
+        cartItems: [...state.cartItems, selectedItem],
       }
     }
 
@@ -87,7 +94,7 @@ const cartReducer = (state, action) => {
       console.log('Delete')
       return {
         ...state,
-        cartData: state.cartData.map((item) => {
+        cartItems: state.cartItems.map((item) => {
           if (item.id === action.payload) {
             return {
               ...item,

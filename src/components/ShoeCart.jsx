@@ -8,7 +8,7 @@ import deleteIcon from '../images/icon-delete.svg'
 const ShoeCart = () => {
   const location = useLocation()
   const { state, dispatch } = useCart()
-  const filteredCart = state.cartData.filter((item) => item.count > 0)
+  const filteredCart = state.cartItems.filter((item) => item.count > 0)
   useEffect(() => {}, [state.cartData])
 
   // changes
@@ -131,23 +131,6 @@ const ShoeCart = () => {
                   </Typography>
                 </Stack>
               )}
-
-              {/* <Button
-                variant="contained"
-                color="error"
-                sx={{
-                  bgcolor: 'hsl(26, 100%, 55%)',
-                  width: '18rem',
-                  height: '3rem',
-                  borderRadius: '0.6rem',
-                  fontWeight: '700',
-                  fontSize: '16px',
-                  ':hover': { opacity: 0.4 },
-                  mb: '1rem',
-                }}
-              >
-                Checkout
-              </Button> */}
             </Stack>
           ) : (
             <Stack gap={1} sx={{ p: { lg: '4rem', xs: '6rem' }, m: 'auto' }}>
