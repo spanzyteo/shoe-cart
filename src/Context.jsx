@@ -12,11 +12,19 @@ import femaleImage3 from './images/female-3.jpg'
 import femaleImage4 from './images/female-4.jpg'
 
 const data = [
-  { image: imageThumbnail1, image2: femaleImage1, count: 0, id: 0 },
-  { image: imageThumbnail2, image2: femaleImage2, count: 0, id: 1 },
-  { image: imageThumbnail3, image2: femaleImage3, count: 0, id: 2 },
-  { image: imageThumbnail4, image2: femaleImage4, count: 0, id: 3 },
+  { image: imageThumbnail1, count: 0, id: 0 },
+  { image: imageThumbnail2, count: 0, id: 1 },
+  { image: imageThumbnail3, count: 0, id: 2 },
+  { image: imageThumbnail4, count: 0, id: 3 },
 ]
+
+const femaleData = [
+  { image: femaleImage1, count: 0, id: 0 },
+  { image: femaleImage2, count: 0, id: 1 },
+  { image: femaleImage3, count: 0, id: 2 },
+  { image: femaleImage4, count: 0, id: 3 },
+]
+
 const cartData = [
   { image: imageThumbnail1, image2: femaleImage1, count: 0, id: 0 },
   { image: imageThumbnail2, image2: femaleImage2, count: 0, id: 1 },
@@ -43,6 +51,10 @@ const cartReducer = (state, action) => {
   switch (action.type) {
     case 'SET_SELECTED_IMAGE':
       return { ...state, selectedImage: action.payload }
+
+    case 'SET_SELECTED_IMAGE_FEMALE':
+      return { ...state, selectedImage: action.payload }
+
     case 'INCREMENT': {
       return {
         ...state,
@@ -68,7 +80,7 @@ const cartReducer = (state, action) => {
       }
     }
     case 'ADD_TO_CART': {
-      const selectedItem = state.cartData.find(
+      const selectedItem = state.data.find(
         (item) => item.id === state.selectedImage
       )
       if (!selectedItem) {
@@ -116,6 +128,16 @@ const cartReducer = (state, action) => {
       }
     }
 
+    case 'NEXT_IMAGE_FEMALE': {
+      return {
+        ...state,
+        selectedImage:
+          state.selectedImage === state.data.length - 1
+            ? 0
+            : state.selectedImage + 1,
+      }
+    }
+
     case 'PREVIOUS_IMAGE': {
       return {
         ...state,
@@ -125,8 +147,19 @@ const cartReducer = (state, action) => {
             : state.selectedImage - 1,
       }
     }
+
+    case 'PREVIOUS_IMAGE_FEMALE': {
+      return {
+        ...state,
+        selectedImage:
+          state.selectedImage === 0
+            ? state.data.length - 1
+            : state.selectedImage - 1,
+      }
+    }
+
     case 'SUM_CART_VALUE': {
-      let updatedCartValue = state.cartData.reduce((total, item) => {
+      let updatedCartValue = state.cartItems.reduce((total, item) => {
         total += item.count
         return total
       }, 0)

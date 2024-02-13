@@ -9,7 +9,7 @@ const ShoeCart = () => {
   const location = useLocation()
   const { state, dispatch } = useCart()
   const filteredCart = state.cartItems.filter((item) => item.count > 0)
-  useEffect(() => {}, [state.cartData])
+  useEffect(() => {}, [state.cartItems])
 
   // changes
   return (

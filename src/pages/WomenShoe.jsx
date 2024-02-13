@@ -12,21 +12,38 @@ import image4 from '../images/female-4.jpg'
 import { useCart } from '../Context'
 
 const WomenShoe = () => {
-  const { state, dispatch } = useCart()
+  // const { state, dispatch } = useCart()
+  const [selectedImage, setSelectedImage] = useState(0)
 
   const images = [image1, image2, image3, image4]
 
+  // const nextImage = () => {
+  // dispatch({ type: 'NEXT_IMAGE_FEMALE' })
+  // }
+
   const nextImage = () => {
-    dispatch({ type: 'NEXT_IMAGE' })
+    setSelectedImage((prevImage) =>
+      prevImage === images.length - 1 ? 0 : prevImage + 1
+    )
   }
 
+  // const previousImage = () => {
+  // dispatch({ type: 'PREVIOUS_IMAGE_FEMALE' })
+  // }
+
   const previousImage = () => {
-    dispatch({ type: 'PREVIOUS_IMAGE' })
+    setSelectedImage((prevImage) =>
+      prevImage === 0 ? images.length - 1 : prevImage - 1
+    )
   }
 
   const handleImageClick = (id) => {
-    dispatch({ type: 'SET_SELECTED_IMAGE', payload: id })
+    setSelectedImage(id)
   }
+
+  // const handleImageClick = (id) => {
+  // // dispatch({ type: 'SET_SELECTED_IMAGE_FEMALE', payload: id })
+  // }
 
   const openModal = () => {
     dispatch({ type: 'OPEN_MODAL' })
@@ -52,7 +69,7 @@ const WomenShoe = () => {
             <Stack className="slider">
               <img
                 className="shoe-image"
-                src={images[state.selectedImage]}
+                src={images[selectedImage]}
                 alt="images"
                 onClick={() => {
                   openModal()
@@ -79,14 +96,14 @@ const WomenShoe = () => {
               sx={{ mt: '25px' }}
               gap={6}
             >
-              {state.data.map((item) => (
+              {images.map((image, index) => (
                 <img
-                  key={item.id}
-                  src={item.image2}
+                  key={index}
+                  src={image}
                   alt="image-1b"
-                  onClick={() => handleImageClick(item.id)}
+                  onClick={() => handleImageClick(index)}
                   className={
-                    item.id === state.selectedImage
+                    index === selectedImage
                       ? 'active-shoe-thumbnail'
                       : 'shoe-thumbnail'
                   }
