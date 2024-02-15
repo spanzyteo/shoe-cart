@@ -9,6 +9,12 @@ const ShoeCart = () => {
   const location = useLocation()
   const { state, dispatch } = useCart()
   const filteredCart = state.cartItems.filter((item) => item.count > 0)
+  const handleDeleteItem = (id, gender) => {
+    dispatch({
+      type: 'DELETE_CART_ITEM',
+      payload: { id, gender },
+    })
+  }
   useEffect(() => {}, [state.cartItems])
 
   // changes
@@ -66,11 +72,7 @@ const ShoeCart = () => {
                           height: '40px',
                           borderRadius: '6px',
                         }}
-                        src={
-                          location.pathname === '/male'
-                            ? item.image
-                            : item.image2
-                        }
+                        src={item.gender === 'male' ? item.image : item.image}
                         alt=""
                       />
 
@@ -92,10 +94,7 @@ const ShoeCart = () => {
                         src={deleteIcon}
                         alt=""
                         onClick={() => {
-                          dispatch({
-                            type: 'DELETE_CART_ITEM',
-                            payload: item.id,
-                          })
+                          handleDeleteItem(item.id, item.gender)
                           dispatch({ type: 'SUM_CART_VALUE' })
                         }}
                         style={{ cursor: 'pointer' }}

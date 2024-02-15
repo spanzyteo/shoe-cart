@@ -10,40 +10,41 @@ import image2 from '../images/female-2.jpg'
 import image3 from '../images/female-3.jpg'
 import image4 from '../images/female-4.jpg'
 import { useCart } from '../Context'
+import FemaleShoeDetails from '../components/FemaleShoeDetails'
 
 const WomenShoe = () => {
-  // const { state, dispatch } = useCart()
-  const [selectedImage, setSelectedImage] = useState(0)
+  const { state, dispatch } = useCart()
+  // const [selectedImage, setSelectedImage] = useState(0)
 
   const images = [image1, image2, image3, image4]
 
-  // const nextImage = () => {
-  // dispatch({ type: 'NEXT_IMAGE_FEMALE' })
-  // }
-
   const nextImage = () => {
-    setSelectedImage((prevImage) =>
-      prevImage === images.length - 1 ? 0 : prevImage + 1
-    )
+    dispatch({ type: 'NEXT_IMAGE_FEMALE' })
   }
 
-  // const previousImage = () => {
-  // dispatch({ type: 'PREVIOUS_IMAGE_FEMALE' })
+  // const nextImage = () => {
+  // setSelectedImage((prevImage) =>
+  // prevImage === images.length - 1 ? 0 : prevImage + 1
+  // )
   // }
 
   const previousImage = () => {
-    setSelectedImage((prevImage) =>
-      prevImage === 0 ? images.length - 1 : prevImage - 1
-    )
+    dispatch({ type: 'PREVIOUS_IMAGE_FEMALE' })
   }
 
-  const handleImageClick = (id) => {
-    setSelectedImage(id)
-  }
+  // const previousImage = () => {
+  //   setSelectedImage((prevImage) =>
+  //     prevImage === 0 ? images.length - 1 : prevImage - 1
+  //   )
+  // }
 
   // const handleImageClick = (id) => {
-  // // dispatch({ type: 'SET_SELECTED_IMAGE_FEMALE', payload: id })
+  // setSelectedImage(id)
   // }
+
+  const handleImageClick = (id) => {
+    dispatch({ type: 'SET_SELECTED_IMAGE_FEMALE', payload: id })
+  }
 
   const openModal = () => {
     dispatch({ type: 'OPEN_MODAL' })
@@ -69,7 +70,7 @@ const WomenShoe = () => {
             <Stack className="slider">
               <img
                 className="shoe-image"
-                src={images[selectedImage]}
+                src={images[state.selectedImageFemale]}
                 alt="images"
                 onClick={() => {
                   openModal()
@@ -96,14 +97,14 @@ const WomenShoe = () => {
               sx={{ mt: '25px' }}
               gap={6}
             >
-              {images.map((image, index) => (
+              {state.femaleData.map((item) => (
                 <img
-                  key={index}
-                  src={image}
+                  key={item.id}
+                  src={item.image}
                   alt="image-1b"
-                  onClick={() => handleImageClick(index)}
+                  onClick={() => handleImageClick(item.id)}
                   className={
-                    index === selectedImage
+                    item.id === state.selectedImageFemale
                       ? 'active-shoe-thumbnail'
                       : 'shoe-thumbnail'
                   }
@@ -111,7 +112,7 @@ const WomenShoe = () => {
               ))}
             </Stack>
           </Stack>
-          <MenShoeDetails />
+          <FemaleShoeDetails />
         </Stack>
       </Box>
     </Box>

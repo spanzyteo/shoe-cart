@@ -12,17 +12,17 @@ import femaleImage3 from './images/female-3.jpg'
 import femaleImage4 from './images/female-4.jpg'
 
 const data = [
-  { image: imageThumbnail1, count: 0, id: 0 },
-  { image: imageThumbnail2, count: 0, id: 1 },
-  { image: imageThumbnail3, count: 0, id: 2 },
-  { image: imageThumbnail4, count: 0, id: 3 },
+  { image: imageThumbnail1, count: 0, id: 0, gender: 'male' },
+  { image: imageThumbnail2, count: 0, id: 1, gender: 'male' },
+  { image: imageThumbnail3, count: 0, id: 2, gender: 'male' },
+  { image: imageThumbnail4, count: 0, id: 3, gender: 'male' },
 ]
 
 const femaleData = [
-  { image: femaleImage1, count: 0, id: 0 },
-  { image: femaleImage2, count: 0, id: 1 },
-  { image: femaleImage3, count: 0, id: 2 },
-  { image: femaleImage4, count: 0, id: 3 },
+  { image: femaleImage1, count: 0, id: 0, gender: 'female' },
+  { image: femaleImage2, count: 0, id: 1, gender: 'female' },
+  { image: femaleImage3, count: 0, id: 2, gender: 'female' },
+  { image: femaleImage4, count: 0, id: 3, gender: 'female' },
 ]
 
 const cartData = [
@@ -36,10 +36,12 @@ const initialState = {
   reviews,
   data,
   cartData,
+  femaleData,
   cartValue: 0,
   showCartValue: false,
   showCartItems: false,
   selectedImage: 0,
+  selectedImageFemale: 0,
   imageIndex: null,
   cartItems: [],
   isOpen: false,
@@ -53,23 +55,31 @@ const cartReducer = (state, action) => {
       return { ...state, selectedImage: action.payload }
 
     case 'SET_SELECTED_IMAGE_FEMALE':
-      return { ...state, selectedImage: action.payload }
+      return { ...state, selectedImageFemale: action.payload }
 
     case 'INCREMENT': {
       return {
         ...state,
         data: state.data.map((item) => {
-          // if (item.id === state.selectedImage) {
-          // console.log(item.count + 1)
-          // }
           return item.id === state.selectedImage
             ? { ...item, count: item.count + 1 }
             : item
         }),
       }
     }
+
+    case 'INCREMENT_FEMALE': {
+      return {
+        ...state,
+        femaleData: state.femaleData.map((item) => {
+          return item.id === state.selectedImageFemale
+            ? { ...item, count: item.count + 1 }
+            : item
+        }),
+      }
+    }
+
     case 'DECREMENT': {
-      // if (state.cartValue > 0)
       return {
         ...state,
         data: state.data.map((item) => {
@@ -79,42 +89,45 @@ const cartReducer = (state, action) => {
         }),
       }
     }
+
+    case 'DECREMENT_FEMALE': {
+      return {
+        ...state,
+        femaleData: state.femaleData.map((item) => {
+          return item.id === state.selectedImageFemale
+            ? { ...item, count: item.count >= 1 ? item.count - 1 : 0 }
+            : item
+        }),
+      }
+    }
+
     case 'ADD_TO_CART': {
-      const selectedItem = state.data.find(
-        (item) => item.id === state.selectedImage
-      )
+      const selectedItem =
+        action.payload.gender === 'male'
+          ? state.data.find((item) => item.id === state.selectedImage)
+          : state.femaleData.find(
+              (item) => item.id === state.selectedImageFemale
+            )
+
       if (!selectedItem) {
         return state
       }
+
       return {
         ...state,
-        cartData: state.cartData.map((item) => {
-          if (item.id === state.selectedImage) {
-            return {
-              ...item,
-              count: state.data[state.selectedImage].count,
-            }
-          } else {
-            return item
-          }
-        }),
         cartItems: [...state.cartItems, selectedItem],
       }
     }
 
     case 'DELETE_CART_ITEM': {
-      console.log('Delete')
+      const { id, gender } = action.payload
+      console.log('deleted')
+
       return {
         ...state,
-        cartItems: state.cartItems.map((item) => {
-          if (item.id === action.payload) {
-            return {
-              ...item,
-              count: 0,
-            }
-          }
-          return item
-        }),
+        cartItems: state.cartItems.filter(
+          (item) => !(item.id === id && item.gender === gender)
+        ),
       }
     }
 
@@ -131,10 +144,10 @@ const cartReducer = (state, action) => {
     case 'NEXT_IMAGE_FEMALE': {
       return {
         ...state,
-        selectedImage:
-          state.selectedImage === state.data.length - 1
+        selectedImageFemale:
+          state.selectedImageFemale === state.data.length - 1
             ? 0
-            : state.selectedImage + 1,
+            : state.selectedImageFemale + 1,
       }
     }
 
@@ -151,10 +164,10 @@ const cartReducer = (state, action) => {
     case 'PREVIOUS_IMAGE_FEMALE': {
       return {
         ...state,
-        selectedImage:
-          state.selectedImage === 0
+        selectedImageFemale:
+          state.selectedImageFemale === 0
             ? state.data.length - 1
-            : state.selectedImage - 1,
+            : state.selectedImageFemale - 1,
       }
     }
 

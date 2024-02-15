@@ -6,19 +6,19 @@ import plusIcon from '../images/icon-plus.svg'
 import minusIcon from '../images/icon-minus.svg'
 import cartIcon from '../images/icon-cart.svg'
 
-const MenShoeDetails = () => {
+const FemaleShoeDetails = () => {
   const { state, dispatch } = useCart()
 
-  const currentThumbnail = state.data.find(
-    (item) => item.id === state.selectedImage
+  const currentThumbnail = state.femaleData.find(
+    (item) => item.id === state.selectedImageFemale
   )
 
   const increaseCount = () => {
-    dispatch({ type: 'INCREMENT' })
+    dispatch({ type: 'INCREMENT_FEMALE' })
   }
 
   const decreaseCount = () => {
-    dispatch({ type: 'DECREMENT' })
+    dispatch({ type: 'DECREMENT_FEMALE' })
   }
 
   const showValue = () => {
@@ -134,7 +134,7 @@ const MenShoeDetails = () => {
               showValue()
               dispatch({
                 type: 'ADD_TO_CART',
-                payload: { gender: 'male' },
+                payload: { gender: 'female' },
               })
               updateCartValue()
             }}
@@ -164,4 +164,4 @@ const MenShoeDetails = () => {
   )
 }
 
-export default MenShoeDetails
+export default FemaleShoeDetails
