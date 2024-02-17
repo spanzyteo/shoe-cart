@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Box, Stack, Typography, Button } from '@mui/material'
 import { useCart } from '../Context'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 import deleteIcon from '../images/icon-delete.svg'
 
@@ -17,7 +17,6 @@ const ShoeCart = () => {
   }
   useEffect(() => {}, [state.cartItems])
 
-  // changes
   return (
     <Box
       sx={{
@@ -102,22 +101,24 @@ const ShoeCart = () => {
                     </Stack>
                   ))}
                   <Stack>
-                    <Button
-                      variant="contained"
-                      color="error"
-                      sx={{
-                        bgcolor: 'hsl(26, 100%, 55%)',
-                        width: '18rem',
-                        height: '3rem',
-                        borderRadius: '0.6rem',
-                        fontWeight: '700',
-                        fontSize: '16px',
-                        ':hover': { opacity: 0.4 },
-                        mb: '1rem',
-                      }}
-                    >
-                      Checkout
-                    </Button>
+                    <Link to="/checkout">
+                      <Button
+                        variant="contained"
+                        color="error"
+                        sx={{
+                          bgcolor: 'hsl(26, 100%, 55%)',
+                          width: '18rem',
+                          height: '3rem',
+                          borderRadius: '0.6rem',
+                          fontWeight: '700',
+                          fontSize: '16px',
+                          ':hover': { opacity: 0.4 },
+                          mb: '1rem',
+                        }}
+                      >
+                        Checkout
+                      </Button>
+                    </Link>
                   </Stack>
                 </>
               ) : (

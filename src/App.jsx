@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react'
 import { Box } from '@mui/material'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 export const Context = createContext()
 
 import NavBar from './components/NavBar'
@@ -25,14 +25,18 @@ import Faq from './components/pages/Faq'
 import ResellerPolicy from './components/pages/ResellerPolicy'
 import SizeDetails from './components/pages/SizeDetails'
 import DigitalGiftCard from './components/gift-card/DigitalGiftCard'
+import Checkout from './pages/Checkout'
 
 const App = () => {
   const { state } = useCart()
   const [isSideBarOpen, setIsSideBarOpen] = useState(false)
+  const location = useLocation()
 
   const toggleSideBar = () => {
     setIsSideBarOpen((prevIsOPen) => !prevIsOPen)
   }
+
+  const isCheckoutPage = location.pathname === '/checkout'
 
   return (
     <Box>
@@ -45,7 +49,7 @@ const App = () => {
       >
         <ShoeModal />
         <Box sx={{ px: { lg: '120px', xs: '0px' } }}>
-          <NavBar toggleSideBar={toggleSideBar} />
+          {!isCheckoutPage && <NavBar toggleSideBar={toggleSideBar} />}
           <SideBar
             isSideBarOpen={isSideBarOpen}
             toggleSideBar={toggleSideBar}
@@ -86,8 +90,9 @@ const App = () => {
               path="/products/sneakers-digital-gift-card"
               element={<DigitalGiftCard />}
             />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
-          <Footer />
+          {!isCheckoutPage && <Footer />}
         </Box>
       </Box>
     </Box>
