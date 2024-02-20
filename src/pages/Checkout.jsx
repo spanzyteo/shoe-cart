@@ -6,6 +6,7 @@ import Checkbox from '@mui/material/Checkbox'
 import { countries } from 'countries-list'
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material'
 import { nigerianStates } from '../utils/trendingItems'
+import CreditCardIcon from '@mui/icons-material/CreditCard'
 
 import creditCard1 from '../images/credit-card-1.png'
 import creditCard2 from '../images/credit-card-2.webp'
@@ -34,12 +35,57 @@ const formatCardNumber = (input) => {
   return formattedInput
 }
 
+const formatExpirationDate = (inputValue) => {
+  const numericValue = inputValue.replace(/\D/g, '')
+
+  let formattedValue = numericValue
+  if (numericValue.length > 2) {
+    formattedValue = numericValue.slice(0, 2) + '/' + numericValue.slice(2)
+  }
+
+  formattedValue = formattedValue.slice(0, 7)
+
+  return formattedValue
+}
+
+const formatSecurityCode = (input) => {
+  const digitsOnly = input.replace(/\D/g, '')
+
+  const formattedValue = digitsOnly.slice(0, 4)
+
+  return formattedValue
+}
+
 const Checkout = () => {
   const [checked, setChecked] = useState(true)
   const [selectedCountry, setSelectedCountry] = useState('NG')
   const [selectedState, setSelectedState] = useState('placeholder')
   const [checkedOffers, setCheckedOffers] = useState(false)
   const [cardNumber, setCardNumber] = useState('')
+  const [expirationDate, setExpirationDate] = useState('')
+  const [securityCode, setSecurityCode] = useState('')
+  const [checkedBilling, setCheckedBilling] = useState(true)
+  const [savedChecked, setSavedChecked] = useState(false)
+
+  const handleSavedChecked = () => {
+    setSavedChecked((prevChecked) => !prevChecked)
+  }
+
+  const handleCheckedBilling = () => {
+    setCheckedBilling((prevChecked) => !prevChecked)
+  }
+
+  const handleSecurityCodeChange = (event) => {
+    const inputValue = event.target.value
+    const formattedValue = formatSecurityCode(inputValue)
+    setSecurityCode(formattedValue)
+  }
+
+  const handleExpirationDateChange = (event) => {
+    const inputValue = event.target.value
+    const formattedValue = formatExpirationDate(inputValue)
+    setExpirationDate(formattedValue)
+  }
 
   const handleInputChange = (event) => {
     let input = event.target.value
@@ -527,23 +573,272 @@ const Checkout = () => {
               flexDirection="column"
               alignItems="center"
               width={{ lg: '450px', sm: '350px', xs: '350px' }}
-              height="200px"
+              height={checkedBilling ? '300px' : '750px'}
               borderLeft="1px solid #E8E8E8"
               borderRight="1px solid #E8E8E8"
               borderBottom="1px solid #E8E8E8"
             >
+              <div style={{ position: 'relative', display: 'inline-block' }}>
+                <TextField
+                  placeholder="Card number"
+                  margin="normal"
+                  name="card_number"
+                  type="text"
+                  value={cardNumber}
+                  onChange={handleInputChange}
+                  sx={{
+                    width: { lg: '400px', sm: '300px', xs: '300px' },
+                    height: '100px',
+                  }}
+                />
+                <CreditCardIcon
+                  sx={{
+                    position: 'absolute',
+                    top: '35%',
+                    right: '15px',
+                    transform: 'translateY(-50%)',
+                  }}
+                />
+              </div>
+              <Stack
+                display="flex"
+                flexDirection="row"
+                gap={{ lg: 4.5, sm: 1, xs: 1 }}
+              >
+                <TextField
+                  placeholder="Expiration date (MM/YYYY)"
+                  margin="normal"
+                  name="expiration_date"
+                  type="text"
+                  value={expirationDate}
+                  onChange={handleExpirationDateChange}
+                  inputProps={{
+                    maxLength: 7,
+                    pattern: '(0[1-9]|1[0-2])/[0-9]{4}',
+                    title:
+                      'Please enter a valid expiration date in MM/YYYY format',
+                  }}
+                  sx={{
+                    width: { lg: '180px', sm: '145px', xs: '145px' },
+                    height: '100px',
+                    mt: '-2rem',
+                  }}
+                />
+                <TextField
+                  placeholder="Security code"
+                  margin="normal"
+                  name="security_code"
+                  type="text"
+                  value={securityCode}
+                  onChange={handleSecurityCodeChange}
+                  inputProps={{
+                    maxLength: 4,
+                    pattern: '[0-9]{4}',
+                    title: 'Enter a valid 4-digit security code',
+                  }}
+                  sx={{
+                    width: { lg: '180px', sm: '145px', xs: '145px' },
+                    height: '100px',
+                    mt: '-2rem',
+                  }}
+                />
+              </Stack>
               <TextField
-                placeholder="Card number"
+                label="Name on card"
                 margin="normal"
-                name="card_number"
-                type="text"
-                value={cardNumber}
-                onChange={handleInputChange}
+                name="name_on_card"
                 sx={{
                   width: { lg: '400px', sm: '300px', xs: '300px' },
-                  height: '100px',
+                  height: '150px',
+                  mt: '-2rem',
                 }}
               />
+              <Stack
+                display="flex"
+                flexDirection="row"
+                alignItems="center"
+                // mt="-6rem"
+                ml={{ lg: '-11rem', sm: '-3rem', xs: '-3rem' }}
+              >
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      checked={checkedBilling}
+                      onChange={handleCheckedBilling}
+                    />
+                  }
+                />
+                <Typography
+                  // color="rgba(0, 0, 0, 0.75)"
+                  ml="-1rem"
+                  mt="0.15rem"
+                  fontSize={{ lg: '0.85rem', sm: '1rem', xs: '1rem' }}
+                >
+                  Use shipping as billing address
+                </Typography>
+              </Stack>
+              {!checkedBilling && (
+                <Stack display="flex" flexDirection="column" mt="0rem">
+                  <Typography
+                    mt="1rem"
+                    fontSize={{ lg: '0.9rem', sm: '1rem', xs: '1rem' }}
+                  >
+                    Billing address
+                  </Typography>
+                  <FormControl>
+                    <Select
+                      className="country-form"
+                      id="country"
+                      value={selectedCountry}
+                      onChange={handleChange}
+                      sx={{
+                        height: '60px',
+                        fontSize: '12px',
+                        borderRadius: '4px',
+                        marginTop: '1rem',
+                        width: { lg: '400px', sm: '300px', xs: '300px' },
+                      }}
+                    >
+                      {Object.keys(countries).map((code) => (
+                        <MenuItem key={code} value={code}>
+                          {countries[code].name}
+                        </MenuItem>
+                      ))}
+                    </Select>
+                  </FormControl>
+                  <Stack
+                    display="flex"
+                    flexDirection="row"
+                    gap={{ lg: 4.5, sm: 1, xs: 1 }}
+                  >
+                    <TextField
+                      placeholder="First Name"
+                      margin="normal"
+                      name="first_name"
+                      type="text"
+                      sx={{
+                        width: { lg: '180px', sm: '145px', xs: '145px' },
+                        height: '100px',
+                      }}
+                    />
+                    <TextField
+                      placeholder="Last Name"
+                      margin="normal"
+                      name="last_name"
+                      type="text"
+                      sx={{
+                        width: { lg: '180px', sm: '145px', xs: '145px' },
+                        height: '100px',
+                      }}
+                    />
+                  </Stack>
+                  <TextField
+                    label="Address"
+                    margin="normal"
+                    name="address"
+                    sx={{
+                      width: { lg: '400px', sm: '300px', xs: '300px' },
+                      height: '150px',
+                      mt: '-2rem',
+                    }}
+                  />
+                  <Typography fontSize={{ lg: '0.8rem' }} mt="-5rem">
+                    + Add apartment, suite, etc.
+                  </Typography>
+                  <Stack
+                    display="flex"
+                    flexDirection="row"
+                    gap={{ lg: 4, sm: 3, xs: 3 }}
+                  >
+                    <TextField
+                      label="City"
+                      margin="normal"
+                      name="city"
+                      sx={{
+                        width: { lg: '110px', sm: '80px', xs: '80px' },
+                        height: '150px',
+                      }}
+                    />
+                    <FormControl>
+                      <Select
+                        id="state-selector-label"
+                        value={selectedState}
+                        onChange={handleStateChange}
+                        sx={{
+                          height: '55px',
+                          fontSize: '16px',
+                          borderRadius: '4px',
+                          marginTop: '1rem',
+                          width: { lg: '110px', sm: '80px', xs: '80px' },
+                        }}
+                      >
+                        <MenuItem value="placeholder" disabled>
+                          state
+                        </MenuItem>
+                        {nigerianStates.map((code) => (
+                          <MenuItem key={code} value={code}>
+                            {[code]}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                    <TextField
+                      label="Postal code"
+                      margin="normal"
+                      name="postal code"
+                      sx={{
+                        width: { lg: '110px', sm: '80px', xs: '80px' },
+                        height: '150px',
+                      }}
+                    />
+                  </Stack>
+                  <TextField
+                    label="Phone(optional)"
+                    margin="normal"
+                    name="phone_number"
+                    type="number"
+                    sx={{
+                      width: { lg: '400px', sm: '300px', xs: '300px' },
+                      height: '150px',
+                      mt: '-5rem',
+                    }}
+                  />
+                </Stack>
+              )}
+            </Stack>
+            <Typography
+              mt="1rem"
+              ml={{ lg: '-21.5rem', sm: '-13.5rem', xs: '-13.5rem' }}
+              fontSize={{ lg: '1rem', sm: '1rem', xs: '1rem' }}
+            >
+              Remember me
+            </Typography>
+            <Stack
+              display="flex"
+              flexDirection="row"
+              height="50px"
+              width={{ lg: '450px', sm: '350px', xs: '350px' }}
+              border="1px solid black"
+              mt="1rem"
+              alignItems="center"
+            >
+              <FormControlLabel
+                sx={{ ml: '1rem' }}
+                control={
+                  <Checkbox
+                    checked={savedChecked}
+                    onChange={handleSavedChecked}
+                  />
+                }
+              />
+              <Typography
+                // color="rgba(0, 0, 0, 0.75)"
+                ml="-1rem"
+                mt="0.15rem"
+                fontSize={{ lg: '0.85rem', sm: '1rem', xs: '1rem' }}
+              >
+                Save my information for faster checkout
+              </Typography>
             </Stack>
           </Stack>
         </Stack>
