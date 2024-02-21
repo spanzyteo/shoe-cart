@@ -1,4 +1,10 @@
-import { Box, Stack, TextField, Typography } from '@mui/material'
+import {
+  Box,
+  FormHelperText,
+  Stack,
+  TextField,
+  Typography,
+} from '@mui/material'
 import { Link } from 'react-router-dom'
 import { FormControlLabel } from '@mui/material'
 import { useState } from 'react'
@@ -19,9 +25,6 @@ import creditCard8 from '../images/credit-card-8.png'
 import creditCard9 from '../images/credit-card-9.png'
 import creditCard10 from '../images/credit-card-10.png'
 
-const handleCheckedOffers = () => {
-  setCheckedOffers((prevChecked) => !prevChecked)
-}
 const formatCardNumber = (input) => {
   const digitsOnly = input.replace(/\D/g, '')
   let formattedInput = ''
@@ -60,12 +63,37 @@ const Checkout = () => {
   const [checked, setChecked] = useState(true)
   const [selectedCountry, setSelectedCountry] = useState('NG')
   const [selectedState, setSelectedState] = useState('placeholder')
+  const [state, setState] = useState('')
+  const [error, setError] = useState('')
   const [checkedOffers, setCheckedOffers] = useState(false)
   const [cardNumber, setCardNumber] = useState('')
   const [expirationDate, setExpirationDate] = useState('')
   const [securityCode, setSecurityCode] = useState('')
   const [checkedBilling, setCheckedBilling] = useState(true)
   const [savedChecked, setSavedChecked] = useState(false)
+  const [email, setEmail] = useState('')
+  const [emailError, setEmailError] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
+  const [firstNameError, setFirstNameError] = useState('')
+  const [lastNameError, setLastNameError] = useState('')
+  const [address, setAddress] = useState('')
+  const [addressError, setAddressError] = useState('')
+  const [city, setCity] = useState('')
+  const [postalCode, setPostalCode] = useState('')
+  const [phone, setPhone] = useState('')
+  const [cityError, setCityError] = useState('')
+  const [postalCodeError, setPostalCodeError] = useState('')
+  const [phoneError, setPhoneError] = useState('')
+  const [cardNumberError, setCardNumberError] = useState('')
+  const [expirationDateError, setExpirationDateError] = useState('')
+  const [securityCodeError, setSecurityCodeError] = useState('')
+  const [cardName, setCardName] = useState('')
+  const [cardNameError, setCardNameError] = useState('')
+
+  const handleCheckedOffers = () => {
+    setCheckedOffers((prevChecked) => !prevChecked)
+  }
 
   const handleSavedChecked = () => {
     setSavedChecked((prevChecked) => !prevChecked)
@@ -105,6 +133,51 @@ const Checkout = () => {
 
   const handleChecked = () => {
     setChecked((prevChecked) => !prevChecked)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    try {
+      if (email === '') {
+        setEmailError('Enter an email')
+      }
+      if (firstName === '') {
+        setFirstNameError('Enter a firstname')
+      }
+      if (lastName === '') {
+        setLastNameError('Enter a lastname')
+      }
+      if (address === '') {
+        setAddressError('enter address')
+      }
+      if (phone === '') {
+        setPhoneError('Enter phone number')
+      }
+      if (city === '') {
+        setCityError('Enter city')
+      }
+      if (postalCode === '') {
+        setPostalCodeError('Enter postal code')
+      }
+      if (selectedState === 'placeholder') {
+        setError('select a state/province')
+      }
+      if (cardNumber === '') {
+        setCardNumberError('Enter a card number')
+      }
+      if (expirationDate === '') {
+        setExpirationDateError('Enter a valid expiration date')
+      }
+      if (securityCode === '') {
+        setSecurityCodeError('Enter the CVV or security code on your card')
+      }
+      if (cardName === '') {
+        setCardNameError("Enter your name exactly as it's written on your card")
+      }
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   return (
@@ -250,421 +323,626 @@ const Checkout = () => {
                 </Link>
               </Stack>
             </Stack>
-            <TextField
-              label="Email"
-              margin="normal"
-              name="email"
-              sx={{
-                width: { lg: '450px', sm: '350px', xs: '350px' },
-                height: '150px',
-              }}
-            />
-            <Stack
-              display="flex"
-              flexDirection="row"
-              alignItems="center"
-              mt="-5.5rem"
-              ml={{ lg: '-12rem', sm: '-6rem', xs: '-6rem' }}
-            >
-              <FormControlLabel
-                control={
-                  <Checkbox checked={checked} onChange={handleChecked} />
-                }
-              />
-              <Typography color="rgba(0, 0, 0, 0.75)" ml="-1rem" mt="0.1rem">
-                Email me with news and others
-              </Typography>
-            </Stack>
-            <Typography
-              fontSize={{ lg: '1.3rem', sm: '1.5rem', xs: '1.5rem' }}
-              mt="1rem"
-              ml={{ lg: '-23.5rem', sm: '-16.5rem', xs: '-16.5rem' }}
-            >
-              Delivery
-            </Typography>
-            <Stack>
-              <FormControl>
-                <Select
-                  className="country-form"
-                  id="country"
-                  value={selectedCountry}
-                  onChange={handleChange}
-                  sx={{
-                    height: '60px',
-                    fontSize: '12px',
-                    borderRadius: '4px',
-                    marginTop: '1rem',
-                    width: { lg: '450px', sm: '350px', xs: '350px' },
-                  }}
-                >
-                  {Object.keys(countries).map((code) => (
-                    <MenuItem key={code} value={code}>
-                      {countries[code].name}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-            </Stack>
-            <Stack display="flex" flexDirection="row" gap={6}>
+            <form onSubmit={handleSubmit}>
               <TextField
-                label="First name"
+                label="Email"
                 margin="normal"
-                name="name"
-                sx={{
-                  width: { lg: '200px', sm: '150px', xs: '150px' },
-                  height: '150px',
-                }}
-              />
-              <TextField
-                label="Last name"
-                margin="normal"
-                name="name"
-                sx={{
-                  width: { lg: '200px', sm: '150px', xs: '150px' },
-                  height: '150px',
-                }}
-              />
-            </Stack>
-            <TextField
-              label="Address"
-              margin="normal"
-              name="address"
-              sx={{
-                width: { lg: '450px', sm: '350px', xs: '350px' },
-                height: '150px',
-                mt: '-5rem',
-              }}
-            />
-            <Typography
-              fontSize={{ lg: '0.8rem' }}
-              mt="-5rem"
-              ml={{ lg: '-18rem', sm: '-9.5rem', xs: '-9.5rem' }}
-            >
-              + Add apartment, suite, etc.
-            </Typography>
-            <Stack
-              display="flex"
-              flexDirection="row"
-              gap={{ lg: 4, sm: 3, xs: 3 }}
-            >
-              <TextField
-                label="City"
-                margin="normal"
-                name="city"
-                sx={{
-                  width: { lg: '130px', sm: '100px', xs: '100px' },
-                  height: '150px',
-                }}
-              />
-              <FormControl>
-                <Select
-                  id="state-selector-label"
-                  value={selectedState}
-                  onChange={handleStateChange}
-                  sx={{
-                    height: '55px',
-                    fontSize: '16px',
-                    borderRadius: '4px',
-                    marginTop: '1rem',
-                    width: { lg: '130px', sm: '100px', xs: '100px' },
-                  }}
-                >
-                  <MenuItem value="placeholder" disabled>
-                    state
-                  </MenuItem>
-                  {nigerianStates.map((code) => (
-                    <MenuItem key={code} value={code}>
-                      {[code]}
-                    </MenuItem>
-                  ))}
-                </Select>
-              </FormControl>
-              <TextField
-                label="Postal code"
-                margin="normal"
-                name="postal code"
-                sx={{
-                  width: { lg: '130px', sm: '100px', xs: '100px' },
-                  height: '150px',
-                }}
-              />
-            </Stack>
-            <Stack mt="-6rem">
-              <TextField
-                label="Phone"
-                margin="normal"
-                name="phone_number"
-                type="number"
+                name="email"
+                value={email}
+                helperText={emailError}
+                color="primary"
+                variant="outlined"
+                error={emailError}
                 sx={{
                   width: { lg: '450px', sm: '350px', xs: '350px' },
                   height: '150px',
                 }}
               />
-            </Stack>
-            <Stack
-              display="flex"
-              flexDirection="row"
-              alignItems="center"
-              mt="-5.5rem"
-              ml={{ lg: '-15rem', sm: '-6rem', xs: '-6rem' }}
-            >
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={checkedOffers}
-                    onChange={handleCheckedOffers}
-                  />
-                }
-              />
-              <Typography
-                // color="rgba(0, 0, 0, 0.75)"
-                ml="-1rem"
-                mt="0.15rem"
-                fontSize={{ lg: '0.85rem', sm: '1rem', xs: '1rem' }}
-              >
-                Text me with news and others
-              </Typography>
-            </Stack>
-            {checkedOffers && (
-              <Stack display="flex" flexDirection="column">
-                <TextField
-                  label="Mobile Phone Number"
-                  margin="normal"
-                  name="phone_number"
-                  type="tel"
-                  defaultValue="+234"
-                  InputProps={{ inputProps: { pattern: '\\+\\d{1,3}' } }} // Validate the input
-                  sx={{
-                    width: { lg: '450px', sm: '350px', xs: '350px' },
-                    height: '100px',
-                  }}
-                />
-                <Typography
-                  fontSize={{ lg: '0.6rem', sm: '0.8rem', xs: '0.8rem' }}
-                  color="rgba(0, 0, 0, 0.56)"
-                  mt="-2rem"
-                  width={{ lg: '450px', sm: '350px', xs: '350px' }}
-                >
-                  By signing up via text, you agree to receive recurring
-                  automated marketing messages, including cart reminders, at the
-                  phone number provided. Consent is not a condition of purchase.
-                  Reply STOP to unsubscribe. Reply HELP for help. Message
-                  frequency varies. Msg & data rates may apply. View our{' '}
-                  <Link
-                    to="/policies/privacy-policy"
-                    style={{ color: 'rgba(0, 0, 0, 0.56)' }}
-                  >
-                    Privacy Policy
-                  </Link>
-                  and
-                  <Link
-                    to="/policies/terms-of-service"
-                    style={{ color: 'rgba(0, 0, 0, 0.56)' }}
-                  >
-                    Terms of Service
-                  </Link>
-                </Typography>
-              </Stack>
-            )}
-            <Typography
-              mt="1rem"
-              ml={{ lg: '-21rem', sm: '-13.5rem', xs: '-13.5rem' }}
-              fontSize={{ lg: '0.9rem', sm: '1rem', xs: '1rem' }}
-            >
-              Shipping method
-            </Typography>
-            <Stack
-              display="flex"
-              flexDirection="row"
-              width={{ lg: '450px', sm: '350px', xs: '350px' }}
-              height="50px"
-              border="1px solid black"
-              borderRadius="6px"
-              mt="1rem"
-              alignItems="center"
-              justifyContent="space-between"
-            >
-              <Typography
-                fontSize={{ lg: '0.8rem', sm: '1rem', xs: '1rem' }}
-                ml="1rem"
-              >
-                Economy international
-              </Typography>
-              <Typography
-                fontSize={{ lg: '0.8rem', sm: '1rem', xs: '1rem' }}
-                mr="1rem"
-              >
-                ₦22,500.00
-              </Typography>
-            </Stack>
-            <Typography
-              fontSize={{ lg: '1.3rem', sm: '1.5rem', xs: '1.5rem' }}
-              mt="1rem"
-              ml={{ lg: '-23.5rem', sm: '-15.5rem', xs: '-15.5rem' }}
-            >
-              Payment
-            </Typography>
-            <Typography
-              fontSize={{ lg: '0.8rem', sm: '0.9rem', xs: '0.9rem' }}
-              color="rgba(0, 0, 0, 0.75)"
-              ml={{ lg: '-13.5rem', sm: '-4.5rem', xs: '-4.5rem' }}
-              mt="0.3rem"
-              whiteSpace="nowrap"
-            >
-              All transactions are secure and encrypted
-            </Typography>
-            <Stack
-              display="flex"
-              flexDirection="row"
-              width={{ lg: '450px', sm: '350px', xs: '350px' }}
-              height="50px"
-              border="1px solid black"
-              mt="1rem"
-              alignItems="center"
-              justifyContent="space-between"
-              sx={{ borderTopLeftRadius: '6px', borderTopRightRadius: '6px' }}
-            >
-              <Typography
-                fontSize={{ lg: '0.8rem', sm: '1rem', xs: '1rem' }}
-                ml="1rem"
-              >
-                credit card
-              </Typography>
               <Stack
                 display="flex"
                 flexDirection="row"
                 alignItems="center"
-                gap={0.5}
+                mt="-5.5rem"
+                // ml={{ lg: '0rem', sm: '-6rem', xs: '-6rem' }}
               >
-                <img
-                  style={{ height: '35px', width: '35px' }}
-                  src={creditCard1}
-                  alt="credit-card"
+                <FormControlLabel
+                  control={
+                    <Checkbox checked={checked} onChange={handleChecked} />
+                  }
                 />
-                <img
-                  style={{ height: '30px', width: '40px' }}
-                  src={creditCard2}
-                  alt="credit-card"
-                />
-                <img
-                  style={{ height: '37px', width: '35px' }}
-                  src={creditCard3}
-                  alt="credit-card"
-                />
-                <img
-                  style={{ height: '30px', width: '35px' }}
-                  src={creditCard4}
-                  alt="credit-card"
-                />
-                <Typography
-                  bgcolor="rgb(214, 214, 214)"
-                  px="10px"
-                  py="-1px"
-                  mr="1rem"
-                  sx={{ cursor: 'pointer' }}
-                  fontSize="0.84rem"
-                >
-                  +4
+                <Typography color="rgba(0, 0, 0, 0.75)" ml="-1rem" mt="0.1rem">
+                  Email me with news and others
                 </Typography>
               </Stack>
-            </Stack>
-            <Stack
-              display="flex"
-              flexDirection="column"
-              alignItems="center"
-              width={{ lg: '450px', sm: '350px', xs: '350px' }}
-              height={checkedBilling ? '300px' : '750px'}
-              borderLeft="1px solid #E8E8E8"
-              borderRight="1px solid #E8E8E8"
-              borderBottom="1px solid #E8E8E8"
-            >
-              <div style={{ position: 'relative', display: 'inline-block' }}>
-                <TextField
-                  placeholder="Card number"
-                  margin="normal"
-                  name="card_number"
-                  type="text"
-                  value={cardNumber}
-                  onChange={handleInputChange}
-                  sx={{
-                    width: { lg: '400px', sm: '300px', xs: '300px' },
-                    height: '100px',
-                  }}
-                />
-                <CreditCardIcon
-                  sx={{
-                    position: 'absolute',
-                    top: '35%',
-                    right: '15px',
-                    transform: 'translateY(-50%)',
-                  }}
-                />
-              </div>
-              <Stack
-                display="flex"
-                flexDirection="row"
-                gap={{ lg: 4.5, sm: 1, xs: 1 }}
+              <Typography
+                fontSize={{ lg: '1.3rem', sm: '1.5rem', xs: '1.5rem' }}
+                mt="1rem"
+                // ml={{ lg: '0rem', sm: '', xs: '-16.5rem' }}
               >
+                Delivery
+              </Typography>
+              <Stack>
+                <FormControl>
+                  <Select
+                    className="country-form"
+                    id="country"
+                    value={selectedCountry}
+                    onChange={handleChange}
+                    sx={{
+                      height: '60px',
+                      fontSize: '12px',
+                      borderRadius: '4px',
+                      marginTop: '1rem',
+                      width: { lg: '450px', sm: '350px', xs: '350px' },
+                    }}
+                  >
+                    {Object.keys(countries).map((code) => (
+                      <MenuItem key={code} value={code}>
+                        {countries[code].name}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Stack>
+              <Stack display="flex" flexDirection="row" gap={6}>
                 <TextField
-                  placeholder="Expiration date (MM/YYYY)"
+                  label="First name"
                   margin="normal"
-                  name="expiration_date"
-                  type="text"
-                  value={expirationDate}
-                  onChange={handleExpirationDateChange}
-                  inputProps={{
-                    maxLength: 7,
-                    pattern: '(0[1-9]|1[0-2])/[0-9]{4}',
-                    title:
-                      'Please enter a valid expiration date in MM/YYYY format',
-                  }}
+                  name="name"
+                  value={firstName}
+                  error={firstNameError}
+                  helperText={firstNameError}
                   sx={{
-                    width: { lg: '180px', sm: '145px', xs: '145px' },
-                    height: '100px',
-                    mt: '-2rem',
+                    width: { lg: '200px', sm: '150px', xs: '150px' },
+                    height: '150px',
                   }}
                 />
                 <TextField
-                  placeholder="Security code"
+                  label="Last name"
                   margin="normal"
-                  name="security_code"
-                  type="text"
-                  value={securityCode}
-                  onChange={handleSecurityCodeChange}
-                  inputProps={{
-                    maxLength: 4,
-                    pattern: '[0-9]{4}',
-                    title: 'Enter a valid 4-digit security code',
-                  }}
+                  name="name"
+                  value={lastName}
+                  error={lastNameError}
+                  helperText={lastNameError}
                   sx={{
-                    width: { lg: '180px', sm: '145px', xs: '145px' },
-                    height: '100px',
-                    mt: '-2rem',
+                    width: { lg: '200px', sm: '150px', xs: '150px' },
+                    height: '150px',
                   }}
                 />
               </Stack>
               <TextField
-                label="Name on card"
+                label="Address"
                 margin="normal"
-                name="name_on_card"
+                name="address"
+                value={address}
+                error={addressError}
+                helperText={addressError}
                 sx={{
-                  width: { lg: '400px', sm: '300px', xs: '300px' },
+                  width: { lg: '450px', sm: '350px', xs: '350px' },
                   height: '150px',
-                  mt: '-2rem',
+                  mt: '-5rem',
                 }}
               />
+              <Typography
+                fontSize={{ lg: '0.8rem' }}
+                mt="-5rem"
+                // ml={{ lg: '-18rem', sm: '-9.5rem', xs: '-9.5rem' }}
+              >
+                + Add apartment, suite, etc.
+              </Typography>
+              <Stack
+                display="flex"
+                flexDirection="row"
+                gap={{ lg: 4, sm: 3, xs: 3 }}
+              >
+                <TextField
+                  label="City"
+                  margin="normal"
+                  name="city"
+                  value={city}
+                  error={cityError}
+                  helperText={cityError}
+                  sx={{
+                    width: { lg: '130px', sm: '100px', xs: '100px' },
+                    height: '150px',
+                  }}
+                />
+                <FormControl error={error}>
+                  <Select
+                    id="state-selector-label"
+                    value={selectedState}
+                    onChange={handleStateChange}
+                    // error={selectedStateError}
+                    sx={{
+                      height: '55px',
+                      fontSize: '16px',
+                      borderRadius: '4px',
+                      marginTop: '1rem',
+                      width: { lg: '130px', sm: '100px', xs: '100px' },
+                    }}
+                  >
+                    <MenuItem value="placeholder" disabled>
+                      state
+                    </MenuItem>
+                    {nigerianStates.map((code) => (
+                      <MenuItem key={code} value={code}>
+                        {[code]}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                  {error && <FormHelperText>{error}</FormHelperText>}
+                </FormControl>
+                <TextField
+                  label="Postal code"
+                  margin="normal"
+                  name="postal code"
+                  sx={{
+                    width: { lg: '130px', sm: '100px', xs: '100px' },
+                    height: '150px',
+                    ml: '-2rem',
+                  }}
+                />
+              </Stack>
+              <Stack mt="-6rem">
+                <TextField
+                  label="Phone"
+                  margin="normal"
+                  name="phone_number"
+                  type="number"
+                  value={phone}
+                  error={phoneError}
+                  helperText={phoneError}
+                  sx={{
+                    width: { lg: '450px', sm: '350px', xs: '350px' },
+                    height: '150px',
+                    mt: '2rem',
+                  }}
+                />
+              </Stack>
               <Stack
                 display="flex"
                 flexDirection="row"
                 alignItems="center"
-                // mt="-6rem"
-                ml={{ lg: '-11rem', sm: '-3rem', xs: '-3rem' }}
+                mt="-5.5rem"
               >
                 <FormControlLabel
                   control={
                     <Checkbox
-                      checked={checkedBilling}
-                      onChange={handleCheckedBilling}
+                      checked={checkedOffers}
+                      onChange={handleCheckedOffers}
+                    />
+                  }
+                />
+                <Typography
+                  ml="-1rem"
+                  mt="0.15rem"
+                  fontSize={{ lg: '0.85rem', sm: '1rem', xs: '1rem' }}
+                >
+                  Text me with news and others
+                </Typography>
+              </Stack>
+              {checkedOffers && (
+                <Stack display="flex" flexDirection="column">
+                  <TextField
+                    label="Mobile Phone Number"
+                    margin="normal"
+                    name="phone_number"
+                    type="tel"
+                    defaultValue="+234"
+                    InputProps={{ inputProps: { pattern: '\\+\\d{1,3}' } }}
+                    sx={{
+                      width: { lg: '450px', sm: '350px', xs: '350px' },
+                      height: '100px',
+                    }}
+                  />
+                  <Typography
+                    fontSize={{ lg: '0.6rem', sm: '0.8rem', xs: '0.8rem' }}
+                    color="rgba(0, 0, 0, 0.56)"
+                    mt="-2rem"
+                    width={{ lg: '450px', sm: '350px', xs: '350px' }}
+                  >
+                    By signing up via text, you agree to receive recurring
+                    automated marketing messages, including cart reminders, at
+                    the phone number provided. Consent is not a condition of
+                    purchase. Reply STOP to unsubscribe. Reply HELP for help.
+                    Message frequency varies. Msg & data rates may apply. View
+                    our{' '}
+                    <Link
+                      to="/policies/privacy-policy"
+                      style={{ color: 'rgba(0, 0, 0, 0.56)' }}
+                    >
+                      Privacy Policy
+                    </Link>
+                    and
+                    <Link
+                      to="/policies/terms-of-service"
+                      style={{ color: 'rgba(0, 0, 0, 0.56)' }}
+                    >
+                      Terms of Service
+                    </Link>
+                  </Typography>
+                </Stack>
+              )}
+              <Typography
+                mt="1rem"
+                fontSize={{ lg: '0.9rem', sm: '1rem', xs: '1rem' }}
+              >
+                Shipping method
+              </Typography>
+              <Stack
+                display="flex"
+                flexDirection="row"
+                width={{ lg: '450px', sm: '350px', xs: '350px' }}
+                height="50px"
+                border="1px solid black"
+                borderRadius="6px"
+                mt="1rem"
+                alignItems="center"
+                justifyContent="space-between"
+              >
+                <Typography
+                  fontSize={{ lg: '0.8rem', sm: '1rem', xs: '1rem' }}
+                  ml="1rem"
+                >
+                  Economy international
+                </Typography>
+                <Typography
+                  fontSize={{ lg: '0.8rem', sm: '1rem', xs: '1rem' }}
+                  mr="1rem"
+                >
+                  ₦22,500.00
+                </Typography>
+              </Stack>
+              <Typography
+                fontSize={{ lg: '1.3rem', sm: '1.5rem', xs: '1.5rem' }}
+                mt="1rem"
+              >
+                Payment
+              </Typography>
+              <Typography
+                fontSize={{ lg: '0.8rem', sm: '0.9rem', xs: '0.9rem' }}
+                color="rgba(0, 0, 0, 0.75)"
+                mt="0.3rem"
+                whiteSpace="nowrap"
+              >
+                All transactions are secure and encrypted
+              </Typography>
+              <Stack
+                display="flex"
+                flexDirection="row"
+                width={{ lg: '450px', sm: '350px', xs: '350px' }}
+                height="50px"
+                border="1px solid black"
+                mt="1rem"
+                alignItems="center"
+                justifyContent="space-between"
+                sx={{ borderTopLeftRadius: '6px', borderTopRightRadius: '6px' }}
+              >
+                <Typography
+                  fontSize={{ lg: '0.8rem', sm: '1rem', xs: '1rem' }}
+                  ml="1rem"
+                >
+                  credit card
+                </Typography>
+                <Stack
+                  display="flex"
+                  flexDirection="row"
+                  alignItems="center"
+                  gap={0.5}
+                >
+                  <img
+                    style={{ height: '35px', width: '35px' }}
+                    src={creditCard1}
+                    alt="credit-card"
+                  />
+                  <img
+                    style={{ height: '30px', width: '40px' }}
+                    src={creditCard2}
+                    alt="credit-card"
+                  />
+                  <img
+                    style={{ height: '37px', width: '35px' }}
+                    src={creditCard3}
+                    alt="credit-card"
+                  />
+                  <img
+                    style={{ height: '30px', width: '35px' }}
+                    src={creditCard4}
+                    alt="credit-card"
+                  />
+                  <Typography
+                    bgcolor="rgb(214, 214, 214)"
+                    px="10px"
+                    py="-1px"
+                    mr="1rem"
+                    sx={{ cursor: 'pointer' }}
+                    fontSize="0.84rem"
+                  >
+                    +4
+                  </Typography>
+                </Stack>
+              </Stack>
+              <Stack
+                display="flex"
+                flexDirection="column"
+                alignItems="center"
+                width={{ lg: '450px', sm: '350px', xs: '350px' }}
+                height={checkedBilling ? '350px' : '800px'}
+                borderLeft="1px solid #E8E8E8"
+                borderRight="1px solid #E8E8E8"
+                borderBottom="1px solid #E8E8E8"
+              >
+                <div style={{ position: 'relative', display: 'inline-block' }}>
+                  <TextField
+                    placeholder="Card number"
+                    margin="normal"
+                    name="card_number"
+                    type="text"
+                    value={cardNumber}
+                    error={cardNumberError}
+                    helperText={cardNumberError}
+                    onChange={handleInputChange}
+                    sx={{
+                      width: { lg: '400px', sm: '300px', xs: '300px' },
+                      height: '100px',
+                    }}
+                  />
+                  <CreditCardIcon
+                    sx={{
+                      position: 'absolute',
+                      top: '35%',
+                      right: '15px',
+                      transform: 'translateY(-50%)',
+                    }}
+                  />
+                </div>
+                <Stack
+                  display="flex"
+                  flexDirection="row"
+                  gap={{ lg: 4.5, sm: 1, xs: 1 }}
+                >
+                  <TextField
+                    placeholder="Expiration date (MM/YYYY)"
+                    margin="normal"
+                    name="expiration_date"
+                    type="text"
+                    value={expirationDate}
+                    error={expirationDateError}
+                    helperText={expirationDateError}
+                    onChange={handleExpirationDateChange}
+                    inputProps={{
+                      maxLength: 7,
+                      pattern: '(0[1-9]|1[0-2])/[0-9]{4}',
+                      title:
+                        'Please enter a valid expiration date in MM/YYYY format',
+                    }}
+                    sx={{
+                      width: { lg: '180px', sm: '145px', xs: '145px' },
+                      height: '100px',
+                      mt: '-2rem',
+                    }}
+                  />
+                  <TextField
+                    placeholder="Security code"
+                    margin="normal"
+                    name="security_code"
+                    type="text"
+                    value={securityCode}
+                    onChange={handleSecurityCodeChange}
+                    error={securityCodeError}
+                    helperText={securityCodeError}
+                    inputProps={{
+                      maxLength: 4,
+                      pattern: '[0-9]{4}',
+                      title: 'Enter a valid 4-digit security code',
+                    }}
+                    sx={{
+                      width: { lg: '180px', sm: '145px', xs: '145px' },
+                      height: '100px',
+                      mt: '-2rem',
+                    }}
+                  />
+                </Stack>
+                <TextField
+                  label="Name on card"
+                  margin="normal"
+                  name="name_on_card"
+                  value={cardName}
+                  error={cardNameError}
+                  helperText={cardNameError}
+                  sx={{
+                    width: { lg: '400px', sm: '300px', xs: '300px' },
+                    height: '150px',
+                    mt: '0rem',
+                  }}
+                />
+                <Stack
+                  display="flex"
+                  flexDirection="row"
+                  alignItems="center"
+                  // mt="-6rem"
+                  ml={{ lg: '-11rem', sm: '-3rem', xs: '-3rem' }}
+                >
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={checkedBilling}
+                        onChange={handleCheckedBilling}
+                      />
+                    }
+                  />
+                  <Typography
+                    // color="rgba(0, 0, 0, 0.75)"
+                    ml="-1rem"
+                    mt="0.15rem"
+                    fontSize={{ lg: '0.85rem', sm: '1rem', xs: '1rem' }}
+                  >
+                    Use shipping as billing address
+                  </Typography>
+                </Stack>
+                {!checkedBilling && (
+                  <Stack display="flex" flexDirection="column" mt="0rem">
+                    <Typography
+                      mt="1rem"
+                      fontSize={{ lg: '0.9rem', sm: '1rem', xs: '1rem' }}
+                    >
+                      Billing address
+                    </Typography>
+                    <FormControl>
+                      <Select
+                        className="country-form"
+                        id="country"
+                        value={selectedCountry}
+                        onChange={handleChange}
+                        sx={{
+                          height: '60px',
+                          fontSize: '12px',
+                          borderRadius: '4px',
+                          marginTop: '1rem',
+                          width: { lg: '400px', sm: '300px', xs: '300px' },
+                        }}
+                      >
+                        {Object.keys(countries).map((code) => (
+                          <MenuItem key={code} value={code}>
+                            {countries[code].name}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                    <Stack
+                      display="flex"
+                      flexDirection="row"
+                      gap={{ lg: 4.5, sm: 1, xs: 1 }}
+                    >
+                      <TextField
+                        placeholder="First Name"
+                        margin="normal"
+                        name="first_name"
+                        type="text"
+                        value={firstName}
+                        error={firstNameError}
+                        helperText={firstNameError}
+                        sx={{
+                          width: { lg: '180px', sm: '145px', xs: '145px' },
+                          height: '100px',
+                        }}
+                      />
+                      <TextField
+                        placeholder="Last Name"
+                        margin="normal"
+                        name="last_name"
+                        type="text"
+                        value={lastName}
+                        error={lastNameError}
+                        helperText={lastNameError}
+                        sx={{
+                          width: { lg: '180px', sm: '145px', xs: '145px' },
+                          height: '100px',
+                        }}
+                      />
+                    </Stack>
+                    <TextField
+                      label="Address"
+                      margin="normal"
+                      name="address"
+                      value={address}
+                      error={addressError}
+                      helperText={addressError}
+                      sx={{
+                        width: { lg: '400px', sm: '300px', xs: '300px' },
+                        height: '150px',
+                        mt: '-2rem',
+                      }}
+                    />
+                    <Typography fontSize={{ lg: '0.8rem' }} mt="-5rem">
+                      + Add apartment, suite, etc.
+                    </Typography>
+                    <Stack
+                      display="flex"
+                      flexDirection="row"
+                      gap={{ lg: 4, sm: 3, xs: 3 }}
+                    >
+                      <TextField
+                        label="City"
+                        margin="normal"
+                        name="city"
+                        value={city}
+                        error={cityError}
+                        helperText={cityError}
+                        sx={{
+                          width: { lg: '110px', sm: '80px', xs: '80px' },
+                          height: '150px',
+                        }}
+                      />
+                      <FormControl>
+                        <Select
+                          id="state-selector-label"
+                          value={selectedState}
+                          onChange={handleStateChange}
+                          sx={{
+                            height: '55px',
+                            fontSize: '16px',
+                            borderRadius: '4px',
+                            marginTop: '1rem',
+                            width: { lg: '110px', sm: '80px', xs: '80px' },
+                          }}
+                        >
+                          <MenuItem value="placeholder" disabled>
+                            state
+                          </MenuItem>
+                          {nigerianStates.map((code) => (
+                            <MenuItem key={code} value={code}>
+                              {[code]}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                      </FormControl>
+                      <TextField
+                        label="Postal code"
+                        margin="normal"
+                        name="postal code"
+                        sx={{
+                          width: { lg: '110px', sm: '80px', xs: '80px' },
+                          height: '150px',
+                        }}
+                      />
+                    </Stack>
+                    <TextField
+                      label="Phone(optional)"
+                      margin="normal"
+                      name="phone_number"
+                      type="number"
+                      sx={{
+                        width: { lg: '400px', sm: '300px', xs: '300px' },
+                        height: '150px',
+                        mt: '-5rem',
+                      }}
+                    />
+                  </Stack>
+                )}
+              </Stack>
+              <Typography
+                mt="1rem"
+                ml={{ lg: '-21.5rem', sm: '-13.5rem', xs: '-13.5rem' }}
+                fontSize={{ lg: '1rem', sm: '1rem', xs: '1rem' }}
+              >
+                Remember me
+              </Typography>
+              <Stack
+                display="flex"
+                flexDirection="row"
+                height="50px"
+                width={{ lg: '450px', sm: '350px', xs: '350px' }}
+                border="1px solid black"
+                mt="1rem"
+                alignItems="center"
+              >
+                <FormControlLabel
+                  sx={{ ml: '1rem' }}
+                  control={
+                    <Checkbox
+                      checked={savedChecked}
+                      onChange={handleSavedChecked}
                     />
                   }
                 />
@@ -674,172 +952,102 @@ const Checkout = () => {
                   mt="0.15rem"
                   fontSize={{ lg: '0.85rem', sm: '1rem', xs: '1rem' }}
                 >
-                  Use shipping as billing address
+                  Save my information for faster checkout
                 </Typography>
               </Stack>
-              {!checkedBilling && (
-                <Stack display="flex" flexDirection="column" mt="0rem">
-                  <Typography
-                    mt="1rem"
-                    fontSize={{ lg: '0.9rem', sm: '1rem', xs: '1rem' }}
-                  >
-                    Billing address
-                  </Typography>
-                  <FormControl>
-                    <Select
-                      className="country-form"
-                      id="country"
-                      value={selectedCountry}
-                      onChange={handleChange}
-                      sx={{
-                        height: '60px',
-                        fontSize: '12px',
-                        borderRadius: '4px',
-                        marginTop: '1rem',
-                        width: { lg: '400px', sm: '300px', xs: '300px' },
-                      }}
-                    >
-                      {Object.keys(countries).map((code) => (
-                        <MenuItem key={code} value={code}>
-                          {countries[code].name}
-                        </MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                  <Stack
-                    display="flex"
-                    flexDirection="row"
-                    gap={{ lg: 4.5, sm: 1, xs: 1 }}
-                  >
-                    <TextField
-                      placeholder="First Name"
-                      margin="normal"
-                      name="first_name"
-                      type="text"
-                      sx={{
-                        width: { lg: '180px', sm: '145px', xs: '145px' },
-                        height: '100px',
-                      }}
-                    />
-                    <TextField
-                      placeholder="Last Name"
-                      margin="normal"
-                      name="last_name"
-                      type="text"
-                      sx={{
-                        width: { lg: '180px', sm: '145px', xs: '145px' },
-                        height: '100px',
-                      }}
-                    />
-                  </Stack>
+              {savedChecked && (
+                <Stack
+                  display="flex"
+                  flexDirection="column"
+                  alignItems="center"
+                  width={{ lg: '450px', sm: '350px', xs: '350px' }}
+                  height={{ lg: '170px', sm: '230px', xs: '230px' }}
+                  borderLeft="1px solid #E8E8E8"
+                  borderRight="1px solid #E8E8E8"
+                  borderBottom="1px solid #E8E8E8"
+                >
                   <TextField
-                    label="Address"
-                    margin="normal"
-                    name="address"
-                    sx={{
-                      width: { lg: '400px', sm: '300px', xs: '300px' },
-                      height: '150px',
-                      mt: '-2rem',
-                    }}
-                  />
-                  <Typography fontSize={{ lg: '0.8rem' }} mt="-5rem">
-                    + Add apartment, suite, etc.
-                  </Typography>
-                  <Stack
-                    display="flex"
-                    flexDirection="row"
-                    gap={{ lg: 4, sm: 3, xs: 3 }}
-                  >
-                    <TextField
-                      label="City"
-                      margin="normal"
-                      name="city"
-                      sx={{
-                        width: { lg: '110px', sm: '80px', xs: '80px' },
-                        height: '150px',
-                      }}
-                    />
-                    <FormControl>
-                      <Select
-                        id="state-selector-label"
-                        value={selectedState}
-                        onChange={handleStateChange}
-                        sx={{
-                          height: '55px',
-                          fontSize: '16px',
-                          borderRadius: '4px',
-                          marginTop: '1rem',
-                          width: { lg: '110px', sm: '80px', xs: '80px' },
-                        }}
-                      >
-                        <MenuItem value="placeholder" disabled>
-                          state
-                        </MenuItem>
-                        {nigerianStates.map((code) => (
-                          <MenuItem key={code} value={code}>
-                            {[code]}
-                          </MenuItem>
-                        ))}
-                      </Select>
-                    </FormControl>
-                    <TextField
-                      label="Postal code"
-                      margin="normal"
-                      name="postal code"
-                      sx={{
-                        width: { lg: '110px', sm: '80px', xs: '80px' },
-                        height: '150px',
-                      }}
-                    />
-                  </Stack>
-                  <TextField
-                    label="Phone(optional)"
+                    label="Mobile Phone Number"
                     margin="normal"
                     name="phone_number"
-                    type="number"
+                    type="tel"
+                    defaultValue="+234"
+                    InputProps={{ inputProps: { pattern: '\\+\\d{1,3}' } }}
                     sx={{
                       width: { lg: '400px', sm: '300px', xs: '300px' },
-                      height: '150px',
-                      mt: '-5rem',
+                      height: '100px',
                     }}
                   />
+                  <Typography
+                    // color="rgba(0, 0, 0, 0.75)"
+                    // ml="-1rem"
+                    mt={{ lg: '-2rem', sm: '-2rem', xs: '-2rem' }}
+                    fontSize={{ lg: '0.75rem', sm: '0.85rem', xs: '0.85rem' }}
+                    width={{ lg: '400px', sm: '300px', xs: '300px' }}
+                  >
+                    Next time you check out here or on other stores powered by
+                    Shopify, you’ll receive a code by text message to securely
+                    purchase with Shop Pay.
+                  </Typography>
+                  <Typography
+                    // color="rgba(0, 0, 0, 0.75)"
+                    mt={{ lg: '1rem', sm: '-1rem', xs: '1rem' }}
+                    fontSize={{ lg: '0.7rem', sm: '0.85rem', xs: '0.85rem' }}
+                    width={{ lg: '400px', sm: '300px', xs: '300px' }}
+                    color="grey"
+                  >
+                    By continuing, you agree to Shop Pay’s{' '}
+                    <Link
+                      to="/policies/privacy-policy"
+                      style={{ color: 'grey' }}
+                    >
+                      Privacy Policy{' '}
+                    </Link>
+                    and{' '}
+                    <Link
+                      to="/policies/terms-of-service"
+                      style={{ color: 'grey' }}
+                    >
+                      Terms of Service.
+                    </Link>
+                  </Typography>
                 </Stack>
               )}
-            </Stack>
-            <Typography
-              mt="1rem"
-              ml={{ lg: '-21.5rem', sm: '-13.5rem', xs: '-13.5rem' }}
-              fontSize={{ lg: '1rem', sm: '1rem', xs: '1rem' }}
-            >
-              Remember me
-            </Typography>
-            <Stack
-              display="flex"
-              flexDirection="row"
-              height="50px"
-              width={{ lg: '450px', sm: '350px', xs: '350px' }}
-              border="1px solid black"
-              mt="1rem"
-              alignItems="center"
-            >
-              <FormControlLabel
-                sx={{ ml: '1rem' }}
-                control={
-                  <Checkbox
-                    checked={savedChecked}
-                    onChange={handleSavedChecked}
-                  />
-                }
-              />
               <Typography
-                // color="rgba(0, 0, 0, 0.75)"
-                ml="-1rem"
-                mt="0.15rem"
-                fontSize={{ lg: '0.85rem', sm: '1rem', xs: '1rem' }}
+                fontSize={{ lg: '0.7rem', sm: '0.85rem', xs: '0.85rem' }}
+                width={{ lg: '450px', sm: '350px', xs: '350px' }}
+                color="grey"
+                mt="2rem"
               >
-                Save my information for faster checkout
+                By clicking below and completing your order, you agree to
+                purchase your item(s) from Global-e as merchant of record for
+                this transaction, on Global-e's and . Global-e is an
+                international fulfilment service provider to MrBeast.store
               </Typography>
-            </Stack>
+              <Stack
+                width={{ lg: '450px', sm: '350px', xs: '350px' }}
+                mt="2rem"
+              >
+                <button
+                  style={{
+                    border: 'none',
+                    backgroundColor: '#e74683',
+                    padding: '1rem',
+                    borderRadius: '6px',
+                  }}
+                  type="submit"
+                >
+                  <p
+                    style={{
+                      color: 'white',
+                      fontSize: '1rem',
+                    }}
+                  >
+                    Pay now
+                  </p>
+                </button>
+              </Stack>
+            </form>
           </Stack>
         </Stack>
         <Stack
