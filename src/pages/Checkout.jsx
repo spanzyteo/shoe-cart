@@ -190,7 +190,6 @@ const Checkout = () => {
         width="100%"
         height="120px"
         borderBottom="1px solid grey"
-        position="relative"
       >
         <Stack
           display="flex"
@@ -215,6 +214,7 @@ const Checkout = () => {
         display="flex"
         flexDirection={{ lg: 'row', sm: 'column', xs: 'column' }}
         alignItems={{ lg: 'normal', sm: 'center', xs: 'center' }}
+        position="relative"
       >
         <Stack display="flex" flexDirection="column" width="50%">
           <Stack
@@ -479,7 +479,6 @@ const Checkout = () => {
                   sx={{
                     width: { lg: '130px', sm: '100px', xs: '100px' },
                     height: '150px',
-                    ml: '-2rem',
                   }}
                 />
               </Stack>
@@ -551,9 +550,9 @@ const Checkout = () => {
                       to="/policies/privacy-policy"
                       style={{ color: 'rgba(0, 0, 0, 0.56)' }}
                     >
-                      Privacy Policy
+                      Privacy Policy{' '}
                     </Link>
-                    and
+                    and{' '}
                     <Link
                       to="/policies/terms-of-service"
                       style={{ color: 'rgba(0, 0, 0, 0.56)' }}
@@ -923,7 +922,6 @@ const Checkout = () => {
               </Stack>
               <Typography
                 mt="1rem"
-                ml={{ lg: '-21.5rem', sm: '-13.5rem', xs: '-13.5rem' }}
                 fontSize={{ lg: '1rem', sm: '1rem', xs: '1rem' }}
               >
                 Remember me
@@ -938,7 +936,7 @@ const Checkout = () => {
                 alignItems="center"
               >
                 <FormControlLabel
-                  sx={{ ml: '1rem' }}
+                  sx={{ ml: { lg: '1rem', sm: '0rem', xs: '0rem' } }}
                   control={
                     <Checkbox
                       checked={savedChecked}
@@ -951,6 +949,7 @@ const Checkout = () => {
                   ml="-1rem"
                   mt="0.15rem"
                   fontSize={{ lg: '0.85rem', sm: '1rem', xs: '1rem' }}
+                  whiteSpace="nowrap"
                 >
                   Save my information for faster checkout
                 </Typography>
@@ -1018,6 +1017,7 @@ const Checkout = () => {
                 width={{ lg: '450px', sm: '350px', xs: '350px' }}
                 color="grey"
                 mt="2rem"
+                display={{ lg: 'block', sm: 'none', xs: 'none' }}
               >
                 By clicking below and completing your order, you agree to
                 purchase your item(s) from Global-e as merchant of record for
@@ -1027,6 +1027,7 @@ const Checkout = () => {
               <Stack
                 width={{ lg: '450px', sm: '350px', xs: '350px' }}
                 mt="2rem"
+                display={{ lg: 'block', sm: 'none', xs: 'none' }}
               >
                 <button
                   style={{
@@ -1034,6 +1035,7 @@ const Checkout = () => {
                     backgroundColor: '#e74683',
                     padding: '1rem',
                     borderRadius: '6px',
+                    width: '450px',
                   }}
                   type="submit"
                 >
@@ -1048,18 +1050,72 @@ const Checkout = () => {
                 </button>
               </Stack>
             </form>
+            <Stack
+              display={{ lg: 'block', sm: 'none', xs: 'none' }}
+              mt="2rem"
+              height="40px"
+              width="100%"
+              borderBottom="1px solid gray"
+              marginBottom="2rem"
+            ></Stack>
+            <Stack
+              display={{ lg: 'flex', sm: 'none', xs: 'none' }}
+              flexDirection="row"
+              alignItems="center"
+              gap={1}
+              marginBottom="1rem"
+            >
+              <Link to="/policies/refund-policy">
+                <Typography color="rgba(0, 0, 0, 0.75)" fontSize="0.8rem">
+                  Refund Policy
+                </Typography>
+              </Link>
+              <Link to="/policies/shipping-policy">
+                <Typography color="rgba(0, 0, 0, 0.75)" fontSize="0.8rem">
+                  Shipping Policy
+                </Typography>
+              </Link>
+              <Link to="/policies/privacy-policy">
+                <Typography color="rgba(0, 0, 0, 0.75)" fontSize="0.8rem">
+                  Privacy Policy
+                </Typography>
+              </Link>
+              <Link to="/policies/terms-of-service">
+                <Typography color="rgba(0, 0, 0, 0.75)" fontSize="0.8rem">
+                  Terms Of Service
+                </Typography>
+              </Link>
+              <Link to="/policies/contact-information">
+                <Typography color="rgba(0, 0, 0, 0.75)" fontSize="0.8rem">
+                  Contact Information
+                </Typography>
+              </Link>
+            </Stack>
           </Stack>
         </Stack>
         <Stack
-          display="flex"
+          display="block"
           flexDirection="column"
           width="50%"
           bgcolor={{ lg: 'rgb(214, 214, 214)', sm: 'none', xs: 'none' }}
           borderLeft={{ lg: '1px solid grey', sm: 'none', xs: 'none' }}
           position="sticky"
-          top="120px"
-          height="110vh"
-        ></Stack>
+          top="0px"
+          bottom="auto"
+          right="auto"
+          style={
+            {
+              // position: 'relative',
+              // maxHeight: 'calc(100vh - navbarHeight)',
+              // overflowY: 'auto',
+            }
+          }
+          // style={{ overflowY: 'auto', maxHeight: '100vh' }}
+          // height="110vh"
+          zIndex={1}
+        >
+          this
+        </Stack>
       </Stack>
     </Box>
   )
