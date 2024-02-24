@@ -26,6 +26,7 @@ import ResellerPolicy from './components/pages/ResellerPolicy'
 import SizeDetails from './components/pages/SizeDetails'
 import DigitalGiftCard from './components/gift-card/DigitalGiftCard'
 import Checkout from './pages/Checkout'
+import Product from './components/Product'
 
 const App = () => {
   const { state } = useCart()
@@ -91,6 +92,7 @@ const App = () => {
               element={<DigitalGiftCard />}
             />
             <Route path="/checkout" element={<Checkout />} />
+            <Route path="/product/:id" element={<Product />} />
           </Routes>
           {!isCheckoutPage && <Footer />}
         </Box>

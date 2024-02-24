@@ -1,6 +1,7 @@
 import { Stack, Box, Typography } from '@mui/material'
 import { trendingItems } from '../utils/trendingItems'
 import { Card, CardMedia } from '@mui/material'
+import { Link } from 'react-router-dom'
 const TrendingItems = () => {
   return (
     <Box>
@@ -28,17 +29,19 @@ const TrendingItems = () => {
                   height: '400px',
                 }}
               >
-                <CardMedia
-                  component="img"
-                  className="trending-shoe"
-                  image={item.image}
-                  alt="trending-shoe"
-                  sx={{
-                    transition: 'transform 0.3s ease',
-                    ':hover': { transform: 'scale(1.2)' },
-                    cursor: 'pointer',
-                  }}
-                />
+                <Link to={`/product/${item.id}`}>
+                  <CardMedia
+                    component="img"
+                    className="trending-shoe"
+                    image={item.image}
+                    alt="trending-shoe"
+                    sx={{
+                      transition: 'transform 0.3s ease',
+                      ':hover': { transform: 'scale(1.2)' },
+                      cursor: 'pointer',
+                    }}
+                  />
+                </Link>
               </Card>
               <Stack sx={{ ml: '7px' }}>
                 <Typography fontSize="1.1rem" fontWeight={500}>

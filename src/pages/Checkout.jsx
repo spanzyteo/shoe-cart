@@ -1100,16 +1100,10 @@ const Checkout = () => {
           bgcolor={{ lg: 'rgb(214, 214, 214)', sm: 'none', xs: 'none' }}
           borderLeft={{ lg: '1px solid grey', sm: 'none', xs: 'none' }}
           position="sticky"
-          top="0px"
-          bottom="auto"
-          right="auto"
-          style={
-            {
-              // position: 'relative',
-              // maxHeight: 'calc(100vh - navbarHeight)',
-              // overflowY: 'auto',
-            }
-          }
+          top={0}
+          bottom={0}
+          right={0}
+          // mt="5rem"
           // style={{ overflowY: 'auto', maxHeight: '100vh' }}
           // height="110vh"
           zIndex={1}
