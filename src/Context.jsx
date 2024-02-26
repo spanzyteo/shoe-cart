@@ -12,17 +12,73 @@ import femaleImage3 from './images/female-3.jpg'
 import femaleImage4 from './images/female-4.jpg'
 
 const data = [
-  { image: imageThumbnail1, count: 0, id: 0, gender: 'male' },
-  { image: imageThumbnail2, count: 0, id: 1, gender: 'male' },
-  { image: imageThumbnail3, count: 0, id: 2, gender: 'male' },
-  { image: imageThumbnail4, count: 0, id: 3, gender: 'male' },
+  {
+    image: imageThumbnail1,
+    count: 0,
+    id: 0,
+    gender: 'male',
+    brand: 'Reebok Club C 85',
+    sizes: 'XXS/12',
+  },
+  {
+    image: imageThumbnail2,
+    count: 0,
+    id: 1,
+    gender: 'male',
+    brand: 'New Balance 990',
+    sizes: 'XS/14',
+  },
+  {
+    image: imageThumbnail3,
+    count: 0,
+    id: 2,
+    gender: 'male',
+    brand: 'Vans Sk8-Hi',
+    sizes: 'XXS/12',
+  },
+  {
+    image: imageThumbnail4,
+    count: 0,
+    id: 3,
+    gender: 'male',
+    brand: 'Converse Jack Purcell',
+    sizes: 'XXS/12',
+  },
 ]
 
 const femaleData = [
-  { image: femaleImage1, count: 0, id: 0, gender: 'female' },
-  { image: femaleImage2, count: 0, id: 1, gender: 'female' },
-  { image: femaleImage3, count: 0, id: 2, gender: 'female' },
-  { image: femaleImage4, count: 0, id: 3, gender: 'female' },
+  {
+    image: femaleImage1,
+    count: 0,
+    id: 0,
+    gender: 'female',
+    brand: 'Reebok Freestyle Hi',
+    sizes: 'XXS/12',
+  },
+  {
+    image: femaleImage2,
+    count: 0,
+    id: 1,
+    gender: 'female',
+    brand: 'Vans Authentic',
+    sizes: 'XS/14',
+  },
+  {
+    image: femaleImage3,
+    count: 0,
+    id: 2,
+    gender: 'female',
+    brand: 'Converse Chuck Taylor All Star Lift',
+    sizes: 'XS/14',
+  },
+  {
+    image: femaleImage4,
+    count: 0,
+    id: 3,
+    gender: 'female',
+    brand: 'Puma Cali',
+    sizes: 'XXS/12',
+  },
 ]
 
 const cartData = [

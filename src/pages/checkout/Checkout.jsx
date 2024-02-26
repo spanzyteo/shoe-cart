@@ -11,19 +11,20 @@ import { useState } from 'react'
 import Checkbox from '@mui/material/Checkbox'
 import { countries } from 'countries-list'
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material'
-import { nigerianStates } from '../utils/trendingItems'
+import { nigerianStates } from '../../utils/trendingItems'
 import CreditCardIcon from '@mui/icons-material/CreditCard'
+import CheckoutCartItems from './CheckoutCartItems'
 
-import creditCard1 from '../images/credit-card-1.png'
-import creditCard2 from '../images/credit-card-2.webp'
-import creditCard3 from '../images/credit-card-3.jpg'
-import creditCard4 from '../images/credit-card-4.webp'
-import creditCard5 from '../images/credit-card-5.png'
-import creditCard6 from '../images/credit-card-6.png'
-import creditCard7 from '../images/credit-card-7.png'
-import creditCard8 from '../images/credit-card-8.png'
-import creditCard9 from '../images/credit-card-9.png'
-import creditCard10 from '../images/credit-card-10.png'
+import creditCard1 from '../../images/credit-card-1.png'
+import creditCard2 from '../../images/credit-card-2.webp'
+import creditCard3 from '../../images/credit-card-3.jpg'
+import creditCard4 from '../../images/credit-card-4.webp'
+import creditCard5 from '../../images/credit-card-5.png'
+import creditCard6 from '../../images/credit-card-6.png'
+import creditCard7 from '../../images/credit-card-7.png'
+import creditCard8 from '../../images/credit-card-8.png'
+import creditCard9 from '../../images/credit-card-9.png'
+import creditCard10 from '../../images/credit-card-10.png'
 
 const formatCardNumber = (input) => {
   const digitsOnly = input.replace(/\D/g, '')
@@ -1093,23 +1094,7 @@ const Checkout = () => {
             </Stack>
           </Stack>
         </Stack>
-        <Stack
-          display="block"
-          flexDirection="column"
-          width="50%"
-          bgcolor={{ lg: 'rgb(214, 214, 214)', sm: 'none', xs: 'none' }}
-          borderLeft={{ lg: '1px solid grey', sm: 'none', xs: 'none' }}
-          position="sticky"
-          top={0}
-          bottom={0}
-          right={0}
-          // mt="5rem"
-          // style={{ overflowY: 'auto', maxHeight: '100vh' }}
-          // height="110vh"
-          zIndex={1}
-        >
-          this
-        </Stack>
+        <CheckoutCartItems />
       </Stack>
     </Box>
   )

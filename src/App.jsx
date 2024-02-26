@@ -25,8 +25,8 @@ import Faq from './components/pages/Faq'
 import ResellerPolicy from './components/pages/ResellerPolicy'
 import SizeDetails from './components/pages/SizeDetails'
 import DigitalGiftCard from './components/gift-card/DigitalGiftCard'
-import Checkout from './pages/Checkout'
 import Product from './components/Product'
+import Checkout from './pages/checkout/Checkout'
 
 const App = () => {
   const { state } = useCart()
