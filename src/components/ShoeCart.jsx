@@ -15,6 +15,11 @@ const ShoeCart = () => {
       payload: { id, gender },
     })
   }
+  const totalPrice = () => {
+    dispatch({
+      type: 'SUM_TOTAL_PRICE',
+    })
+  }
   useEffect(() => {}, [state.cartItems])
 
   return (
@@ -103,6 +108,9 @@ const ShoeCart = () => {
                   <Stack>
                     <Link to="/checkout">
                       <Button
+                        onClick={() => {
+                          totalPrice()
+                        }}
                         variant="contained"
                         color="error"
                         sx={{

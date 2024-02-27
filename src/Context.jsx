@@ -19,6 +19,7 @@ const data = [
     gender: 'male',
     brand: 'Reebok Club C 85',
     sizes: 'XXS/12',
+    price: 54000,
   },
   {
     image: imageThumbnail2,
@@ -27,6 +28,7 @@ const data = [
     gender: 'male',
     brand: 'New Balance 990',
     sizes: 'XS/14',
+    price: 43000,
   },
   {
     image: imageThumbnail3,
@@ -35,6 +37,7 @@ const data = [
     gender: 'male',
     brand: 'Vans Sk8-Hi',
     sizes: 'XXS/12',
+    price: 48000,
   },
   {
     image: imageThumbnail4,
@@ -43,6 +46,7 @@ const data = [
     gender: 'male',
     brand: 'Converse Jack Purcell',
     sizes: 'XXS/12',
+    price: 34000,
   },
 ]
 
@@ -54,6 +58,7 @@ const femaleData = [
     gender: 'female',
     brand: 'Reebok Freestyle Hi',
     sizes: 'XXS/12',
+    price: 76000,
   },
   {
     image: femaleImage2,
@@ -62,6 +67,7 @@ const femaleData = [
     gender: 'female',
     brand: 'Vans Authentic',
     sizes: 'XS/14',
+    price: 49000,
   },
   {
     image: femaleImage3,
@@ -70,6 +76,7 @@ const femaleData = [
     gender: 'female',
     brand: 'Converse Chuck Taylor All Star Lift',
     sizes: 'XS/14',
+    price: 94000,
   },
   {
     image: femaleImage4,
@@ -78,6 +85,7 @@ const femaleData = [
     gender: 'female',
     brand: 'Puma Cali',
     sizes: 'XXS/12',
+    price: 62000,
   },
 ]
 
@@ -101,6 +109,7 @@ const initialState = {
   imageIndex: null,
   cartItems: [],
   isOpen: false,
+  totalPrice: 0,
 }
 
 const CartContext = createContext()
@@ -238,6 +247,19 @@ const cartReducer = (state, action) => {
         cartValue: updatedCartValue,
       }
     }
+
+    case 'SUM_TOTAL_PRICE': {
+      let updatedPrice = state.cartItems.reduce((total, item) => {
+        total += item.price
+        return total
+      }, 0)
+
+      return {
+        ...state,
+        totalPrice: updatedPrice,
+      }
+    }
+
     case 'ADD_ITEMS': {
       return { ...state, cartItems: [...state.cartItems, action.payload] }
     }
