@@ -3,6 +3,8 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { useCart } from '../../Context'
 
+import image from '../../images/govixid.svg'
+
 const CheckoutCartItems = () => {
   const { scrollY } = useScroll()
   const yRange = useTransform(scrollY, [0, 0], [0, 0])
@@ -58,7 +60,7 @@ const CheckoutCartItems = () => {
             zIndex: 1,
             y: yRange,
             backgroundColor: 'rgb(214, 214, 214)',
-            // marginTop: '-6rem',
+            overflowY: 'auto',
           }}
         >
           {filteredCart.length > 0 && (
@@ -72,7 +74,7 @@ const CheckoutCartItems = () => {
                   justifyContent="space-between"
                   mt="2rem"
                   ml="2rem"
-                  gap={2}
+                  // gap={}
                 >
                   <Stack display="flex" flexDirection="row" gap={1}>
                     <img
@@ -140,7 +142,13 @@ const CheckoutCartItems = () => {
               </Stack>
             </form>
           </Stack>
-          <Stack display="flex" flexDirection="column" mt="2rem" ml="2rem">
+          <Stack
+            display="flex"
+            flexDirection="column"
+            mt="2rem"
+            ml="2rem"
+            gap={1}
+          >
             <Stack
               display="flex"
               flexDirection="row"
@@ -151,6 +159,64 @@ const CheckoutCartItems = () => {
                 ₦{state.totalPrice.toFixed(2)}
               </Typography>
             </Stack>
+            <Stack
+              display="flex"
+              flexDirection="row"
+              justifyContent="space-between"
+            >
+              <Typography>Shipping</Typography>
+              <Typography
+                mr="7rem"
+                fontSize="0.8rem"
+                color="rgba(0, 0, 0, 0.75)"
+              >
+                Enter shipping address
+              </Typography>
+            </Stack>
+            <Stack
+              display="flex"
+              flexDirection="row"
+              justifyContent="space-between"
+            >
+              <Typography>Total</Typography>
+              <Typography fontSize="1.7rem" mr="7rem">
+                <span
+                  style={{ fontSize: '0.8rem', color: 'rgba(0, 0, 0, 0.75)' }}
+                >
+                  NGN
+                </span>
+                {` `}₦{state.totalPrice.toFixed(2)}
+              </Typography>
+            </Stack>
+          </Stack>
+          <Stack
+            display="flex"
+            flexDirection="row"
+            alignItems="center"
+            height="60px"
+            width="420px"
+            border="1px solid grey"
+            ml="2rem"
+            mt="1rem"
+          >
+            <img
+              style={{
+                marginLeft: '0.5rem',
+                borderRadius: '6px',
+                height: '45px',
+                width: '50px',
+              }}
+              src={image}
+              alt="image"
+            />
+            <Typography
+              ml="0.5rem"
+              color="rgba(0, 0, 0, 0.75)"
+              fontSize="0.97rem"
+            >
+              Discount available for Military, First Responders, Medical Workers
+              and Teachers
+            </Typography>
           </Stack>
         </motion.div>
       )}
