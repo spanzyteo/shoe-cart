@@ -2,6 +2,7 @@ import { Box, Button, Stack, TextField, Typography } from '@mui/material'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { useCart } from '../../Context'
+import { Link } from 'react-router-dom'
 
 import image from '../../images/govixid.svg'
 import upArrow from '../../images/up-arrow-icon.png'
@@ -433,6 +434,77 @@ const CheckoutCartItems = ({ handleSubmit }) => {
                 Pay now
               </p>
             </button>
+          </Stack>
+          <Stack
+            display="flex"
+            flexDirection="row"
+            alignItems="center"
+            height="60px"
+            width="370px"
+            border="1px solid grey"
+            mt="1rem"
+          >
+            <img
+              style={{
+                marginLeft: '0.5rem',
+                borderRadius: '6px',
+                height: '45px',
+                width: '50px',
+              }}
+              src={image}
+              alt="image"
+            />
+            <Typography
+              ml="0.5rem"
+              color="rgba(0, 0, 0, 0.75)"
+              fontSize="0.94rem"
+            >
+              Discount available for Military, First Responders, Medical Workers
+              and Teachers
+            </Typography>
+          </Stack>
+          <Stack
+            width="370px"
+            height="30px"
+            borderTop="1px solid grey"
+            mt="2rem"
+          ></Stack>
+          <Stack
+            display="flex"
+            flexDirection="row"
+            alignItems="center"
+            gap={1}
+            marginBottom="1rem"
+            width="370px"
+            sx={{ whiteSpace: 'nowrap' }}
+          >
+            <Link to="/policies/refund-policy">
+              <Typography color="rgba(0, 0, 0, 0.75)" fontSize="0.8rem">
+                Refund Policy
+              </Typography>
+            </Link>
+            <Link to="/policies/shipping-policy">
+              <Typography color="rgba(0, 0, 0, 0.75)" fontSize="0.8rem">
+                Shipping Policy
+              </Typography>
+            </Link>
+            <Link to="/policies/privacy-policy">
+              <Typography color="rgba(0, 0, 0, 0.75)" fontSize="0.8rem">
+                Privacy Policy
+              </Typography>
+            </Link>
+            <Link to="/policies/terms-of-service">
+              <Typography color="rgba(0, 0, 0, 0.75)" fontSize="0.8rem">
+                Terms Of Service
+              </Typography>
+            </Link>
+          </Stack>
+          <Stack display="flex" mt="-0.5rem" mb="1rem">
+            <Link to="/policies/contact-information">
+              <Typography color="rgba(0, 0, 0, 0.75)" fontSize="0.8rem">
+                Contact Information
+              </Typography>
+            </Link>
           </Stack>
         </>
       )}
