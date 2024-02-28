@@ -991,7 +991,7 @@ const Checkout = () => {
                   </Typography>
                   <Typography
                     // color="rgba(0, 0, 0, 0.75)"
-                    mt={{ lg: '1rem', sm: '-1rem', xs: '1rem' }}
+                    mt={{ lg: '1rem', sm: '1rem', xs: '1rem' }}
                     fontSize={{ lg: '0.7rem', sm: '0.85rem', xs: '0.85rem' }}
                     width={{ lg: '400px', sm: '300px', xs: '300px' }}
                     color="grey"
