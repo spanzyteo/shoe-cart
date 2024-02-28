@@ -7,7 +7,7 @@ import image from '../../images/govixid.svg'
 import upArrow from '../../images/up-arrow-icon.png'
 import downArrow from '../../images/down-arrow-icon.png'
 
-const CheckoutCartItems = () => {
+const CheckoutCartItems = ({ handleSubmit }) => {
   const { scrollY } = useScroll()
   const yRange = useTransform(scrollY, [0, 0], [0, 0])
   const { state, dispatch } = useCart()
@@ -24,7 +24,7 @@ const CheckoutCartItems = () => {
     setInputValue(e.target.value)
   }
 
-  const handleSubmit = (e) => {
+  const handleText = (e) => {
     e.preventDefault()
   }
 
@@ -99,7 +99,7 @@ const CheckoutCartItems = () => {
             </>
           )}
           <Stack display="flex" mt="2rem" ml="2rem">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleText}>
               <Stack display="flex" flexDirection="row" gap={4}>
                 <TextField
                   type="text"
@@ -346,7 +346,7 @@ const CheckoutCartItems = () => {
                       color: '#46E850',
                     },
                     borderRadius: '9px',
-                    width: '60px',
+                    width: '80px',
                     height: '45px',
                     ':disabled': {
                       backgroundColor: 'rgb(214, 214, 214)',
@@ -403,8 +403,36 @@ const CheckoutCartItems = () => {
               By clicking below and completing your order, you agree to purchase
               your item(s) from Global-e as merchant of record for this
               transaction, on Global-e's and . Global-e is an international
-              fulfilment service provider to MrBeast.store
+              fulfilment service provider to Sneakers.store
             </Typography>
+          </Stack>
+          <Stack
+            mt="2rem"
+            display="flex"
+            alignItems="center"
+            sx={{ ':hover': { opacity: '0.7' }, ':active': { opacity: '0.4' } }}
+          >
+            <button
+              style={{
+                border: 'none',
+                backgroundColor: '#e74683',
+                padding: '1rem',
+                borderRadius: '6px',
+                width: '370px',
+                cursor: 'pointer',
+              }}
+              type="submit"
+              onClick={handleSubmit}
+            >
+              <p
+                style={{
+                  color: 'white',
+                  fontSize: '1rem',
+                }}
+              >
+                Pay now
+              </p>
+            </button>
           </Stack>
         </>
       )}

@@ -753,7 +753,8 @@ const Checkout = () => {
                   sx={{
                     width: { lg: '400px', sm: '300px', xs: '300px' },
                     height: '150px',
-                    mt: '0rem',
+                    mt: '1rem',
+                    mb: '0rem',
                   }}
                 />
                 <Stack
@@ -762,6 +763,7 @@ const Checkout = () => {
                   alignItems="center"
                   // mt="-6rem"
                   ml={{ lg: '-11rem', sm: '-3rem', xs: '-3rem' }}
+                  mt="-0.4rem"
                 >
                   <FormControlLabel
                     control={
@@ -1029,6 +1031,10 @@ const Checkout = () => {
                 width={{ lg: '450px', sm: '350px', xs: '350px' }}
                 mt="2rem"
                 display={{ lg: 'block', sm: 'none', xs: 'none' }}
+                sx={{
+                  ':hover': { opacity: '0.7' },
+                  ':active': { opacity: '0.4' },
+                }}
               >
                 <button
                   style={{
@@ -1037,6 +1043,7 @@ const Checkout = () => {
                     padding: '1rem',
                     borderRadius: '6px',
                     width: '450px',
+                    cursor: 'pointer',
                   }}
                   type="submit"
                 >
@@ -1094,7 +1101,7 @@ const Checkout = () => {
             </Stack>
           </Stack>
         </Stack>
-        <CheckoutCartItems />
+        <CheckoutCartItems handleSubmit={handleSubmit} />
       </Stack>
     </Box>
   )
