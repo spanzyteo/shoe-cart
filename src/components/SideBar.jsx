@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Stack, Typography, Box } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 import closeIcon from '../images/icon-close.svg'
 
@@ -10,36 +11,93 @@ const SideBar = ({ isSideBarOpen, toggleSideBar }) => {
       direction="column"
       display={{ lg: 'none', sm: 'flex', xs: 'flex' }}
     >
-      <Stack sx={{ ml: '10px' }} gap={3} p={3}>
-        <img
-          style={{
-            height: '15px',
-            width: '15px',
-            marginTop: '10px',
-            marginRight: '14px',
-            cursor: 'pointer',
-            marginBottom: '28px',
-          }}
-          src={closeIcon}
-          alt="delete-icon"
-          onClick={toggleSideBar}
-        />
-
-        <Typography fontWeight={700} fontSize={16}>
-          Collections
-        </Typography>
-        <Typography fontWeight={700} fontSize={16}>
-          Men
-        </Typography>
-        <Typography fontWeight={700} fontSize={16}>
-          Women
-        </Typography>
-        <Typography fontWeight={700} fontSize={16}>
-          About
-        </Typography>
-        <Typography fontWeight={700} fontSize={16}>
-          Contact
-        </Typography>
+      <Stack sx={{ ml: '0px' }} gap={3} p={3} mt="0.5rem">
+        <Stack
+          width="123%"
+          height="40px"
+          borderTop="1px solid black"
+          borderBottom="1px solid black"
+          ml="-1.5rem"
+        >
+          <img
+            style={{
+              height: '15px',
+              width: '15px',
+              marginTop: '10px',
+              marginLeft: '1rem',
+              cursor: 'pointer',
+              marginBottom: '28px',
+            }}
+            src={closeIcon}
+            alt="delete-icon"
+            onClick={toggleSideBar}
+          />
+        </Stack>
+        <Stack
+          mt="-0.8rem"
+          width="123%"
+          height="30px"
+          borderBottom="1px solid black"
+          ml="-1.5rem"
+        >
+          <Link to="/collections" style={{ textDecoration: 'none' }}>
+            <Typography fontWeight={700} fontSize={16} color="black" ml="1rem">
+              Collections
+            </Typography>
+          </Link>
+        </Stack>
+        <Stack
+          mt="-0.8rem"
+          width="123%"
+          height="30px"
+          borderBottom="1px solid black"
+          ml="-1.5rem"
+        >
+          <Link to="/male" style={{ textDecoration: 'none' }}>
+            <Typography fontWeight={700} fontSize={16} color="black" ml="1rem">
+              Men
+            </Typography>
+          </Link>
+        </Stack>
+        <Stack
+          mt="-0.8rem"
+          width="123%"
+          height="30px"
+          borderBottom="1px solid black"
+          ml="-1.5rem"
+        >
+          <Link to="/female" style={{ textDecoration: 'none' }}>
+            <Typography fontWeight={700} fontSize={16} color="black" ml="1rem">
+              Women
+            </Typography>
+          </Link>
+        </Stack>
+        <Stack
+          mt="-0.8rem"
+          width="123%"
+          height="30px"
+          borderBottom="1px solid black"
+          ml="-1.5rem"
+        >
+          <Link to="/about" style={{ textDecoration: 'none' }}>
+            <Typography fontWeight={700} fontSize={16} color="black" ml="1rem">
+              About
+            </Typography>
+          </Link>
+        </Stack>
+        <Stack
+          mt="-0.8rem"
+          width="123%"
+          height="30px"
+          borderBottom="1px solid black"
+          ml="-1.5rem"
+        >
+          <Link to="/contact" style={{ textDecoration: 'none' }}>
+            <Typography fontWeight={700} fontSize={16} color="black" ml="1rem">
+              Contact
+            </Typography>
+          </Link>
+        </Stack>
       </Stack>
     </Stack>
   )
