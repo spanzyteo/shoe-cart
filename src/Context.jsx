@@ -11,6 +11,22 @@ import femaleImage2 from './images/female-2.jpg'
 import femaleImage3 from './images/female-3.jpg'
 import femaleImage4 from './images/female-4.jpg'
 
+import trending1 from './images/trending-1.jpg'
+import trending2 from './images/trending-2.jpg'
+import trending3 from './images/trending-3.jpg'
+import trending4 from './images/trending-4.jpg'
+import trending5 from './images/trending-5.jpg'
+import trending6 from './images/trending-6.jpg'
+import trending7 from './images/trending-7.jpg'
+import trending8 from './images/trending-8.jpg'
+import trending9 from './images/trending-9.jpg'
+import trending10 from './images/trending-10.jpg'
+
+import kids1 from './images/kids-1.jpg'
+import kids2 from './images/kids-2.jpg'
+import kids3 from './images/kids-3.jpg'
+import kids4 from './images/kids-5.jpg'
+
 const data = [
   {
     image: imageThumbnail1,
@@ -86,6 +102,118 @@ const femaleData = [
     brand: 'Puma Cali',
     sizes: 'XXS/12',
     price: 62000,
+  },
+]
+
+const trendingData = [
+  {
+    image: trending1,
+    name: 'malvestidaren',
+    price: '100,000',
+    count: 0,
+    id: 1,
+  },
+  {
+    image: trending2,
+    name: 'ryana-plomper',
+    price: '130,000',
+    count: 0,
+    id: 2,
+  },
+  {
+    image: trending3,
+    name: 'maksim-laryner',
+    price: '170,000',
+    count: 0,
+    id: 3,
+  },
+  {
+    image: trending4,
+    name: 'andress-jasomen',
+    price: '300,000',
+    count: 0,
+    id: 4,
+  },
+  {
+    image: trending5,
+    name: 'New Balance 990',
+    price: '120,000',
+    count: 0,
+    id: 5,
+  },
+  {
+    image: trending6,
+    name: 'Converse Jack Purcell',
+    price: '600,000',
+    count: 0,
+    id: 6,
+  },
+  {
+    image: trending7,
+    name: 'Asics Gel-Lyte III',
+    price: '200,000',
+    count: 0,
+    id: 7,
+  },
+  {
+    image: trending8,
+    name: 'Skechers Energy Lights',
+    price: '150,000',
+    count: 0,
+    id: 8,
+  },
+  {
+    image: trending9,
+    name: 'Adidas Superstar',
+    price: '250,000',
+    count: 0,
+    id: 9,
+  },
+  {
+    image: trending10,
+    name: 'Nike React Element',
+    price: '350,000',
+    count: 0,
+    id: 10,
+  },
+]
+
+const kidsData = [
+  {
+    image: kids1,
+    count: 0,
+    id: 0,
+    gender: 'kids',
+    brand: 'Asics Gel-Lyte GS',
+    sizes: 'XXS/12',
+    price: 51000,
+  },
+  {
+    image: kids2,
+    count: 0,
+    id: 1,
+    gender: 'kids',
+    brand: 'New Balance 574 Kids',
+    sizes: 'XXS/12',
+    price: 50000,
+  },
+  {
+    image: kids3,
+    count: 0,
+    id: 2,
+    gender: 'kids',
+    brand: 'Puma Suede Classic Kids',
+    sizes: 'XXS/12',
+    price: 32000,
+  },
+  {
+    image: kids4,
+    count: 0,
+    id: 3,
+    gender: 'kids',
+    brand: 'Reebok Classic Leather Kids',
+    sizes: 'XXS/12',
+    price: 28000,
   },
 ]
 
