@@ -2,15 +2,28 @@ import trending1 from '../images/trending-1.jpg'
 import trending2 from '../images/trending-2.jpg'
 import trending3 from '../images/trending-3.jpg'
 import trending4 from '../images/trending-4.jpg'
+import trending5 from '../images/trending-5.jpg'
+import trending6 from '../images/trending-6.jpg'
+import trending7 from '../images/trending-7.jpg'
+import trending8 from '../images/trending-8.jpg'
+import trending9 from '../images/trending-9.jpg'
+import trending10 from '../images/trending-10.jpg'
+
 import female1 from '../images/female-1.avif'
 import male1 from '../images/image-product-1.jpg'
 import kids1 from '../images/kids-1.jpg'
 
 export const trendingItems = [
-  { image: trending1, name: 'malvestida', price: 57, id: 1 },
-  { image: trending2, name: 'ryan-plomp', price: 82, id: 2 },
-  { image: trending3, name: 'maksim-laryn', price: 42, id: 3 },
-  { image: trending4, name: 'andress-jaso', price: 90, id: 4 },
+  { image: trending1, name: 'malvestida', price: '100,000', id: 1 },
+  { image: trending2, name: 'ryan-plomp', price: '130,000', id: 2 },
+  { image: trending3, name: 'maksim-laryn', price: '170,000', id: 3 },
+  { image: trending4, name: 'andress-jaso', price: '300,000', id: 4 },
+  { image: trending5, name: 'New Balance 990', price: '120,000', id: 5 },
+  { image: trending6, name: 'Converse Jack Purcell', price: '600,000', id: 6 },
+  { image: trending7, name: 'Asics Gel-Lyte III', price: '200,000', id: 7 },
+  { image: trending8, name: 'Skechers Energy Lights', price: '150,000', id: 8 },
+  { image: trending9, name: 'Adidas Superstar', price: '250,000', id: 9 },
+  { image: trending10, name: 'Nike React Element', price: '350,000', id: 10 },
 ]
 
 export const fallCollections = [

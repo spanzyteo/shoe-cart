@@ -2,7 +2,28 @@ import { Stack, Box, Typography } from '@mui/material'
 import { trendingItems } from '../utils/trendingItems'
 import { Card, CardMedia } from '@mui/material'
 import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+
 const TrendingItems = () => {
+  const [randomItems, setRandomItems] = useState([])
+
+  const shuffleArray = (array) => {
+    const shuffledArray = [...array]
+    for (let i = shuffledArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1))
+      ;[shuffledArray[i], shuffledArray[j]] = [
+        shuffledArray[j],
+        shuffledArray[i],
+      ]
+    }
+    return shuffledArray
+  }
+
+  useEffect(() => {
+    const shuffledItems = shuffleArray(trendingItems)
+    setRandomItems(shuffledItems.slice(0, 4))
+  }, [trendingItems])
+
   return (
     <Box>
       <Stack sx={{ mt: '1rem', ml: '1rem' }}>
@@ -18,7 +39,7 @@ const TrendingItems = () => {
         justifyContent="center"
         marginTop="1rem"
       >
-        {trendingItems.map((item) => (
+        {randomItems.map((item) => (
           <>
             <Stack key={item.id} width={{ lg: '100%', sm: '100%', xs: '100%' }}>
               <Card
@@ -48,7 +69,8 @@ const TrendingItems = () => {
                   {item.name}
                 </Typography>
                 <Typography fontSize="1.1rem" fontWeight={500}>
-                  ${item.price}
+                  ₦{` `}
+                  {item.price}
                 </Typography>
               </Stack>
             </Stack>
