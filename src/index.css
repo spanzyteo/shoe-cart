@@ -63,6 +63,26 @@ body {
   cursor: pointer;
 }
 
+.trending-shoe-thumbnail {
+  width: 50px;
+  height: auto;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.trending-shoe-thumbnail:hover {
+  opacity: 0.6;
+}
+
+.active-trending-shoe-thumbnail {
+  height: auto;
+  width: 50px;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0.6;
+  border: 2px solid hsl(26, 100%, 55%);
+}
+
 .shoe-thumbnail:hover {
   opacity: 0.6;
 }

@@ -25,7 +25,7 @@ import Faq from './components/pages/Faq'
 import ResellerPolicy from './components/pages/ResellerPolicy'
 import SizeDetails from './components/pages/SizeDetails'
 import DigitalGiftCard from './components/gift-card/DigitalGiftCard'
-import Product from './components/Product'
+import Product from './pages/Product'
 import Checkout from './pages/checkout/Checkout'
 
 const App = () => {

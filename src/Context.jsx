@@ -229,11 +229,15 @@ const initialState = {
   data,
   cartData,
   femaleData,
+  kidsData,
+  trendingData,
   cartValue: 0,
   showCartValue: false,
   showCartItems: false,
   selectedImage: 0,
   selectedImageFemale: 0,
+  selectedImageKids: 0,
+  selectedTrendingImage: 0,
   imageIndex: null,
   cartItems: [],
   isOpen: false,
@@ -249,6 +253,12 @@ const cartReducer = (state, action) => {
 
     case 'SET_SELECTED_IMAGE_FEMALE':
       return { ...state, selectedImageFemale: action.payload }
+
+    case 'SET_SELECTED_IMAGE_KIDS':
+      return { ...state, selectedImageKids: action.payload }
+
+    case 'SET_SELECTED_TRENDING_IMAGE':
+      return { ...state, selectedTrendingImage: action.payload }
 
     case 'INCREMENT': {
       return {
@@ -266,6 +276,28 @@ const cartReducer = (state, action) => {
         ...state,
         femaleData: state.femaleData.map((item) => {
           return item.id === state.selectedImageFemale
+            ? { ...item, count: item.count + 1 }
+            : item
+        }),
+      }
+    }
+
+    case 'INCREMENT_KIDS': {
+      return {
+        ...state,
+        kidsData: state.kidsData.map((item) => {
+          return item.id === state.selectedImageKids
+            ? { ...item, count: item.count + 1 }
+            : item
+        }),
+      }
+    }
+
+    case 'INCREMENT_TRENDING': {
+      return {
+        ...state,
+        trendingData: state.trendingData.map((item) => {
+          return item.id === state.selectedTrendingImage
             ? { ...item, count: item.count + 1 }
             : item
         }),
@@ -294,12 +326,40 @@ const cartReducer = (state, action) => {
       }
     }
 
+    case 'DECREMENT_KIDS': {
+      return {
+        ...state,
+        kidsData: state.kidsData.map((item) => {
+          return item.id === state.selectedImageKids
+            ? { ...item, count: item.count >= 1 ? item.count - 1 : 0 }
+            : item
+        }),
+      }
+    }
+
+    case 'DECREMENT_TRENDING': {
+      return {
+        ...state,
+        trendingData: state.trendingData.map((item) => {
+          return item.id === state.selectedTrendingImage
+            ? { ...item, count: item.count >= 1 ? item.count - 1 : 0 }
+            : item
+        }),
+      }
+    }
+
     case 'ADD_TO_CART': {
       const selectedItem =
         action.payload.gender === 'male'
           ? state.data.find((item) => item.id === state.selectedImage)
-          : state.femaleData.find(
+          : action.payload.gender === 'female'
+          ? state.femaleData.find(
               (item) => item.id === state.selectedImageFemale
+            )
+          : action.payload.gender === 'kids'
+          ? state.kidsData.find((item) => item.id === state.selectedImageKids)
+          : state.trendingData.find(
+              (item) => item.id === state.selectedTrendingImage
             )
 
       if (!selectedItem) {
@@ -344,6 +404,24 @@ const cartReducer = (state, action) => {
       }
     }
 
+    case 'NEXT_IMAGE_KIDS': {
+      return {
+        ...state,
+        selectedImageKids:
+          state.selectedImageKids === state.kidsData.length - 1
+            ? 0
+            : state.selectedImageKids + 1,
+      }
+    }
+
+    case 'NEXT_IMAGE_TRENDING': {
+      return {
+        ...state,
+        selectedTrendingImage:
+          state.selectedTrendingImage === state.trendingData.length,
+      }
+    }
+
     case 'PREVIOUS_IMAGE': {
       return {
         ...state,
@@ -361,6 +439,26 @@ const cartReducer = (state, action) => {
           state.selectedImageFemale === 0
             ? state.data.length - 1
             : state.selectedImageFemale - 1,
+      }
+    }
+
+    case 'PREVIOUS_IMAGE_KIDS': {
+      return {
+        ...state,
+        selectedImageKids:
+          state.selectedImageKids === 0
+            ? state.kidsData.length - 1
+            : state.selectedImageKids - 1,
+      }
+    }
+
+    case 'PREVIOUS_IMAGE_TRENDING': {
+      return {
+        ...state,
+        selectedTrendingImage:
+          state.selectedTrendingImage === 0
+            ? state.trendingData.length - 1
+            : state.selectedTrendingImage - 1,
       }
     }
 

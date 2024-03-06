@@ -47,7 +47,7 @@ const MenShoe = () => {
           justifyContent="center"
           gap={{ lg: '3rem' }}
         >
-          <Stack direction="column">
+          <Stack display="flex" flexDirection="column">
             <Stack className="slider">
               <img
                 className="shoe-image"
