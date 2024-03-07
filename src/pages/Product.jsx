@@ -1,3 +1,4 @@
+import { useContext, useState } from 'react'
 import { Box, Stack, Typography } from '@mui/material'
 import { trendingItems } from '../utils/trendingItems'
 import { useParams } from 'react-router-dom'
@@ -20,7 +21,6 @@ import trending8 from '../images/trending-8.jpg'
 import trending9 from '../images/trending-9.jpg'
 import trending10 from '../images/trending-10.jpg'
 import { useCart } from '../Context'
-import { useState } from 'react'
 
 const Product = ({ match }) => {
   const { id } = useParams()
@@ -57,9 +57,6 @@ const Product = ({ match }) => {
   const [currentIndex, setCurrentIndex] = useState(
     initialIndex >= 0 ? initialIndex : 0
   )
-
-  // const startIndex = Math.max(0, currentIndex - 2)
-  // // const endIndex = Math.min(startIndex + 5, state.trendingData.length - 1)
 
   const handleThumbnailClick = (itemId) => {
     const newIndex = state.trendingData.findIndex((item) => item.id === itemId)
@@ -107,19 +104,15 @@ const Product = ({ match }) => {
               />
             </Stack>
           </Stack>
-          <ScrollMenu>
-            <Stack
-              display={{ xs: 'none', lg: 'flex' }}
-              flexDirection="row"
-              sx={{ mt: '25px', overflowX: 'auto' }}
-              gap={3}
-              width="350px"
-              overflow="auto"
-              pl="5rem"
-              pr="0.5rem"
-              height="80px"
-              justifyContent="center"
-            >
+          <Stack
+            display="flex"
+            flexDirection="row"
+            width="350px"
+            mt="2rem"
+            gap={3}
+            sx={{ overflowX: 'auto' }}
+          >
+            <ScrollMenu>
               {state.trendingData.map((item) => (
                 <img
                   key={item.id}
@@ -133,8 +126,8 @@ const Product = ({ match }) => {
                   }
                 />
               ))}
-            </Stack>
-          </ScrollMenu>
+            </ScrollMenu>
+          </Stack>
         </Stack>
       </Stack>
     </Box>
