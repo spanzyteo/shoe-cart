@@ -1,24 +1,41 @@
 import React, { useState } from 'react'
 import { Stack, Typography, Button } from '@mui/material'
-import { useCart } from '../Context'
+import { useCart } from '../../Context'
 
-import plusIcon from '../images/icon-plus.svg'
-import minusIcon from '../images/icon-minus.svg'
-import cartIcon from '../images/icon-cart.svg'
+import plusIcon from '../../images/icon-plus.svg'
+import minusIcon from '../../images/icon-minus.svg'
+import cartIcon from '../../images/icon-cart.svg'
 
-const MenShoeDetails = () => {
+const ProductDetails = ({ currentIndex }) => {
   const { state, dispatch } = useCart()
 
-  const currentThumbnail = state.data.find(
-    (item) => item.id === state.selectedImage
+  const currentThumbnail = state.trendingData.find(
+    (item) => item.id === currentIndex
   )
 
+  //   const increaseCount = () => {
+  // state.trendingData.map((item) => {
+  //   if (item.id === currentIndex) {
+  // return { ...item, count: item.count + 1 }
+  //   }
+  //   return item
+  // })
+  //   }
+
+  //   const decreaseCount = () => {
+  // state.trendingData.map((item) => {
+  //   if (item.id === currentIndex)
+  // // return { ...item, count: item.count > 1 ? item.count - 1 : 0 }
+  //   return item
+  // })
+  //   }
+
   const increaseCount = () => {
-    dispatch({ type: 'INCREMENT' })
+    dispatch({ type: 'INCREMENT_TRENDING', payload: currentIndex })
   }
 
   const decreaseCount = () => {
-    dispatch({ type: 'DECREMENT' })
+    dispatch({ type: 'DECREMENT_TRENDING', payload: currentIndex })
   }
 
   const showValue = () => {
@@ -134,7 +151,7 @@ const MenShoeDetails = () => {
               showValue()
               dispatch({
                 type: 'ADD_TO_CART',
-                payload: { gender: 'male' },
+                payload: currentIndex,
               })
               updateCartValue()
             }}
@@ -164,4 +181,4 @@ const MenShoeDetails = () => {
   )
 }
 
-export default MenShoeDetails
+export default ProductDetails

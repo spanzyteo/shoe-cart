@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Stack, Typography, Button } from '@mui/material'
-import { useCart } from '../Context'
+import { useCart } from '../../Context'
 
-import plusIcon from '../images/icon-plus.svg'
-import minusIcon from '../images/icon-minus.svg'
-import cartIcon from '../images/icon-cart.svg'
+import plusIcon from '../../images/icon-plus.svg'
+import minusIcon from '../../images/icon-minus.svg'
+import cartIcon from '../../images/icon-cart.svg'
 
 const FemaleShoeDetails = () => {
   const { state, dispatch } = useCart()

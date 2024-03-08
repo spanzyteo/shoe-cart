@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { Stack, Box } from '@mui/material'
-import MenShoeDetails from '../components/MenShoeDetails'
+import MenShoeDetails from './MenShoeDetails'
 
-import nextIcon from '../images/icon-next.svg'
-import previousIcon from '../images/icon-previous.svg'
-import image1 from '../images/image-product-1.jpg'
-import image2 from '../images/image-product-2.jpg'
-import image3 from '../images/image-product-3.jpg'
-import image4 from '../images/image-product-4.jpg'
-import { useCart } from '../Context'
+import nextIcon from '../../images/icon-next.svg'
+import previousIcon from '../../images/icon-previous.svg'
+import image1 from '../../images/image-product-1.jpg'
+import image2 from '../../images/image-product-2.jpg'
+import image3 from '../../images/image-product-3.jpg'
+import image4 from '../../images/image-product-4.jpg'
+import { useCart } from '../../Context'
 
 const MenShoe = () => {
   const { state, dispatch } = useCart()

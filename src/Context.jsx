@@ -108,73 +108,93 @@ const femaleData = [
 const trendingData = [
   {
     image: trending1,
-    name: 'malvestidaren',
-    price: '100,000',
+    brand: 'malvestidaren',
+    sizes: 'XXS/12',
+    price: 100000,
     count: 0,
-    id: 1,
+    gender: 'trending',
+    id: 0,
   },
   {
     image: trending2,
-    name: 'ryana-plomper',
-    price: '130,000',
+    brand: 'ryana-plomper',
+    sizes: 'XS/14',
+    price: 130000,
     count: 0,
-    id: 2,
+    gender: 'trending',
+    id: 1,
   },
   {
     image: trending3,
-    name: 'maksim-laryner',
-    price: '170,000',
+    brand: 'maksim-laryner',
+    sizes: 'XS/14',
+    price: 170000,
     count: 0,
-    id: 3,
+    gender: 'trending',
+    id: 2,
   },
   {
     image: trending4,
-    name: 'andress-jasomen',
-    price: '300,000',
+    brand: 'andress-jasomen',
+    sizes: 'XS/14',
+    price: 300000,
     count: 0,
-    id: 4,
+    gender: 'trending',
+    id: 3,
   },
   {
     image: trending5,
-    name: 'New Balance 990',
-    price: '120,000',
+    brand: 'New Balance 990',
+    sizes: 'XXS/12',
+    price: 120000,
     count: 0,
-    id: 5,
+    gender: 'trending',
+    id: 4,
   },
   {
     image: trending6,
-    name: 'Converse Jack Purcell',
-    price: '600,000',
+    brand: 'Converse Jack Purcell',
+    sizes: 'XXS/12',
+    price: 600000,
     count: 0,
-    id: 6,
+    gender: 'trending',
+    id: 5,
   },
   {
     image: trending7,
-    name: 'Asics Gel-Lyte III',
-    price: '200,000',
+    brand: 'Asics Gel-Lyte III',
+    sizes: 'XS/14',
+    price: 200000,
     count: 0,
-    id: 7,
+    gender: 'trending',
+    id: 6,
   },
   {
     image: trending8,
-    name: 'Skechers Energy Lights',
-    price: '150,000',
+    brand: 'Skechers Energy Lights',
+    sizes: 'XS/14',
+    price: 150000,
     count: 0,
-    id: 8,
+    gender: 'trending',
+    id: 7,
   },
   {
     image: trending9,
-    name: 'Adidas Superstar',
-    price: '250,000',
+    brand: 'Adidas Superstar',
+    sizes: 'XXS/12',
+    price: 250000,
     count: 0,
-    id: 9,
+    gender: 'trending',
+    id: 8,
   },
   {
     image: trending10,
-    name: 'Nike React Element',
-    price: '350,000',
+    brand: 'Nike React Element',
+    sizes: 'XXS/12',
+    price: 350000,
     count: 0,
-    id: 10,
+    gender: 'trending',
+    id: 9,
   },
 ]
 
@@ -297,7 +317,7 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         trendingData: state.trendingData.map((item) => {
-          return item.id === state.selectedTrendingImage
+          return item.id === action.payload
             ? { ...item, count: item.count + 1 }
             : item
         }),
@@ -341,7 +361,7 @@ const cartReducer = (state, action) => {
       return {
         ...state,
         trendingData: state.trendingData.map((item) => {
-          return item.id === state.selectedTrendingImage
+          return item.id === action.payload
             ? { ...item, count: item.count >= 1 ? item.count - 1 : 0 }
             : item
         }),
@@ -358,9 +378,7 @@ const cartReducer = (state, action) => {
             )
           : action.payload.gender === 'kids'
           ? state.kidsData.find((item) => item.id === state.selectedImageKids)
-          : state.trendingData.find(
-              (item) => item.id === state.selectedTrendingImage
-            )
+          : state.trendingData.find((item) => item.id === action.payload)
 
       if (!selectedItem) {
         return state

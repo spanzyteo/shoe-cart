@@ -4,12 +4,12 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 export const Context = createContext()
 
 import NavBar from './components/NavBar'
-import MenShoe from './pages/MenShoe'
+import MenShoe from './pages/males/MenShoe'
 import SideBar from './components/SideBar'
 import { useCart } from './Context'
 import ShoeModal from './components/shoeModal'
 import Home from './pages/Home'
-import WomenShoe from './pages/WomenShoe'
+import WomenShoe from './pages/females/WomenShoe'
 import KidsShoe from './pages/KidsShoe'
 import Collection from './pages/Collection'
 import About from './pages/About'
@@ -25,7 +25,7 @@ import Faq from './components/pages/Faq'
 import ResellerPolicy from './components/pages/ResellerPolicy'
 import SizeDetails from './components/pages/SizeDetails'
 import DigitalGiftCard from './components/gift-card/DigitalGiftCard'
-import Product from './pages/Product'
+import Product from './pages/products/Product'
 import Checkout from './pages/checkout/Checkout'
 
 const App = () => {
