@@ -42,7 +42,7 @@ const SideBar = ({ isSideBarOpen, toggleSideBar }) => {
         >
           <Link to="/collections" style={{ textDecoration: 'none' }}>
             <Typography fontWeight={700} fontSize={16} color="black" ml="1rem">
-              Collections
+              COLLECTIONS
             </Typography>
           </Link>
         </Stack>
@@ -55,7 +55,7 @@ const SideBar = ({ isSideBarOpen, toggleSideBar }) => {
         >
           <Link to="/male" style={{ textDecoration: 'none' }}>
             <Typography fontWeight={700} fontSize={16} color="black" ml="1rem">
-              Men
+              MEN
             </Typography>
           </Link>
         </Stack>
@@ -68,7 +68,20 @@ const SideBar = ({ isSideBarOpen, toggleSideBar }) => {
         >
           <Link to="/female" style={{ textDecoration: 'none' }}>
             <Typography fontWeight={700} fontSize={16} color="black" ml="1rem">
-              Women
+              WOMEN
+            </Typography>
+          </Link>
+        </Stack>
+        <Stack
+          mt="-0.8rem"
+          width="123%"
+          height="30px"
+          borderBottom="1px solid black"
+          ml="-1.5rem"
+        >
+          <Link to="/kids" style={{ textDecoration: 'none' }}>
+            <Typography fontWeight={700} fontSize={16} color="black" ml="1rem">
+              KIDS
             </Typography>
           </Link>
         </Stack>
@@ -81,7 +94,7 @@ const SideBar = ({ isSideBarOpen, toggleSideBar }) => {
         >
           <Link to="/about" style={{ textDecoration: 'none' }}>
             <Typography fontWeight={700} fontSize={16} color="black" ml="1rem">
-              About
+              ABOUT
             </Typography>
           </Link>
         </Stack>
@@ -94,7 +107,7 @@ const SideBar = ({ isSideBarOpen, toggleSideBar }) => {
         >
           <Link to="/contact" style={{ textDecoration: 'none' }}>
             <Typography fontWeight={700} fontSize={16} color="black" ml="1rem">
-              Contact
+              CONTACT
             </Typography>
           </Link>
         </Stack>

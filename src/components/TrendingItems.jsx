@@ -1,4 +1,4 @@
-import { Stack, Box, Typography } from '@mui/material'
+import { Stack, Box, Typography, Skeleton } from '@mui/material'
 import { trendingItems } from '../utils/trendingItems'
 import { Card, CardMedia } from '@mui/material'
 import { Link } from 'react-router-dom'
@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 
 const TrendingItems = () => {
   const [randomItems, setRandomItems] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   const shuffleArray = (array) => {
     const shuffledArray = [...array]
@@ -23,6 +24,13 @@ const TrendingItems = () => {
     const shuffledItems = shuffleArray(trendingItems)
     setRandomItems(shuffledItems.slice(0, 4))
   }, [trendingItems])
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 3000)
+    return () => clearTimeout(timer)
+  }, [])
 
   return (
     <Box>
@@ -42,36 +50,78 @@ const TrendingItems = () => {
         {randomItems.map((item) => (
           <>
             <Stack key={item.id} width={{ lg: '100%', sm: '100%', xs: '100%' }}>
-              <Card
-                position="relative"
-                overflow="hidden"
-                sx={{
-                  borderRadius: { lg: '15px', sm: '0px', xs: '0px', md: '0px' },
-                  height: '400px',
-                }}
-              >
-                <Link to={`/product/${item.id}`}>
-                  <CardMedia
-                    component="img"
-                    className="trending-shoe"
-                    image={item.image}
-                    alt="trending-shoe"
+              {isLoading ? (
+                <Stack>
+                  <Skeleton
+                    animation="wave"
+                    variant="rectangle"
+                    height="400px"
+                    width="100%"
                     sx={{
-                      transition: 'transform 0.3s ease',
-                      ':hover': { transform: 'scale(1.2)' },
-                      cursor: 'pointer',
+                      borderRadius: {
+                        lg: '15px',
+                        sm: '0px',
+                        xs: '0px',
+                        md: '0px',
+                      },
                     }}
                   />
-                </Link>
-              </Card>
+                </Stack>
+              ) : (
+                <Card
+                  position="relative"
+                  overflow="hidden"
+                  sx={{
+                    borderRadius: {
+                      lg: '15px',
+                      sm: '0px',
+                      xs: '0px',
+                      md: '0px',
+                    },
+                    height: '400px',
+                  }}
+                >
+                  <Link to={`/product/${item.id}`}>
+                    <CardMedia
+                      component="img"
+                      className="trending-shoe"
+                      image={item.image}
+                      alt="trending-shoe"
+                      sx={{
+                        transition: 'transform 0.3s ease',
+                        ':hover': { transform: 'scale(1.2)' },
+                        cursor: 'pointer',
+                      }}
+                    />
+                  </Link>
+                </Card>
+              )}
               <Stack sx={{ ml: '7px' }}>
-                <Typography fontSize="1.1rem" fontWeight={500}>
-                  {item.name}
-                </Typography>
-                <Typography fontSize="1.1rem" fontWeight={500}>
-                  ₦{` `}
-                  {item.price}
-                </Typography>
+                {isLoading ? (
+                  <Skeleton
+                    animation="wave"
+                    width="70%"
+                    height={20}
+                    sx={{ mt: '0.6rem' }}
+                  />
+                ) : (
+                  <Typography fontSize="1.1rem" fontWeight={500}>
+                    {item.name}
+                  </Typography>
+                )}
+                {isLoading ? (
+                  <Skeleton
+                    animation="wave"
+                    width="40%"
+                    height={20}
+                    sx={{ mt: '0.6rem' }}
+                  />
+                ) : (
+                  <Typography fontSize="1.1rem" fontWeight={500}>
+                    ₦{` `}
+                    {item.price}
+                  </Typography>
+                )}
               </Stack>
             </Stack>
           </>

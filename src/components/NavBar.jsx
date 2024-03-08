@@ -115,6 +115,17 @@ const NavBar = ({ toggleSideBar }) => {
                 WOMEN
               </Link>
               <Link
+                to="/kids"
+                className="text-decoration"
+                style={
+                  isActive('/kids')
+                    ? activeStyle
+                    : { color: 'hsl(219, 9%, 45%)' }
+                }
+              >
+                KIDS
+              </Link>
+              <Link
                 to="/about"
                 className="text-decoration"
                 style={
