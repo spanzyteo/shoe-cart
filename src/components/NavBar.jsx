@@ -12,6 +12,14 @@ const NavBar = ({ toggleSideBar }) => {
   const { state, dispatch } = useCart()
   const location = useLocation()
 
+  const collectionRef = state.collectionRef
+
+  const handleScrollToCollection = () => {
+    if (collectionRef && collectionRef.current) {
+      collectionRef.current.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   const isActive = (path) => {
     return location.pathname === path
   }
@@ -82,7 +90,7 @@ const NavBar = ({ toggleSideBar }) => {
               sx={{ ml: '1rem', mt: '1rem' }}
             >
               <Link
-                to="/collection"
+                onClick={handleScrollToCollection}
                 className="text-decoration"
                 style={
                   isActive('/collection')
@@ -124,17 +132,6 @@ const NavBar = ({ toggleSideBar }) => {
                 }
               >
                 KIDS
-              </Link>
-              <Link
-                to="/about"
-                className="text-decoration"
-                style={
-                  isActive('/about')
-                    ? activeStyle
-                    : { color: 'hsl(219, 9%, 45%)' }
-                }
-              >
-                ABOUT
               </Link>
               <Link
                 to="/contact"

@@ -1,10 +1,24 @@
 import { Stack, Box, Typography } from '@mui/material'
 import { fallCollections } from '../utils/trendingItems'
 import { Card, CardMedia } from '@mui/material'
+import { useEffect, useRef } from 'react'
+import { useCart } from '../Context'
 
 const SneakersCollection = () => {
+  const collectionRef = useRef(null)
+  const { dispatch } = useCart()
+
+  useEffect(() => {
+    dispatch({ type: 'SET_COLLECTION_REF', payload: collectionRef })
+    if (location.state && location.state.scrollToCollection) {
+      const collectionElement = collectionRef.current
+      if (collectionElement) {
+        collectionElement.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
+  }, [collectionRef, dispatch, location])
   return (
-    <Box>
+    <Box ref={collectionRef}>
       <Stack sx={{ mt: '1rem', ml: '1rem' }}>
         <Typography fontWeight={700} fontSize="0.9rem">
           SNEAKERS COLLECTION

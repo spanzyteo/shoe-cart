@@ -262,6 +262,7 @@ const initialState = {
   cartItems: [],
   isOpen: false,
   totalPrice: 0,
+  collectionRef: null,
 }
 
 const CartContext = createContext()
@@ -524,6 +525,8 @@ const cartReducer = (state, action) => {
       return { ...state, isOpen: true }
     case 'CLOSE_MODAL':
       return { ...state, isOpen: false }
+    case 'SET_COLLECTION_REF':
+      return { ...state, collectionRef: action.payload }
     default:
       return state
   }
