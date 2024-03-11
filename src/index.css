@@ -212,6 +212,10 @@ body {
   text-decoration: underline;
 }
 
+.shop-now-button {
+  border-radius: 10px;
+}
+
 @keyframes scroll {
   0% {
     transform: translate(0, 0);
@@ -274,5 +278,8 @@ body {
     z-index: 999;
     /* background-color: #fff; */
     width: 100%;
+  }
+  .shop-now-button {
+    border-radius: 0px;
   }
 }

@@ -12,7 +12,6 @@ const NavBar = ({ toggleSideBar }) => {
   const { state, dispatch } = useCart()
   const location = useLocation()
   const [isScrolling, setIsScrolling] = useState(false)
-  // const [prevScrollTop, setPrevScrollTop] = useState(0)
 
   const collectionRef = state.collectionRef
 
@@ -47,7 +46,7 @@ const NavBar = ({ toggleSideBar }) => {
 
       timeoutId = setTimeout(() => {
         setIsScrolling(false)
-      }, 2000)
+      }, 1000)
     }
 
     window.addEventListener('scroll', handleScroll)

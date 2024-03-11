@@ -8,9 +8,19 @@ import ReviewMarque from '../components/ReviewMarque'
 import Review from '../components/Review'
 import ContactMarquee from '../components/ContactMarquee'
 import { useEffect, useState } from 'react'
+import { useCart } from '../Context'
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true)
+  const { state } = useCart()
+
+  const collectionRef = state.collectionRef
+
+  const handleScrollToCollection = () => {
+    if (collectionRef && collectionRef.current) {
+      collectionRef.current.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -150,23 +160,20 @@ const Home = () => {
             </>
           )}
         </Stack>
-        <Stack
-          width="100%"
-          height="2rem"
-          bgcolor="#AEA141"
-          display="flex"
-          alignItems="center"
-          justifyContent="center"
-          sx={{
-            mt: '1.5rem',
+        <button
+          style={{
+            width: '100%',
+            height: '2rem',
+            backgroundColor: '#AEA141',
+            marginTop: '1rem',
             cursor: 'pointer',
-            ':hover': { opacity: 0.9, transition: 'opacity 0.3s ease-in-out' },
-            ':active': { opacity: 0.4, transition: 'opacity 0.3s ease-in-out' },
+            border: 'none',
           }}
-          borderRadius={{ sm: '0px', lg: '10px' }}
+          className="shop-now-button"
+          onClick={handleScrollToCollection}
         >
-          <Typography fontWeight={700}>SHOP NOW</Typography>
-        </Stack>
+          <p style={{ fontWeight: '700', fontSize: '1rem' }}>SHOP NOW</p>
+        </button>
         <TrendingItems />
         <SneakersCollection />
         <Marquee />
