@@ -266,4 +266,13 @@ body {
     width: 400px;
     margin-right: 1rem;
   }
+  .navbar-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    /* background-color: #fff; */
+    width: 100%;
+  }
 }

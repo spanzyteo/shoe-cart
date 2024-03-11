@@ -3,10 +3,12 @@ import { fallCollections } from '../utils/trendingItems'
 import { Card, CardMedia } from '@mui/material'
 import { useEffect, useRef } from 'react'
 import { useCart } from '../Context'
+import { useLocation } from 'react-router-dom'
 
 const SneakersCollection = () => {
   const collectionRef = useRef(null)
-  const { dispatch } = useCart()
+  const { state, dispatch } = useCart()
+  const location = useLocation()
 
   useEffect(() => {
     dispatch({ type: 'SET_COLLECTION_REF', payload: collectionRef })

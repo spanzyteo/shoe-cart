@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef } from 'react'
 import { Stack, Typography, Box } from '@mui/material'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 
 import closeIcon from '../images/icon-close.svg'
 import { useCart } from '../Context'
@@ -9,20 +9,32 @@ const SideBar = ({ isSideBarOpen, toggleSideBar }) => {
   const { state } = useCart()
   const sidebarRef = useRef(null)
   const navigate = useNavigate()
+  const location = useLocation()
 
   const collectionRef = state.collectionRef
 
-  const handleScrollToCollection = () => {
+  const handleScrollToCollection = useCallback(() => {
     if (collectionRef && collectionRef.current) {
       collectionRef.current.scrollIntoView({ behavior: 'smooth' })
       toggleSideBar()
     }
-  }
+  }, [collectionRef, toggleSideBar])
 
-  const handleCollectionLinkClick = () => {
-    navigate('/')
-    setTimeout(handleScrollToCollection, 300)
-  }
+  useEffect(() => {
+    const { state: locationState } = location
+    if (locationState && locationState.scrollToCollection) {
+      handleScrollToCollection()
+    }
+  }, [location, handleScrollToCollection])
+
+  const handleCollectionLinkClick = useCallback(() => {
+    if (location.pathname !== '/') {
+      navigate('/', { state: { scrollToCollection: true } })
+    } else {
+      handleScrollToCollection()
+    }
+  }, [navigate, location.pathname, handleScrollToCollection])
+
   return (
     <div ref={sidebarRef}>
       <Stack
@@ -61,6 +73,7 @@ const SideBar = ({ isSideBarOpen, toggleSideBar }) => {
             ml="-1.5rem"
           >
             <Link
+              to="/"
               onClick={handleCollectionLinkClick}
               style={{ textDecoration: 'none' }}
             >
