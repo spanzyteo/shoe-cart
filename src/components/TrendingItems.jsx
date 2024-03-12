@@ -127,25 +127,27 @@ const TrendingItems = () => {
           </>
         ))}
       </Stack>
-      <Stack
-        width="100%"
-        height="2rem"
-        bgcolor="#000"
-        display="flex"
-        alignItems="center"
-        justifyContent="center"
-        sx={{
-          mt: '1.5rem',
-          cursor: 'pointer',
-          ':hover': { opacity: 0.9, transition: 'opacity 0.3s ease-in-out' },
-          ':active': { opacity: 0.4, transition: 'opacity 0.3s ease-in-out' },
-        }}
-        borderRadius={{ sm: '0px', lg: '10px' }}
-      >
-        <Typography fontWeight={700} color="#fff">
-          SEE MORE
-        </Typography>
-      </Stack>
+      <Link to="/product/0" style={{ textDecoration: 'none' }}>
+        <Stack
+          width="100%"
+          height="2rem"
+          bgcolor="#000"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          sx={{
+            mt: '1.5rem',
+            cursor: 'pointer',
+            ':hover': { opacity: 0.9, transition: 'opacity 0.3s ease-in-out' },
+            ':active': { opacity: 0.4, transition: 'opacity 0.3s ease-in-out' },
+          }}
+          borderRadius={{ sm: '0px', lg: '10px' }}
+        >
+          <Typography fontWeight={700} color="#fff">
+            SEE MORE
+          </Typography>
+        </Stack>
+      </Link>
     </Box>
   )
 }

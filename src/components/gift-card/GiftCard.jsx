@@ -47,30 +47,30 @@ const GiftCard = () => {
           to="/products/sneakers-digital-gift-card"
           style={{ textDecoration: 'none' }}
         >
-          <Typography
-            sx={{
-              mt: '2rem',
+          <button
+            className="gift-card-button"
+            style={{
+              marginTop: '2rem',
               cursor: 'pointer',
-              ':hover': {
-                opacity: 0.8,
-                transition: 'opacity 0.3s ease-in-out',
-              },
-              ':active': {
-                opacity: 0.4,
-                transition: 'opacity 0.3s ease-in-out',
-              },
+              backgroundColor: '#e74683',
+              fontSize: '0.8rem',
+              borderRadius: '2rem',
+              fontWeight: '500',
+              width: '6rem',
+              border: 'none',
+              paddingTop: '0.8rem',
+              paddingBottom: '0.8rem',
+              paddingLeft: '1.3rem',
+              paddingRight: '1.3rem',
+              color: 'white',
+              whiteSpace: 'nowrap',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
-            bgcolor="#e74683"
-            color="white"
-            fontSize="0.8rem"
-            px={{ lg: '1rem', sm: '1rem', xs: '1rem' }}
-            py={{ lg: '0.7rem', sm: '0.6rem', xs: '0.6rem' }}
-            borderRadius={{ lg: '3rem', sm: '1rem', xs: '1rem' }}
-            fontWeight={500}
-            width={{ xs: '6rem', sm: '6rem', lg: '6.5rem' }}
           >
             GIVE NOW
-          </Typography>
+          </button>
         </Link>
         <Typography
           fontSize="2.5rem"
