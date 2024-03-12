@@ -68,7 +68,8 @@ const FemaleShoeDetails = () => {
         </Typography>
         <Stack direction="row" sx={{ mt: '0.8rem' }} alignItems="center">
           <Typography fontWeight={700} fontSize="1.6rem">
-            $125.00
+            ₦{` `}
+            {currentThumbnail.price * 0.5}
           </Typography>
           <Typography
             color="hsl(26, 100%, 55%)"
@@ -85,7 +86,8 @@ const FemaleShoeDetails = () => {
             sx={{ ml: '7rem' }}
             display={{ lg: 'none', xs: 'block' }}
           >
-            $250.00
+            ₦{` `}
+            {currentThumbnail.price}
           </Typography>
         </Stack>
         <Typography
@@ -94,7 +96,8 @@ const FemaleShoeDetails = () => {
           sx={{ mt: '0.1rem' }}
           display={{ xs: 'none', lg: 'block' }}
         >
-          $250.00
+          ₦{` `}
+          {currentThumbnail.price}
         </Typography>
 
         <Stack
