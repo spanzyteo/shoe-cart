@@ -158,6 +158,12 @@ body {
   border-bottom-left-radius: 20px;
 }
 
+.gift-card-1 {
+  height: 550px;
+  width: 100%;
+  margin-left: 1rem;
+}
+
 .scroll::-webkit-scrollbar {
   display: none;
 }
@@ -272,7 +278,7 @@ body {
   }
   .gift-card-1 {
     height: 550px;
-    width: 380px;
+    width: 100%;
     margin-left: 1rem;
   }
   .gift-card-2 {

@@ -27,6 +27,9 @@ import kids2 from './images/kids-2.jpg'
 import kids3 from './images/kids-3.jpg'
 import kids4 from './images/kids-5.jpg'
 
+import giftCard1 from './images/cropcopy.webp'
+import giftCard2 from './images/cropcopy-2.webp'
+
 const data = [
   {
     image: imageThumbnail1,
@@ -244,6 +247,11 @@ const cartData = [
   { image: imageThumbnail4, image2: femaleImage4, count: 0, id: 3 },
 ]
 
+const giftData = [
+  { image: giftCard1, gender: 'gift', id: 0, brand: 'GIFT CARD', price: 25 },
+  { image: giftCard2, gender: 'gift', id: 1, brand: 'GIFT CARD', price: 25 },
+]
+
 const initialState = {
   reviews,
   data,
@@ -251,6 +259,7 @@ const initialState = {
   femaleData,
   kidsData,
   trendingData,
+  giftData,
   cartValue: 0,
   showCartValue: false,
   showCartItems: false,
@@ -258,6 +267,7 @@ const initialState = {
   selectedImageFemale: 0,
   selectedImageKids: 0,
   selectedTrendingImage: 0,
+  selectedGiftCard: 0,
   imageIndex: null,
   cartItems: [],
   isOpen: false,
@@ -280,6 +290,9 @@ const cartReducer = (state, action) => {
 
     case 'SET_SELECTED_TRENDING_IMAGE':
       return { ...state, selectedTrendingImage: action.payload }
+
+    case 'SET_SELECTED_GIFT_CARD':
+      return { ...state, selectedGiftCard: action.payload }
 
     case 'INCREMENT': {
       return {
@@ -433,6 +446,17 @@ const cartReducer = (state, action) => {
       }
     }
 
+    case 'NEXT_GIFT_CARD_IMAGE': {
+      console.log(state.selectedGiftCard)
+      return {
+        ...state,
+        selectedGiftCard:
+          state.selectedGiftCard === state.giftData.length - 1
+            ? 0
+            : state.selectedGiftCard + 1,
+      }
+    }
+
     case 'NEXT_IMAGE_TRENDING': {
       return {
         ...state,
@@ -468,6 +492,17 @@ const cartReducer = (state, action) => {
           state.selectedImageKids === 0
             ? state.kidsData.length - 1
             : state.selectedImageKids - 1,
+      }
+    }
+
+    case 'PREVIOUS_GIFT_CARD_IMAGE': {
+      console.log(state.selectedGiftCard)
+      return {
+        ...state,
+        selectedGiftCard:
+          state.selectedGiftCard === 0
+            ? state.giftData.length - 1
+            : state.selectedGiftCard - 1,
       }
     }
 

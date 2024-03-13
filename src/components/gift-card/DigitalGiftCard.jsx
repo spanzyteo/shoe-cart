@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import Checkbox from '@mui/material/Checkbox'
 import { FormControlLabel } from '@mui/material'
+import { useCart } from '../../Context'
 
 import giftCard2 from '../../images/cropcopy-2.webp'
 import giftCard1 from '../../images/cropcopy.webp'
@@ -10,10 +11,27 @@ import Share from '../../images/share.png'
 import vanIcon from '../../images/van-icon.png'
 import upArrow from '../../images/up-arrow-icon.png'
 import downArrow from '../../images/down-arrow-icon.png'
+import leftArrow from '../../images/icon-previous.svg'
+import RightArrow from '../../images/icon-next.svg'
 
 const DigitalGiftCard = ({ title, url }) => {
   const [showForm, setShowForm] = useState(false)
   const [visibleContent, setVisibleContent] = useState(false)
+  const { state, dispatch } = useCart()
+
+  const nextImage = () => {
+    dispatch({ type: 'NEXT_GIFT_CARD_IMAGE' })
+  }
+
+  const previousImage = () => {
+    dispatch({ type: 'PREVIOUS_GIFT_CARD_IMAGE' })
+  }
+
+  const handleImageClick = (id) => {
+    dispatch({ type: 'SET_SELECTED_GIFT_CARD', payload: id })
+  }
+
+  const images = [giftCard1, giftCard2]
 
   const toggleContent = () => {
     setVisibleContent(!visibleContent)
@@ -51,43 +69,70 @@ const DigitalGiftCard = ({ title, url }) => {
 
   return (
     <Box
-      mt="2rem"
+      mt={{ lg: '2rem', sm: '5rem', xs: '3rem' }}
+      // mb={{ lg: '-30rem', sm: '-30rem', xs: '-30rem' }}
       display="flex"
       flexDirection={{ lg: 'row', sm: 'column', xs: 'column' }}
-      height="300vh"
+      // height="300vh"
       // overflow="hidden"
     >
       <Stack
         display="flex"
-        flexDirection={{ lg: 'column', sm: 'row', xs: 'row' }}
-        width="50%"
+        flexDirection="column"
+        width={{ lg: '50%', sm: '100%', xs: '100%' }}
         gap={1}
       >
-        <img
-          className="gift-card-1"
-          style={{
-            borderRadius: '20px',
-            objectFit: 'cover',
-          }}
-          src={giftCard1}
-          alt="gift-card-1"
-        />
-        <Stack
-          display="flex"
-          alignItems={{ sm: 'center', xs: 'center', lg: 'normal' }}
-          justifyContent={{ sm: 'center', xs: 'center', lg: 'normal' }}
-        >
+        <Stack display="flex" alignItems="center" justifyContent="center">
           <img
-            className="gift-card-2"
-            src={giftCard2}
-            alt="gift-card-2"
-            style={{ borderRadius: '20px', objectFit: 'cover' }}
+            className="gift-card-1"
+            style={{
+              borderRadius: '20px',
+              objectFit: 'cover',
+            }}
+            src={images[state.selectedGiftCard]}
+            alt="gift-card-1"
           />
+        </Stack>
+
+        <Stack
+          direction="row"
+          display={{ xs: 'none', lg: 'flex' }}
+          sx={{ mt: '25px' }}
+          gap={3}
+          ml="1rem"
+        >
+          {state.giftData.map((item) => (
+            <img
+              key={item.id}
+              src={item.image}
+              alt="image-1b"
+              onClick={() => handleImageClick(item.id)}
+              className={
+                item.id === state.selectedGiftCard
+                  ? 'active-shoe-thumbnail'
+                  : 'shoe-thumbnail'
+              }
+            />
+          ))}
+        </Stack>
+        <Stack
+          display={{ lg: 'none', sm: 'flex', xs: 'flex' }}
+          flexDirection="row"
+          justifyContent="center"
+          alignItems="center"
+          mt="1rem"
+          gap={1}
+        >
+          <img onClick={previousImage} src={leftArrow} alt="left-arrow" />
+          <p>
+            {state.selectedGiftCard + 1} / {state.giftData.length}
+          </p>
+          <img onClick={nextImage} src={RightArrow} alt="right-arrow" />
         </Stack>
       </Stack>
 
       <Stack
-        width={{ lg: '400px', sm: '520px', xs: '520px' }}
+        width={{ lg: '400px', sm: '100%', xs: '100%' }}
         display="flex"
         flexDirection="column"
         ml={{ lg: '5rem', sm: '2rem', xs: '2rem' }}
@@ -352,7 +397,7 @@ const DigitalGiftCard = ({ title, url }) => {
           </Stack>
           <Typography
             bgcolor="#e74683"
-            width="100%"
+            // width={{ lg: '100%', sm: '350px', xs: '350px' }}
             p="0.8rem"
             color="white"
             display="flex"
@@ -365,6 +410,7 @@ const DigitalGiftCard = ({ title, url }) => {
               ':active': { opacity: 0.4 },
             }}
             mt="1rem"
+            width={{ lg: '100%', sm: '100%', xs: '95%' }}
           >
             ADD TO CART
           </Typography>

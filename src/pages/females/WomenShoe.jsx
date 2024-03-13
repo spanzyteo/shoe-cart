@@ -22,25 +22,9 @@ const WomenShoe = () => {
     dispatch({ type: 'NEXT_IMAGE_FEMALE' })
   }
 
-  // const nextImage = () => {
-  // setSelectedImage((prevImage) =>
-  // prevImage === images.length - 1 ? 0 : prevImage + 1
-  // )
-  // }
-
   const previousImage = () => {
     dispatch({ type: 'PREVIOUS_IMAGE_FEMALE' })
   }
-
-  // const previousImage = () => {
-  //   setSelectedImage((prevImage) =>
-  //     prevImage === 0 ? images.length - 1 : prevImage - 1
-  //   )
-  // }
-
-  // const handleImageClick = (id) => {
-  // setSelectedImage(id)
-  // }
 
   const handleImageClick = (id) => {
     dispatch({ type: 'SET_SELECTED_IMAGE_FEMALE', payload: id })
