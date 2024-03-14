@@ -28,6 +28,7 @@ import DigitalGiftCard from './components/gift-card/DigitalGiftCard'
 import Product from './pages/products/Product'
 import Checkout from './pages/checkout/Checkout'
 import ShoeModalFemale from './pages/females/ShoeModalFemale'
+import ShoeModalKids from './pages/kids/ShoeModalKids'
 
 const App = () => {
   const { state } = useCart()
@@ -51,6 +52,7 @@ const App = () => {
       >
         <ShoeModal />
         <ShoeModalFemale />
+        <ShoeModalKids />
         <Box sx={{ px: { lg: '120px', xs: '0px' } }}>
           {!isCheckoutPage && <NavBar toggleSideBar={toggleSideBar} />}
           <SideBar

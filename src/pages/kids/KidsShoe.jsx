@@ -28,7 +28,7 @@ const KidsShoe = () => {
   }
 
   const openModal = () => {
-    dispatch({ type: 'OPEN_MODAL' })
+    dispatch({ type: 'OPEN_KIDS_MODAL' })
   }
   return (
     <Box>
