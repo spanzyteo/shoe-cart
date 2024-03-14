@@ -48,7 +48,6 @@ const Product = ({ match }) => {
   }
 
   const itemId = parseInt(id)
-  // const item = state.trendingData.find((item) => item.id === itemId)
 
   const initialIndex = state.trendingData.findIndex(
     (item) => item.id === itemId
@@ -71,6 +70,10 @@ const Product = ({ match }) => {
     const prevIndex =
       currentIndex === 0 ? state.trendingData.length - 1 : currentIndex - 1
     setCurrentIndex(prevIndex)
+  }
+
+  const openModal = () => {
+    dispatch({ type: 'OPEN_PRODUCT_MODAL' })
   }
 
   return (

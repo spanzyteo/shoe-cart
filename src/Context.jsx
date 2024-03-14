@@ -289,6 +289,7 @@ const initialState = {
   isOpen: false,
   isFemaleOpen: false,
   isKidsOpen: false,
+  isProductOpen: false,
   totalPrice: 0,
   collectionRef: null,
 }
@@ -588,6 +589,10 @@ const cartReducer = (state, action) => {
       return { ...state, isKidsOpen: true }
     case 'CLOSE_KIDS_MODAL':
       return { ...state, isKidsOpen: false }
+    case 'OPEN_PRODUCT_MODAL':
+      return { ...state, isProductOpen: true }
+    case 'CLOSE_PRODUCT_MODAL':
+      return { ...state, isProductOpen: false }
     case 'SET_COLLECTION_REF':
       return { ...state, collectionRef: action.payload }
     default:
