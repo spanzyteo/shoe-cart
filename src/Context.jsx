@@ -248,8 +248,24 @@ const cartData = [
 ]
 
 const giftData = [
-  { image: giftCard1, gender: 'gift', id: 0, brand: 'GIFT CARD', price: 25 },
-  { image: giftCard2, gender: 'gift', id: 1, brand: 'GIFT CARD', price: 25 },
+  {
+    image: giftCard1,
+    gender: 'gift',
+    id: 0,
+    brand: 'SNEAKERS DIGITAL GIFT CARD',
+    sizes: 'Digital Gift Card $25',
+    price: 40000,
+    count: 1,
+  },
+  {
+    image: giftCard2,
+    gender: 'gift',
+    id: 1,
+    brand: 'SNEAKERS DIGITAL GIFT CARD',
+    sizes: 'Digital Gift Card $50',
+    price: 80000,
+    count: 1,
+  },
 ]
 
 const initialState = {
@@ -392,6 +408,8 @@ const cartReducer = (state, action) => {
             )
           : action.payload.gender === 'kids'
           ? state.kidsData.find((item) => item.id === state.selectedImageKids)
+          : action.payload.gender === 'gift'
+          ? state.giftData.find((item) => item.id === state.selectedGiftCard)
           : state.trendingData.find((item) => item.id === action.payload)
 
       if (!selectedItem) {

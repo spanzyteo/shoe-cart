@@ -31,6 +31,13 @@ const DigitalGiftCard = ({ title, url }) => {
     dispatch({ type: 'SET_SELECTED_GIFT_CARD', payload: id })
   }
 
+  const showValue = () => {
+    dispatch({ type: 'SHOW_CART_VALUE' })
+  }
+  const updateCartValue = () => {
+    dispatch({ type: 'SUM_CART_VALUE' })
+  }
+
   const images = [giftCard1, giftCard2]
 
   const toggleContent = () => {
@@ -395,25 +402,32 @@ const DigitalGiftCard = ({ title, url }) => {
               </>
             )}
           </Stack>
-          <Typography
-            bgcolor="#e74683"
-            // width={{ lg: '100%', sm: '350px', xs: '350px' }}
-            p="0.8rem"
-            color="white"
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            fontSize="0.6rem"
-            sx={{
-              cursor: 'pointer',
-              ':hover': { opacity: 0.7 },
-              ':active': { opacity: 0.4 },
+          <button
+            onClick={() => {
+              showValue()
+              dispatch({
+                type: 'ADD_TO_CART',
+                payload: { gender: 'gift' },
+              })
+              updateCartValue()
             }}
-            mt="1rem"
-            width={{ lg: '100%', sm: '100%', xs: '95%' }}
+            className="gift-card-add-to-cart"
+            style={{
+              backgroundColor: '#e74683',
+              color: 'white',
+              padding: '0.8rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '0.6rem',
+              cursor: 'pointer',
+              marginTop: '1rem',
+              width: '100%',
+              border: 'none',
+            }}
           >
             ADD TO CART
-          </Typography>
+          </button>
           <Typography color="grey" fontSize="0.6rem" mt="1rem" fontWeight={600}>
             GET 20% OFF ANY CARD FOR A LIMITED TIME ONLY.
           </Typography>
