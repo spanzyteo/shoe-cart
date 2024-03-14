@@ -81,7 +81,8 @@ const ShoeCart = () => {
                       />
 
                       <Typography color="hsl(219, 9%, 45%)">
-                        Fall Limited Edition Sneakers <br /> $125.00 x {''}
+                        Fall Limited Edition Sneakers <br /> ₦{item.price} x{' '}
+                        {''}
                         {item.count}
                         <span
                           style={{
@@ -90,7 +91,7 @@ const ShoeCart = () => {
                           }}
                         >
                           {' '}
-                          ${(item.count * 125.0).toFixed(2)}
+                          ₦{(item.count * item.price).toFixed(2)}
                         </span>
                         {/* Comment */}
                       </Typography>

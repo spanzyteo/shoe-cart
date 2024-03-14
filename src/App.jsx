@@ -7,7 +7,7 @@ import NavBar from './components/NavBar'
 import MenShoe from './pages/males/MenShoe'
 import SideBar from './components/SideBar'
 import { useCart } from './Context'
-import ShoeModal from './components/shoeModal'
+import ShoeModal from './pages/males/ShoeModal'
 import Home from './pages/Home'
 import WomenShoe from './pages/females/WomenShoe'
 import KidsShoe from './pages/kids/KidsShoe'
@@ -27,6 +27,7 @@ import SizeDetails from './components/pages/SizeDetails'
 import DigitalGiftCard from './components/gift-card/DigitalGiftCard'
 import Product from './pages/products/Product'
 import Checkout from './pages/checkout/Checkout'
+import ShoeModalFemale from './pages/females/ShoeModalFemale'
 
 const App = () => {
   const { state } = useCart()
@@ -49,6 +50,7 @@ const App = () => {
         position="relative"
       >
         <ShoeModal />
+        <ShoeModalFemale />
         <Box sx={{ px: { lg: '120px', xs: '0px' } }}>
           {!isCheckoutPage && <NavBar toggleSideBar={toggleSideBar} />}
           <SideBar

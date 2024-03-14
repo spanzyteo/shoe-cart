@@ -1,10 +1,10 @@
 import React from 'react'
-import { useCart } from '../Context'
+import { useCart } from '../../Context'
 
-const CloseIcon = () => {
+const CloseFemaleIcon = () => {
   const { dispatch } = useCart()
   const closeModal = () => {
-    dispatch({ type: 'CLOSE_MODAL' })
+    dispatch({ type: 'CLOSE_FEMALE_MODAL' })
   }
   return (
     <svg
@@ -30,4 +30,4 @@ const CloseIcon = () => {
   )
 }
 
-export default CloseIcon
+export default CloseFemaleIcon

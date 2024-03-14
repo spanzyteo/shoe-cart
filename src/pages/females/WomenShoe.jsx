@@ -31,7 +31,7 @@ const WomenShoe = () => {
   }
 
   const openModal = () => {
-    dispatch({ type: 'OPEN_MODAL' })
+    dispatch({ type: 'OPEN_FEMALE_MODAL' })
   }
   return (
     <Box>

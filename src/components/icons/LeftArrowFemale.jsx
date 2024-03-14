@@ -1,10 +1,10 @@
 import React from 'react'
-import { useCart } from '../Context'
+import { useCart } from '../../Context'
 
-const LeftArrow = () => {
+const LeftArrowFemale = () => {
   const { dispatch } = useCart()
   const previousImage = () => {
-    dispatch({ type: 'PREVIOUS_IMAGE' })
+    dispatch({ type: 'PREVIOUS_IMAGE_FEMALE' })
   }
   return (
     <svg
@@ -32,4 +32,4 @@ const LeftArrow = () => {
   )
 }
 
-export default LeftArrow
+export default LeftArrowFemale

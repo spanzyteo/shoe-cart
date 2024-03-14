@@ -1,16 +1,13 @@
 import { Stack, Box, Typography } from '@mui/material'
-import { useCart } from '../Context'
-import closeIcon from '../images/icon-close.svg'
+import { useCart } from '../../Context'
 
-import image1 from '../images/image-product-1.jpg'
-import image2 from '../images/image-product-2.jpg'
-import image3 from '../images/image-product-3.jpg'
-import image4 from '../images/image-product-4.jpg'
-import nextIcon from '../images/icon-next.svg'
-import previousIcon from '../images/icon-previous.svg'
-import LeftArrow from './LeftArrow'
-import RightArrow from './RightArrow'
-import CloseIcon from './CloseIcon'
+import image1 from '../../images/image-product-1.jpg'
+import image2 from '../../images/image-product-2.jpg'
+import image3 from '../../images/image-product-3.jpg'
+import image4 from '../../images/image-product-4.jpg'
+import LeftArrow from '../../components/icons/LeftArrow'
+import RightArrow from '../../components/icons/RightArrow'
+import CloseIcon from '../../components/icons/CloseIcon'
 
 const ShoeModal = () => {
   const images = [image1, image2, image3, image4]

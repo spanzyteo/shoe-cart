@@ -1,5 +1,5 @@
 import React from 'react'
-import { useCart } from '../Context'
+import { useCart } from '../../Context'
 
 const RightArrow = () => {
   const { dispatch } = useCart()
