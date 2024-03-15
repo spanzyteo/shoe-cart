@@ -290,6 +290,7 @@ const initialState = {
   isFemaleOpen: false,
   isKidsOpen: false,
   isProductOpen: false,
+  isGiftCardOpen: false,
   totalPrice: 0,
   collectionRef: null,
 }
@@ -593,6 +594,10 @@ const cartReducer = (state, action) => {
       return { ...state, isProductOpen: true }
     case 'CLOSE_PRODUCT_MODAL':
       return { ...state, isProductOpen: false }
+    case 'OPEN_GIFT_CARD_MODAL':
+      return { ...state, isGiftCardOpen: true }
+    case 'CLOSE_GIFT_CARD_MODAL':
+      return { ...state, isGiftCardOpen: false }
     case 'SET_COLLECTION_REF':
       return { ...state, collectionRef: action.payload }
     default:

@@ -73,6 +73,9 @@ const DigitalGiftCard = ({ title, url }) => {
       console.error('Error sharing:', error)
     }
   }
+  const openModal = () => {
+    dispatch({ type: 'OPEN_GIFT_CARD_MODAL' })
+  }
 
   return (
     <Box
@@ -95,9 +98,13 @@ const DigitalGiftCard = ({ title, url }) => {
             style={{
               borderRadius: '20px',
               objectFit: 'cover',
+              cursor: 'pointer',
             }}
             src={images[state.selectedGiftCard]}
             alt="gift-card-1"
+            onClick={() => {
+              openModal()
+            }}
           />
         </Stack>
 
