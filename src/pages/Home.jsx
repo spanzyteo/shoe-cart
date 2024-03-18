@@ -10,7 +10,7 @@ import ContactMarquee from '../components/ContactMarquee'
 import { useEffect, useState } from 'react'
 import { useCart } from '../Context'
 
-const Home = () => {
+const Home = ({ toggleSideBar }) => {
   const [isLoading, setIsLoading] = useState(true)
   const { state } = useCart()
 
@@ -31,7 +31,7 @@ const Home = () => {
   }, [])
 
   return (
-    <Box>
+    <div onClick={toggleSideBar}>
       <Box marginTop="4rem">
         <Stack width="100%" position="relative">
           {isLoading ? (
@@ -182,7 +182,7 @@ const Home = () => {
         <Review />
         {/* <ContactMarquee /> */}
       </Box>
-    </Box>
+    </div>
   )
 }
 

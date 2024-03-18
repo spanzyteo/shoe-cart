@@ -21,6 +21,24 @@ const SideBar = ({ isSideBarOpen, toggleSideBar }) => {
   }, [collectionRef, toggleSideBar])
 
   useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (
+        isSideBarOpen &&
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target)
+      ) {
+        toggleSideBar()
+      }
+    }
+
+    document.addEventListener('mousedown', handleOutsideClick)
+
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick)
+    }
+  }, [isSideBarOpen, toggleSideBar])
+
+  useEffect(() => {
     const { state: locationState } = location
     if (locationState && locationState.scrollToCollection) {
       handleScrollToCollection()
@@ -42,8 +60,9 @@ const SideBar = ({ isSideBarOpen, toggleSideBar }) => {
         className={`sidebar ${isSideBarOpen ? 'open' : 'close'}`}
         direction="column"
         display={{ lg: 'none', sm: 'flex', xs: 'flex' }}
+        sx={{ zIndex: '1000' }}
       >
-        <Stack sx={{ ml: '0px' }} gap={3} p={3} mt="0.5rem">
+        <Stack sx={{ ml: '0px' }} gap={3} p={3} mt="-1rem">
           <Stack
             width="123%"
             height="40px"
