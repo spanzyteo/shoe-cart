@@ -34,6 +34,7 @@ const ShoeCart = () => {
         maxHeight: '25rem',
         maxWidth: '30rem',
         zIndex: '100',
+        mt: { lg: '0rem', sm: '5rem', xs: '5rem' },
       }}
     >
       {state.showCartItems && (
@@ -135,7 +136,11 @@ const ShoeCart = () => {
                   gap={1}
                   sx={{ p: { lg: '4rem', xs: '6rem' }, m: 'auto' }}
                 >
-                  <Typography fontWeight={700} color="hsl(219, 9%, 45%)">
+                  <Typography
+                    fontWeight={700}
+                    color="hsl(219, 9%, 45%)"
+                    whiteSpace="nowrap"
+                  >
                     Your cart is empty
                   </Typography>
                 </Stack>
@@ -143,7 +148,11 @@ const ShoeCart = () => {
             </Stack>
           ) : (
             <Stack gap={1} sx={{ p: { lg: '4rem', xs: '6rem' }, m: 'auto' }}>
-              <Typography fontWeight={700} color="hsl(219, 9%, 45%)">
+              <Typography
+                fontWeight={700}
+                color="hsl(219, 9%, 45%)"
+                whiteSpace="nowrap"
+              >
                 Your cart is empty
               </Typography>
             </Stack>

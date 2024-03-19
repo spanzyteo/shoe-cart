@@ -478,30 +478,65 @@ const CheckoutCartItems = ({ handleSubmit }) => {
             width="370px"
             sx={{ whiteSpace: 'nowrap' }}
           >
-            <Link to="/policies/refund-policy">
-              <Typography color="rgba(0, 0, 0, 0.75)" fontSize="0.8rem">
+            <Link
+              to="/policies/refund-policy"
+              style={{ textDecoration: 'none' }}
+            >
+              <Typography
+                color="rgba(0, 0, 0, 0.75)"
+                fontSize="0.8rem"
+                sx={{ textDecoration: 'underline' }}
+              >
                 Refund Policy
               </Typography>
             </Link>
-            <Link to="/policies/shipping-policy">
-              <Typography color="rgba(0, 0, 0, 0.75)" fontSize="0.8rem">
+            <Link
+              to="/policies/shipping-policy"
+              style={{ textDecoration: 'none' }}
+            >
+              <Typography
+                color="rgba(0, 0, 0, 0.75)"
+                fontSize="0.8rem"
+                sx={{ textDecoration: 'underline' }}
+              >
                 Shipping Policy
               </Typography>
             </Link>
-            <Link to="/policies/privacy-policy">
-              <Typography color="rgba(0, 0, 0, 0.75)" fontSize="0.8rem">
+            <Link
+              to="/policies/privacy-policy"
+              style={{ textDecoration: 'none' }}
+            >
+              <Typography
+                color="rgba(0, 0, 0, 0.75)"
+                fontSize="0.8rem"
+                sx={{ textDecoration: 'underline' }}
+              >
                 Privacy Policy
               </Typography>
             </Link>
-            <Link to="/policies/terms-of-service">
-              <Typography color="rgba(0, 0, 0, 0.75)" fontSize="0.8rem">
+            <Link
+              to="/policies/terms-of-service"
+              style={{ textDecoration: 'none' }}
+            >
+              <Typography
+                color="rgba(0, 0, 0, 0.75)"
+                fontSize="0.8rem"
+                sx={{ textDecoration: 'underline' }}
+              >
                 Terms Of Service
               </Typography>
             </Link>
           </Stack>
           <Stack display="flex" mt="-0.5rem" mb="1rem">
-            <Link to="/policies/contact-information">
-              <Typography color="rgba(0, 0, 0, 0.75)" fontSize="0.8rem">
+            <Link
+              to="/policies/contact-information"
+              style={{ textDecoration: 'none' }}
+            >
+              <Typography
+                color="rgba(0, 0, 0, 0.75)"
+                fontSize="0.8rem"
+                sx={{ textDecoration: 'underline' }}
+              >
                 Contact Information
               </Typography>
             </Link>
