@@ -80,12 +80,9 @@ const DigitalGiftCard = ({ title, url }) => {
   return (
     <Box
       mt={{ lg: '2rem', sm: '5rem', xs: '3rem' }}
-      px={{ lg: '0rem', sm: '1rem', xs: '1rem' }}
-      // mb={{ lg: '-30rem', sm: '-30rem', xs: '-30rem' }}
+      pr={{ lg: '0rem', sm: '1rem', xs: '1rem' }}
       display="flex"
       flexDirection={{ lg: 'row', sm: 'column', xs: 'column' }}
-      // height="300vh"
-      // overflow="hidden"
     >
       <Stack
         display="flex"
@@ -186,7 +183,7 @@ const DigitalGiftCard = ({ title, url }) => {
         </Typography>
         <Stack
           mt="2rem"
-          width="100%"
+          width={{ lg: '100%', sm: '90%', xs: '90%' }}
           // height="0rem"
           border="1px solid #E8E8E8"
         ></Stack>
@@ -356,7 +353,7 @@ const DigitalGiftCard = ({ title, url }) => {
           </Stack>
           <Stack
             mt="1rem"
-            width="100%"
+            width={{ lg: '100%', sm: '90%', xs: '90%' }}
             // height="0rem"
             border="1px solid #E8E8E8"
           ></Stack>
@@ -376,13 +373,8 @@ const DigitalGiftCard = ({ title, url }) => {
           <Stack display="flex" flexDirection="column">
             {showForm && (
               <>
-                <Stack
-                  mt="1rem"
-                  width="100%"
-                  // height="0rem"
-                  border="1px solid #E8E8E8"
-                ></Stack>
-                <form>
+                <Stack mt="1rem" width="90%" border="1px solid #E8E8E8"></Stack>
+                <form style={{ marginRight: '1rem' }}>
                   <TextField
                     label="Recipient email"
                     margin="normal"
@@ -438,7 +430,7 @@ const DigitalGiftCard = ({ title, url }) => {
               fontSize: '0.6rem',
               cursor: 'pointer',
               marginTop: '1rem',
-              width: '100%',
+              width: '90%',
               border: 'none',
             }}
           >
@@ -465,23 +457,41 @@ const DigitalGiftCard = ({ title, url }) => {
           >
             NOTE: THIS IS NOT A PHYSICAL ITEM
           </Typography>
-          <Typography color="rgba(0, 0, 0, 0.75)" fontSize="0.6rem" mt="0.7rem">
-            • Digital gift card purchases are delivered via email and contain
-            instructions on how the code can be redeemed at checkout.
-          </Typography>
-          <Typography color="rgba(0, 0, 0, 0.75)" fontSize="0.6rem" mt="0.9rem">
-            • The redeemable code will be sent via email and can also be printed
-            at home and given to the recipient in person. No physical item will
-            be sent with a digital gift card purchase.
-          </Typography>
-          <Typography color="rgba(0, 0, 0, 0.75)" fontSize="0.6rem" mt="0.9rem">
-            • Good for anything in the storefront, including all physical and
-            digital products. Codes will apply to this storefront only.
-          </Typography>
-          <Typography color="rgba(0, 0, 0, 0.75)" fontSize="0.6rem" mt="0.9rem">
-            • Digital gift cards can be used multiple times until the card
-            balance hits zero.
-          </Typography>
+          <Stack width={{ lg: '100%', sm: '90%', xs: '90%' }}>
+            <Typography
+              color="rgba(0, 0, 0, 0.75)"
+              fontSize="0.6rem"
+              mt="0.7rem"
+            >
+              • Digital gift card purchases are delivered via email and contain
+              instructions on how the code can be redeemed at checkout.
+            </Typography>
+            <Typography
+              color="rgba(0, 0, 0, 0.75)"
+              fontSize="0.6rem"
+              mt="0.9rem"
+            >
+              • The redeemable code will be sent via email and can also be
+              printed at home and given to the recipient in person. No physical
+              item will be sent with a digital gift card purchase.
+            </Typography>
+            <Typography
+              color="rgba(0, 0, 0, 0.75)"
+              fontSize="0.6rem"
+              mt="0.9rem"
+            >
+              • Good for anything in the storefront, including all physical and
+              digital products. Codes will apply to this storefront only.
+            </Typography>
+            <Typography
+              color="rgba(0, 0, 0, 0.75)"
+              fontSize="0.6rem"
+              mt="0.9rem"
+            >
+              • Digital gift cards can be used multiple times until the card
+              balance hits zero.
+            </Typography>
+          </Stack>
           <Stack
             display="flex"
             flexDirection="row"
@@ -509,7 +519,7 @@ const DigitalGiftCard = ({ title, url }) => {
               Share
             </button>
           </Stack>
-          <Stack mt="2rem" width="100%" border="1px solid #E8E8E8"></Stack>
+          <Stack mt="2rem" width="90%" border="1px solid #E8E8E8"></Stack>
           <Stack
             display="flex"
             flexDirection="row"
@@ -517,6 +527,7 @@ const DigitalGiftCard = ({ title, url }) => {
             alignItems="center"
             justifyContent="space-between"
             sx={{ cursor: 'pointer' }}
+            width={{ lg: '100%', sm: '90%', xs: '90%' }}
           >
             <div onClick={toggleContent}>
               <Stack display="flex" flexDirection="row" alignItems="center">
@@ -583,14 +594,18 @@ const DigitalGiftCard = ({ title, url }) => {
               <Typography fontSize="0.9rem" color="rgba(0, 0, 0, 0.75)">
                 Rest of world: 8-15 business days
               </Typography>
-              <Link to="/pages/faqs">
-                <Typography mt="1rem" color="rgba(0, 0, 0, 0.75)">
+              <Link to="/pages/faqs" style={{ textDecoration: 'none' }}>
+                <Typography
+                  mt="1rem"
+                  color="rgba(0, 0, 0, 0.75)"
+                  sx={{ textDecoration: 'underline' }}
+                >
                   More information
                 </Typography>
               </Link>
             </Stack>
           )}
-          <Stack mt="1rem" width="100%" border="1px solid #E8E8E8"></Stack>
+          <Stack mt="1rem" width="90%" border="1px solid #E8E8E8"></Stack>
         </Stack>
       </Stack>
     </Box>
