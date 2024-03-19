@@ -6,7 +6,7 @@ import imageThumbnail2 from './images/image-product-2-thumbnail.jpg'
 import imageThumbnail3 from './images/image-product-3-thumbnail.jpg'
 import imageThumbnail4 from './images/image-product-4-thumbnail.jpg'
 
-import femaleImage1 from './images/female-1.avif'
+import femaleImage1 from './images/female-1.jpg'
 import femaleImage2 from './images/female-2.jpg'
 import femaleImage3 from './images/female-3.jpg'
 import femaleImage4 from './images/female-4.jpg'

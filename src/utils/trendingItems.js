@@ -9,7 +9,7 @@ import trending8 from '../images/trending-8.jpg'
 import trending9 from '../images/trending-9.jpg'
 import trending10 from '../images/trending-10.jpg'
 
-import female1 from '../images/female-1.avif'
+import female1 from '../images/female-1.jpg'
 import male1 from '../images/image-product-1.jpg'
 import kids1 from '../images/kids-1.jpg'
 

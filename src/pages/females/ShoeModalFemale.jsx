@@ -1,7 +1,7 @@
 import { Stack, Box, Typography } from '@mui/material'
 import { useCart } from '../../Context'
 
-import image1 from '../../images/female-1.avif'
+import image1 from '../../images/female-1.jpg'
 import image2 from '../../images/female-2.jpg'
 import image3 from '../../images/female-3.jpg'
 import image4 from '../../images/female-4.jpg'
