@@ -80,7 +80,7 @@ const DigitalGiftCard = ({ title, url }) => {
   return (
     <Box
       mt={{ lg: '2rem', sm: '5rem', xs: '3rem' }}
-      px={{ lg: '0rem', sm: '1rem', xs: '1.4rem' }}
+      px={{ lg: '0rem', sm: '1rem', xs: '1rem' }}
       // mb={{ lg: '-30rem', sm: '-30rem', xs: '-30rem' }}
       display="flex"
       flexDirection={{ lg: 'row', sm: 'column', xs: 'column' }}
@@ -260,20 +260,24 @@ const DigitalGiftCard = ({ title, url }) => {
               >
                 Digital Gift Card $50.00
               </Link>
-              <Link
-                to={{
-                  pathname: '/products/sneakers-digital-gift-card',
-                  search: '?variant=3',
-                }}
-                className="text-decoration1"
-                style={
-                  isActive(`/products/sneakers-digital-gift-card?variant=${3}`)
-                    ? activeStyle
-                    : { color: 'black' }
-                }
-              >
-                Digital Gift Card $60.00
-              </Link>
+              <Stack display={{ lg: 'block', sm: 'none', xs: 'none' }}>
+                <Link
+                  to={{
+                    pathname: '/products/sneakers-digital-gift-card',
+                    search: '?variant=3',
+                  }}
+                  className="text-decoration1"
+                  style={
+                    isActive(
+                      `/products/sneakers-digital-gift-card?variant=${3}`
+                    )
+                      ? activeStyle
+                      : { color: 'black' }
+                  }
+                >
+                  Digital Gift Card $60.00
+                </Link>
+              </Stack>
             </Stack>
             <Stack
               display="flex"
@@ -309,20 +313,24 @@ const DigitalGiftCard = ({ title, url }) => {
               >
                 Digital Gift Card $100.00
               </Link>
-              <Link
-                to={{
-                  pathname: '/products/sneakers-digital-gift-card',
-                  search: '?variant=6',
-                }}
-                className="text-decoration1"
-                style={
-                  isActive(`/products/sneakers-digital-gift-card?variant=${6}`)
-                    ? activeStyle
-                    : { color: 'black' }
-                }
-              >
-                Digital Gift Card $150.00
-              </Link>
+              <Stack display={{ lg: 'block', sm: 'none', xs: 'none' }}>
+                <Link
+                  to={{
+                    pathname: '/products/sneakers-digital-gift-card',
+                    search: '?variant=6',
+                  }}
+                  className="text-decoration1"
+                  style={
+                    isActive(
+                      `/products/sneakers-digital-gift-card?variant=${6}`
+                    )
+                      ? activeStyle
+                      : { color: 'black' }
+                  }
+                >
+                  Digital Gift Card $150.00
+                </Link>
+              </Stack>
             </Stack>
             <Stack
               display="flex"
