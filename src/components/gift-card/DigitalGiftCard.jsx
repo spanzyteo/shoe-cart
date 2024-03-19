@@ -80,7 +80,6 @@ const DigitalGiftCard = ({ title, url }) => {
   return (
     <Box
       mt={{ lg: '2rem', sm: '5rem', xs: '3rem' }}
-      pl={{ lg: '0rem', sm: '-1rem', xs: '-1.8rem' }}
       display="flex"
       flexDirection={{ lg: 'row', sm: 'column', xs: 'column' }}
     >
