@@ -107,7 +107,7 @@ const ShoeCart = () => {
                     </Stack>
                   ))}
                   <Stack>
-                    <Link to="/checkout">
+                    <Link to="/checkout" style={{ textDecoration: 'none' }}>
                       <Button
                         onClick={() => {
                           totalPrice()
