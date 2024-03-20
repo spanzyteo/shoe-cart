@@ -182,7 +182,11 @@ const Checkout = () => {
   }
 
   return (
-    <Box display="flex" flexDirection="column">
+    <Box
+      display="flex"
+      flexDirection="column"
+      px={{ lg: '0rem', sm: '1rem', xs: '2.1rem' }}
+    >
       <Stack
         display="flex"
         flexDirection="row"
