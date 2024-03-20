@@ -89,8 +89,10 @@ const TrendingItems = () => {
                       alt="trending-shoe"
                       sx={{
                         transition: 'transform 0.3s ease',
-                        ':hover': { transform: 'scale(1.2)' },
                         cursor: 'pointer',
+                        '@media(min-width: 922px)': {
+                          ':hover': { transform: 'scale(1.2)' },
+                        },
                       }}
                     />
                   </Link>
