@@ -76,6 +76,7 @@ const NavBar = ({ toggleSideBar }) => {
             lg: 'white',
           }}
           sx={{ transition: 'bgcolor 0.8s ease' }}
+          pr={{ lg: '0rem', sm: '1rem', xs: '1.3rem' }}
         >
           <Stack
             direction="row"
@@ -90,7 +91,7 @@ const NavBar = ({ toggleSideBar }) => {
             <Stack
               direction="row"
               alignItems="center"
-              gap={{ xs: '10px', lg: '25px' }}
+              gap={{ sm: '0px', xs: '0px', lg: '25px' }}
             >
               <Stack display={{ xs: 'flex', lg: 'none' }}>
                 <img
@@ -206,20 +207,24 @@ const NavBar = ({ toggleSideBar }) => {
                     </Typography>
                   </Stack>
                 )}
+                <Stack>
+                  <img
+                    onClick={() => {
+                      showCartItems()
+                    }}
+                    style={{ height: '30px', width: '30px', cursor: 'pointer' }}
+                    src={cartIcon}
+                    alt="cart icon"
+                  />
+                </Stack>
+              </Stack>
+              <Stack>
                 <img
-                  onClick={() => {
-                    showCartItems()
-                  }}
-                  style={{ height: '30px', width: '30px', cursor: 'pointer' }}
-                  src={cartIcon}
-                  alt="cart icon"
+                  style={{ height: '40px', width: '40px' }}
+                  src={avatar}
+                  alt="image avatar"
                 />
               </Stack>
-              <img
-                style={{ height: '40px', width: '40px' }}
-                src={avatar}
-                alt="image avatar"
-              />
             </Stack>
           </Stack>
         </Box>
