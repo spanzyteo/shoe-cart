@@ -19,12 +19,12 @@ import creditCard1 from '../../images/credit-card-1.png'
 import creditCard2 from '../../images/credit-card-2.webp'
 import creditCard3 from '../../images/credit-card-3.jpg'
 import creditCard4 from '../../images/credit-card-4.webp'
-import creditCard5 from '../../images/credit-card-5.png'
-import creditCard6 from '../../images/credit-card-6.png'
-import creditCard7 from '../../images/credit-card-7.png'
-import creditCard8 from '../../images/credit-card-8.png'
-import creditCard9 from '../../images/credit-card-9.png'
-import creditCard10 from '../../images/credit-card-10.png'
+// import creditCard5 from '../../images/credit-card-5.png'
+// import creditCard6 from '../../images/credit-card-6.png'
+// import creditCard7 from '../../images/credit-card-7.png'
+// import creditCard8 from '../../images/credit-card-8.png'
+// import creditCard9 from '../../images/credit-card-9.png'
+// import creditCard10 from '../../images/credit-card-10.png'
 
 const formatCardNumber = (input) => {
   const digitsOnly = input.replace(/\D/g, '')
@@ -75,17 +75,31 @@ const Checkout = () => {
   const [email, setEmail] = useState('')
   const [emailError, setEmailError] = useState('')
   const [firstName, setFirstName] = useState('')
+  const [firstNameBilling, setFirstNameBilling] = useState('')
   const [lastName, setLastName] = useState('')
+  const [lastNameBilling, setLastNameBilling] = useState('')
   const [firstNameError, setFirstNameError] = useState('')
+  const [firstNameBillingError, setFirstNameBillingError] = useState('')
   const [lastNameError, setLastNameError] = useState('')
+  const [lastNameBillingError, setLastNameBillingError] = useState('')
   const [address, setAddress] = useState('')
+  const [addressBilling, setAddressBilling] = useState('')
   const [addressError, setAddressError] = useState('')
+  const [addressBillingError, setAddressBillingError] = useState('')
   const [city, setCity] = useState('')
+  const [cityBilling, setCityBilling] = useState('')
   const [postalCode, setPostalCode] = useState('')
+  const [postalCodeBilling, setPostalCodeBilling] = useState('')
   const [phone, setPhone] = useState('')
+  const [phoneBilling, setPhoneBilling] = useState('')
+  const [phoneInfo, setPhoneInfo] = useState('')
   const [cityError, setCityError] = useState('')
+  const [cityBillingError, setCityBillingError] = useState('')
   const [postalCodeError, setPostalCodeError] = useState('')
+  const [postalCodeBillingError, setPostalCodeBillingError] = useState('')
   const [phoneError, setPhoneError] = useState('')
+  const [phoneBillingError, setPhoneBillingError] = useState('')
+  const [phoneInfoError, setPhoneInfoError] = useState('')
   const [cardNumberError, setCardNumberError] = useState('')
   const [expirationDateError, setExpirationDateError] = useState('')
   const [securityCodeError, setSecurityCodeError] = useState('')
@@ -124,6 +138,66 @@ const Checkout = () => {
     setCardNumber(formattedInput)
   }
 
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value)
+  }
+
+  const handleFirstNameChange = (event) => {
+    setFirstName(event.target.value)
+  }
+
+  const handleFirstNameBillingChange = (event) => {
+    setFirstNameBilling(event.target.value)
+  }
+
+  const handleLastNameChange = (event) => {
+    setLastName(event.target.value)
+  }
+
+  const handleLastNameBillingChange = (event) => {
+    setLastNameBilling(event.target.value)
+  }
+
+  const handleAddressChange = (event) => {
+    setAddress(event.target.value)
+  }
+
+  const handleAddressBillingChange = (event) => {
+    setAddressBilling(event.target.value)
+  }
+
+  const handleCityChange = (event) => {
+    setCity(event.target.value)
+  }
+
+  const handleCityBillingChange = (event) => {
+    setCityBilling(event.target.value)
+  }
+
+  const handlePostalCodeChange = (event) => {
+    setPostalCode(event.target.value)
+  }
+
+  const handlePostalCodeBillingChange = (event) => {
+    setPostalCodeBilling(event.target.value)
+  }
+
+  const handlePhoneChange = (event) => {
+    setPhone(event.target.value)
+  }
+
+  const handlePhoneBillingChange = (event) => {
+    setPhoneBilling(event.target.value)
+  }
+
+  const handlePhoneInfoChange = (event) => {
+    setPhoneInfo(event.target.value)
+  }
+
+  const handleCardNameChange = (event) => {
+    setCardName(event.target.value)
+  }
+
   const handleStateChange = (event) => {
     setSelectedState(event.target.value)
   }
@@ -146,20 +220,41 @@ const Checkout = () => {
       if (firstName === '') {
         setFirstNameError('Enter a firstname')
       }
+      if (firstNameBilling === '') {
+        setFirstNameBillingError('Enter first name')
+      }
       if (lastName === '') {
-        setLastNameError('Enter a lastname')
+        setLastNameError('Enter last name')
+      }
+      if (lastNameBilling === '') {
+        setLastNameBillingError('Enter last name')
       }
       if (address === '') {
-        setAddressError('enter address')
+        setAddressError('Enter address')
+      }
+      if (addressBilling === '') {
+        setAddressBillingError('Enter address')
       }
       if (phone === '') {
         setPhoneError('Enter phone number')
       }
+      if (phoneBilling === '') {
+        setPhoneBillingError('Enter phone number')
+      }
+      if (phoneInfo === '') {
+        setPhoneInfoError('Enter phone number')
+      }
       if (city === '') {
         setCityError('Enter city')
       }
+      if (cityBilling === '') {
+        setCityBillingError('Enter city')
+      }
       if (postalCode === '') {
         setPostalCodeError('Enter postal code')
+      }
+      if (postalCodeBilling === '') {
+        setPostalCodeBillingError('Enter postal code')
       }
       if (selectedState === 'placeholder') {
         setError('select a state/province')
@@ -338,6 +433,7 @@ const Checkout = () => {
                 color="primary"
                 variant="outlined"
                 error={emailError}
+                onChange={handleEmailChange}
                 sx={{
                   width: { lg: '450px', sm: '350px', xs: '350px' },
                   height: '150px',
@@ -397,6 +493,7 @@ const Checkout = () => {
                   value={firstName}
                   error={firstNameError}
                   helperText={firstNameError}
+                  onChange={handleFirstNameChange}
                   sx={{
                     width: { lg: '200px', sm: '150px', xs: '150px' },
                     height: '150px',
@@ -409,6 +506,7 @@ const Checkout = () => {
                   value={lastName}
                   error={lastNameError}
                   helperText={lastNameError}
+                  onChange={handleLastNameChange}
                   sx={{
                     width: { lg: '200px', sm: '150px', xs: '150px' },
                     height: '150px',
@@ -422,6 +520,7 @@ const Checkout = () => {
                 value={address}
                 error={addressError}
                 helperText={addressError}
+                onChange={handleAddressChange}
                 sx={{
                   width: { lg: '450px', sm: '350px', xs: '350px' },
                   height: '150px',
@@ -447,6 +546,7 @@ const Checkout = () => {
                   value={city}
                   error={cityError}
                   helperText={cityError}
+                  onChange={handleCityChange}
                   sx={{
                     width: { lg: '130px', sm: '100px', xs: '100px' },
                     height: '150px',
@@ -480,7 +580,12 @@ const Checkout = () => {
                 <TextField
                   label="Postal code"
                   margin="normal"
-                  name="postal code"
+                  name="postal_code"
+                  type="number"
+                  value={postalCode}
+                  error={postalCodeError}
+                  helperText={postalCodeError}
+                  onChange={handlePostalCodeChange}
                   sx={{
                     width: { lg: '130px', sm: '100px', xs: '100px' },
                     height: '150px',
@@ -496,6 +601,7 @@ const Checkout = () => {
                   value={phone}
                   error={phoneError}
                   helperText={phoneError}
+                  onChange={handlePhoneChange}
                   sx={{
                     width: { lg: '450px', sm: '350px', xs: '350px' },
                     height: '150px',
@@ -532,7 +638,7 @@ const Checkout = () => {
                     margin="normal"
                     name="phone_number"
                     type="tel"
-                    defaultValue="+234"
+                    defaultValue="+234 "
                     InputProps={{ inputProps: { pattern: '\\+\\d{1,3}' } }}
                     sx={{
                       width: { lg: '450px', sm: '350px', xs: '350px' },
@@ -671,7 +777,7 @@ const Checkout = () => {
                 flexDirection="column"
                 alignItems="center"
                 width={{ lg: '450px', sm: '350px', xs: '350px' }}
-                height={checkedBilling ? '350px' : '800px'}
+                height={checkedBilling ? '350px' : '820px'}
                 borderLeft="1px solid #E8E8E8"
                 borderRight="1px solid #E8E8E8"
                 borderBottom="1px solid #E8E8E8"
@@ -754,6 +860,7 @@ const Checkout = () => {
                   value={cardName}
                   error={cardNameError}
                   helperText={cardNameError}
+                  onChange={handleCardNameChange}
                   sx={{
                     width: { lg: '400px', sm: '300px', xs: '300px' },
                     height: '150px',
@@ -825,9 +932,10 @@ const Checkout = () => {
                         margin="normal"
                         name="first_name"
                         type="text"
-                        value={firstName}
-                        error={firstNameError}
-                        helperText={firstNameError}
+                        value={firstNameBilling}
+                        error={firstNameBillingError}
+                        helperText={firstNameBillingError}
+                        onChange={handleFirstNameBillingChange}
                         sx={{
                           width: { lg: '180px', sm: '145px', xs: '145px' },
                           height: '100px',
@@ -838,9 +946,10 @@ const Checkout = () => {
                         margin="normal"
                         name="last_name"
                         type="text"
-                        value={lastName}
-                        error={lastNameError}
-                        helperText={lastNameError}
+                        value={lastNameBilling}
+                        error={lastNameBillingError}
+                        helperText={lastNameBillingError}
+                        onChange={handleLastNameBillingChange}
                         sx={{
                           width: { lg: '180px', sm: '145px', xs: '145px' },
                           height: '100px',
@@ -851,9 +960,11 @@ const Checkout = () => {
                       label="Address"
                       margin="normal"
                       name="address"
-                      value={address}
-                      error={addressError}
-                      helperText={addressError}
+                      type='text'
+                      value={addressBilling}
+                      error={addressBillingError}
+                      helperText={addressBillingError}
+                      onChange={handleAddressBillingChange}
                       sx={{
                         width: { lg: '400px', sm: '300px', xs: '300px' },
                         height: '150px',
@@ -872,9 +983,11 @@ const Checkout = () => {
                         label="City"
                         margin="normal"
                         name="city"
-                        value={city}
-                        error={cityError}
-                        helperText={cityError}
+                        type='text'
+                        value={cityBilling}
+                        error={cityBillingError}
+                        helperText={cityBillingError}
+                        onChange={handleCityBillingChange}
                         sx={{
                           width: { lg: '110px', sm: '80px', xs: '80px' },
                           height: '150px',
@@ -907,6 +1020,11 @@ const Checkout = () => {
                         label="Postal code"
                         margin="normal"
                         name="postal code"
+                        type='number'
+                        value={postalCodeBilling}
+                        error={postalCodeBillingError}
+                        helperText={postalCodeBillingError}
+                        onChange={handlePostalCodeBillingChange}
                         sx={{
                           width: { lg: '110px', sm: '80px', xs: '80px' },
                           height: '150px',
@@ -918,6 +1036,10 @@ const Checkout = () => {
                       margin="normal"
                       name="phone_number"
                       type="number"
+                      value={phoneBilling}
+                      error={phoneBillingError}
+                      helperText={phoneBillingError}
+                      onChange={handlePhoneBillingChange}
                       sx={{
                         width: { lg: '400px', sm: '300px', xs: '300px' },
                         height: '150px',
@@ -976,7 +1098,11 @@ const Checkout = () => {
                     label="Mobile Phone Number"
                     margin="normal"
                     name="phone_number"
-                    type="tel"
+                    type="number"
+                    value={phoneInfo}
+                    error={phoneInfoError}
+                    helperText={phoneInfoError}
+                    onChange={handlePhoneInfoChange}
                     defaultValue="+234"
                     InputProps={{ inputProps: { pattern: '\\+\\d{1,3}' } }}
                     sx={{
